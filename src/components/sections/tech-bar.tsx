@@ -136,7 +136,6 @@ const technologies = [
 export default function TechBar() {
   return (
     <section className="bg-white py-8 overflow-hidden relative">
-      {/* Left fade mask */}
       <div
         className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24"
         style={{
@@ -144,7 +143,6 @@ export default function TechBar() {
             "linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0))",
         }}
       />
-      {/* Right fade mask */}
       <div
         className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24"
         style={{
@@ -154,13 +152,11 @@ export default function TechBar() {
       />
 
       <div className="animate-marquee flex w-max items-center gap-16">
-        {/* First set */}
         {technologies.map((tech) => (
           <div key={tech.name} className="flex-shrink-0 px-6">
             {tech.render()}
           </div>
         ))}
-        {/* Duplicate set for seamless loop */}
         {technologies.map((tech) => (
           <div key={`${tech.name}-dup`} className="flex-shrink-0 px-6">
             {tech.render()}

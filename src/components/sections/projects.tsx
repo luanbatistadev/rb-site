@@ -229,7 +229,6 @@ export function Projects({ dict, projects, locale }: ProjectsProps) {
         whileInView="visible"
         viewport={viewportOnce}
       >
-        {/* Header */}
         <div className="flex flex-col items-center text-center">
           <Tag>{dict.tag}</Tag>
 
@@ -248,33 +247,28 @@ export function Projects({ dict, projects, locale }: ProjectsProps) {
           </motion.p>
         </div>
 
-        {/* Project cards */}
         <div className="mt-16 flex flex-col gap-10">
           {projects.map((project, index) => {
-            const isOdd = index % 2 === 0; // 0-indexed: first card is "odd" (text left, image right)
+            const isOdd = index % 2 === 0;
             const slideVariant = isOdd ? fadeInLeft : fadeInRight;
 
             const textContent = (
               <div className="flex flex-col justify-center gap-5">
-                {/* Platform icons */}
                 <div className="flex items-center gap-2">
                   {project.platforms.map((platform) => (
                     <PlatformIcon key={platform} platform={platform} />
                   ))}
                 </div>
 
-                {/* Project name */}
                 <h3 className="text-2xl font-bold text-foreground">
                   {project.name}
                 </h3>
 
-                {/* Description */}
                 <p className="leading-relaxed text-muted">
                   {project.description[locale] ||
                     Object.values(project.description)[0]}
                 </p>
 
-                {/* CTA button */}
                 <div className="mt-2">
                   <Button
                     href={`/${locale}/projetos/${project.id}`}
@@ -319,7 +313,6 @@ export function Projects({ dict, projects, locale }: ProjectsProps) {
           })}
         </div>
 
-        {/* View all button */}
         <motion.div
           variants={fadeInUp}
           initial="hidden"

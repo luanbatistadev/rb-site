@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-Variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer-VariableItalic.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -22,7 +38,7 @@
   --color-dark-surface: var(--dark-surface);
   --color-dark-border: var(--dark-border);
   --color-muted: var(--muted);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: "Switzer", var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -40,10 +56,9 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: "Switzer", var(--font-geist-sans), system-ui, sans-serif;
 }
 
-/* Marquee animation for tech bar */
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -61,7 +76,6 @@ body {
   animation-play-state: paused;
 }
 
-/* Ripple animation for magnetic buttons */
 @keyframes ripple {
   0% {
     transform: scale(0);

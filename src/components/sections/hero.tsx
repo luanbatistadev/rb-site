@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/button";
 type HeroProps = {
   dict: {
     tag: string;
-    title: string;
+    titleLine1: string;
+    titleLine2: string;
     subtitle: string;
     cta: string;
   };
@@ -41,7 +42,6 @@ export function Hero({ dict, locale }: HeroProps) {
       id="inicio"
       className="relative min-h-screen overflow-hidden bg-[#0a0a0a]"
     >
-      {/* Gradient background with parallax */}
       <motion.div
         className="absolute inset-0"
         style={{
@@ -50,7 +50,6 @@ export function Hero({ dict, locale }: HeroProps) {
           opacity: backgroundOpacity,
         }}
       >
-        {/* Primary iridescent gradient layer */}
         <div
           className="absolute inset-0"
           style={{
@@ -63,7 +62,6 @@ export function Hero({ dict, locale }: HeroProps) {
           }}
         />
 
-        {/* Glass refraction layer */}
         <div
           className="absolute inset-0"
           style={{
@@ -76,7 +74,6 @@ export function Hero({ dict, locale }: HeroProps) {
           }}
         />
 
-        {/* Luminous core glow */}
         <div
           className="absolute inset-0"
           style={{
@@ -87,7 +84,6 @@ export function Hero({ dict, locale }: HeroProps) {
           }}
         />
 
-        {/* Subtle noise texture via fine gradient */}
         <div
           className="absolute inset-0 opacity-40"
           style={{
@@ -98,7 +94,6 @@ export function Hero({ dict, locale }: HeroProps) {
         />
       </motion.div>
 
-      {/* Top edge gradient fade */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-32"
         style={{
@@ -107,7 +102,6 @@ export function Hero({ dict, locale }: HeroProps) {
         }}
       />
 
-      {/* Bottom edge gradient fade */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-48"
         style={{
@@ -115,7 +109,6 @@ export function Hero({ dict, locale }: HeroProps) {
         }}
       />
 
-      {/* Content */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
         <motion.div
           className="mx-auto flex max-w-4xl flex-col items-center text-center"
@@ -123,20 +116,19 @@ export function Hero({ dict, locale }: HeroProps) {
           initial="hidden"
           animate="visible"
         >
-          {/* Tag */}
           <motion.div variants={fadeInUp}>
-            <Tag>RB Consulting Development</Tag>
+            <Tag>{dict.tag}</Tag>
           </motion.div>
 
-          {/* Title */}
           <motion.h1
             variants={fadeInUp}
-            className="mt-8 text-5xl font-bold uppercase tracking-tight text-white md:text-7xl"
+            className="mt-8 text-center text-4xl font-medium uppercase text-white sm:text-6xl lg:text-[80px] lg:leading-[1.2] lg:tracking-[-0.01em] xl:text-[96px]"
           >
-            {dict.title}
+            {dict.titleLine1}
+            <br />
+            <span className="whitespace-nowrap">{dict.titleLine2}</span>
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             variants={fadeInUp}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl"
@@ -144,7 +136,6 @@ export function Hero({ dict, locale }: HeroProps) {
             {dict.subtitle}
           </motion.p>
 
-          {/* CTA Button */}
           <motion.div variants={fadeInUp} className="mt-10">
             <Button
               href={`/${locale}#contato`}
@@ -172,7 +163,6 @@ export function Hero({ dict, locale }: HeroProps) {
             </Button>
           </motion.div>
 
-          {/* Avatar row */}
           <motion.div
             variants={fadeInUp}
             className="mt-12 flex items-center gap-3"

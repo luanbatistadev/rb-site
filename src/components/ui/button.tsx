@@ -109,7 +109,6 @@ export function Button({
 
   const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
 
-  // Magnetic content (glow + ripple)
   const magneticOverlay = magnetic ? (
     <>
       <motion.span
@@ -150,7 +149,6 @@ export function Button({
     </>
   );
 
-  // Non-magnetic: simple render
   if (!magnetic) {
     if (href) {
       return (
@@ -166,7 +164,6 @@ export function Button({
     );
   }
 
-  // Magnetic: wrapped in motion.div with spring physics
   if (href) {
     return (
       <motion.div

@@ -39,7 +39,6 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
         variants={fadeInUp}
         className="relative overflow-hidden rounded-xl"
       >
-        {/* Background image layer */}
         <div className="absolute inset-0">
           <div
             className="absolute inset-0"
@@ -51,7 +50,6 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
               `,
             }}
           />
-          {/* Swirl effect */}
           <div
             className="absolute inset-0 opacity-40"
             style={{
@@ -63,11 +61,8 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
           />
         </div>
 
-        {/* Content */}
         <div className="relative z-10 px-10 py-12 lg:px-16 lg:py-14">
-          {/* Main row: logo + columns */}
           <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
-            {/* Logo */}
             <Link
               href={`/${locale}`}
               className="group flex items-center gap-3"
@@ -89,9 +84,7 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
               </div>
             </Link>
 
-            {/* 3 Columns */}
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:gap-16">
-              {/* Menu */}
               <div>
                 <h3 className="text-sm font-semibold text-white">
                   {dict.menu}
@@ -110,7 +103,6 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
                 </ul>
               </div>
 
-              {/* Social */}
               <div>
                 <h3 className="text-sm font-semibold text-white">
                   {dict.social}
@@ -139,7 +131,6 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
                 </ul>
               </div>
 
-              {/* Contact */}
               <div>
                 <h3 className="text-sm font-semibold text-white">
                   {dict.contactTitle}
@@ -163,10 +154,8 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
             </div>
           </div>
 
-          {/* Separator */}
           <div className="mt-12 border-t border-white/10" />
 
-          {/* Bottom row */}
           <div className="mt-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-xs text-white/40">
               {dict.rights}

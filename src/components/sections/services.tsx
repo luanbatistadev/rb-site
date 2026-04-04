@@ -67,7 +67,6 @@ export function Services({ dict }: ServicesProps) {
         viewport={viewportOnce}
         className="mx-auto max-w-7xl px-6 py-24"
       >
-        {/* Heading */}
         <motion.h2
           variants={fadeInUp}
           className="text-center text-4xl font-bold tracking-tight text-foreground"
@@ -75,7 +74,6 @@ export function Services({ dict }: ServicesProps) {
           {dict.title}
         </motion.h2>
 
-        {/* Subtitle */}
         <motion.p
           variants={fadeInUp}
           className="mx-auto mt-4 max-w-2xl text-center text-muted"
@@ -83,12 +81,10 @@ export function Services({ dict }: ServicesProps) {
           {dict.subtitle}
         </motion.p>
 
-        {/* Service cards grid */}
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
           {services.map((service) => (
             <motion.div key={service.key} variants={fadeInUp}>
               <Card className="h-full">
-                {/* Tech icons row */}
                 <div className="mb-4 flex items-center gap-2">
                   {service.icons.map((icon, i) => (
                     <span
@@ -98,12 +94,10 @@ export function Services({ dict }: ServicesProps) {
                   ))}
                 </div>
 
-                {/* Card title */}
                 <h3 className="text-lg font-semibold text-foreground">
                   {dict[service.key].title}
                 </h3>
 
-                {/* Card description */}
                 <p className="mt-2 text-sm text-muted">
                   {dict[service.key].description}
                 </p>
@@ -112,10 +106,8 @@ export function Services({ dict }: ServicesProps) {
           ))}
         </div>
 
-        {/* Showcase image placeholder */}
         <motion.div variants={fadeInUp} className="mt-12">
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] aspect-video">
-            {/* Editor chrome */}
             <div className="flex items-center gap-2 border-b border-white/[0.06] px-5 py-3">
               <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
               <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
@@ -123,7 +115,6 @@ export function Services({ dict }: ServicesProps) {
               <span className="ml-4 text-xs text-white/30 font-mono">app.ts</span>
             </div>
 
-            {/* Editor body */}
             <div className="px-5 py-4 font-mono text-sm leading-relaxed">
               {codeLines.map((line, i) => (
                 <div key={i} className="flex" style={{ paddingLeft: line.indent * 24 }}>
@@ -147,7 +138,6 @@ export function Services({ dict }: ServicesProps) {
               ))}
             </div>
 
-            {/* Subtle glow accent */}
             <div className="pointer-events-none absolute -bottom-20 -right-20 h-60 w-60 rounded-full bg-accent/10 blur-3xl" />
           </div>
         </motion.div>

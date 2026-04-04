@@ -5,8 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 type CursorVariant = "blob" | "glass" | "none";
 
-// Change this to switch between variants
-const VARIANT: CursorVariant = "glass";
+const VARIANT: CursorVariant = "none";
 
 function SpotlightBlob() {
   const x = useMotionValue(-200);
@@ -38,7 +37,7 @@ function SpotlightBlob() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed top-0 left-0 z-[9999]"
+      className="pointer-events-none fixed top-0 left-0 z-9999"
       style={{
         x: smoothX,
         y: smoothY,
@@ -102,7 +101,7 @@ function GlassCursor() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed top-0 left-0 z-[9999]"
+      className="pointer-events-none fixed top-0 left-0 z-9999"
       style={{
         x: smoothX,
         y: smoothY,
@@ -130,13 +129,15 @@ function GlassCursor() {
 }
 
 export function CustomCursor() {
+  const [mounted, setMounted] = useState(false);
   const [hasPointer, setHasPointer] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     setHasPointer(window.matchMedia("(pointer: fine)").matches);
   }, []);
 
-  if (!hasPointer || VARIANT === "none") return null;
+  if (!mounted || !hasPointer || VARIANT === "none") return null;
 
   return (
     <>

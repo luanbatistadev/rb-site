@@ -7,8 +7,9 @@
     "cta": "Book a Consultation"
   },
   "hero": {
-    "tag": "RB Computing Development",
-    "title": "DEVELOPMENT, DESIGN & EXPERIENCE",
+    "tag": "RB Computing Development.",
+    "titleLine1": "DEVELOPMENT,",
+    "titleLine2": "DESIGN & EXPERIENCE",
     "subtitle": "We build high-impact digital applications focused on performance and experiences that engage users and drive results.",
     "cta": "START YOUR PROJECT"
   },

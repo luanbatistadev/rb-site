@@ -60,7 +60,6 @@ export function Header({ locale, dict }: HeaderProps) {
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6 lg:px-[120px] pt-4"
       >
-        {/* NavBar: 1200x68 max, liquid glass, rounded-xl */}
         <nav
           className={`relative flex h-17 w-full max-w-300 items-center justify-between rounded-[50px] px-6 transition-all duration-500 ${
             scrolled
@@ -68,10 +67,8 @@ export function Header({ locale, dict }: HeaderProps) {
               : "border border-white/8 bg-white/4 shadow-[0_4px_24px_rgba(0,0,0,0.15)] backdrop-blur-xl"
           }`}
         >
-          {/* Inner glow line */}
           <div className="absolute inset-x-0 top-0 h-px rounded-t-[50px] bg-linear-to-r from-transparent via-white/15 to-transparent" />
 
-          {/* Logo — 188x44 */}
           <Link href={`/${locale}`} className="group flex h-11 items-center gap-2.5">
             <Image
               src="/logo-512.svg"
@@ -90,7 +87,6 @@ export function Header({ locale, dict }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Desktop nav links — centered */}
           <div className="hidden items-center gap-0 md:flex absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <a
@@ -103,7 +99,6 @@ export function Header({ locale, dict }: HeaderProps) {
             ))}
           </div>
 
-          {/* Desktop CTA — 188x41 */}
           <div className="hidden md:block">
             <Link
               href={`/${locale}/contato`}
@@ -116,7 +111,6 @@ export function Header({ locale, dict }: HeaderProps) {
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -156,7 +150,6 @@ export function Header({ locale, dict }: HeaderProps) {
         </nav>
       </motion.header>
 
-      {/* Mobile overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div

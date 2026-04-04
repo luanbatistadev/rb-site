@@ -30,7 +30,6 @@ export function Cta({ dict, locale }: CtaProps) {
         ref={cardRef}
         className="relative mx-auto max-w-[1200px] overflow-hidden rounded-3xl"
       >
-        {/* Background with 3D swirl effect */}
         <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
           <div
             className="absolute inset-0"
@@ -43,7 +42,6 @@ export function Cta({ dict, locale }: CtaProps) {
               `,
             }}
           />
-          {/* Swirl overlay */}
           <div
             className="absolute inset-0 opacity-50"
             style={{
@@ -55,7 +53,6 @@ export function Cta({ dict, locale }: CtaProps) {
           />
         </motion.div>
 
-        {/* Content */}
         <motion.div
           className="relative z-10 flex flex-col items-center px-8 py-20 text-center md:py-24"
           variants={staggerContainer}
@@ -63,7 +60,6 @@ export function Cta({ dict, locale }: CtaProps) {
           whileInView="visible"
           viewport={viewportOnce}
         >
-          {/* Logo */}
           <motion.div variants={fadeInUp} className="flex items-center gap-2">
             <img
               src="/logo-512.svg"
@@ -77,7 +73,6 @@ export function Cta({ dict, locale }: CtaProps) {
             </span>
           </motion.div>
 
-          {/* Heading */}
           <motion.h2
             variants={fadeInUp}
             className="mt-8 text-3xl font-bold tracking-tight text-white md:text-5xl"
@@ -85,7 +80,6 @@ export function Cta({ dict, locale }: CtaProps) {
             {dict.title}
           </motion.h2>
 
-          {/* Subtitle */}
           <motion.p
             variants={fadeInUp}
             className="mt-5 max-w-lg text-base leading-relaxed text-white/60"
@@ -93,7 +87,6 @@ export function Cta({ dict, locale }: CtaProps) {
             {dict.subtitle}
           </motion.p>
 
-          {/* Button: text + circular accent arrow */}
           <motion.div variants={fadeInUp} className="mt-10">
             <Link
               href={`/${locale}/contato`}

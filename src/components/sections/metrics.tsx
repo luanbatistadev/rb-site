@@ -26,12 +26,10 @@ export function Metrics({ dict }: MetricsProps) {
         whileInView="visible"
         viewport={viewportOnce}
       >
-        {/* Tag */}
         <motion.div variants={fadeInUp} className="flex justify-center">
           <Tag>{dict.tag}</Tag>
         </motion.div>
 
-        {/* Heading */}
         <motion.h2
           variants={fadeInUp}
           className="mt-6 text-center text-4xl font-bold tracking-tight text-foreground"
@@ -39,7 +37,6 @@ export function Metrics({ dict }: MetricsProps) {
           {dict.title}
         </motion.h2>
 
-        {/* Subtitle */}
         <motion.p
           variants={fadeInUp}
           className="mx-auto mt-4 max-w-2xl text-center text-muted"
@@ -47,7 +44,6 @@ export function Metrics({ dict }: MetricsProps) {
           {dict.subtitle}
         </motion.p>
 
-        {/* Metric cards */}
         <motion.div
           variants={fadeInUp}
           className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3"

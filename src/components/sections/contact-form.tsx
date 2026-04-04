@@ -24,7 +24,6 @@ export function ContactForm({ dict }: ContactFormProps) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Placeholder for form submission logic
     setStatus("success");
   }
 
