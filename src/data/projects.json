@@ -1,0 +1,32 @@
+[
+  {
+    "id": "dfora-1",
+    "name": "dFora",
+    "platforms": ["apple", "android", "kotlin", "swift", "flutter"],
+    "description": {
+      "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
+      "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+    },
+    "image": "/images/project-dfora-1.webp"
+  },
+  {
+    "id": "dfora-2",
+    "name": "dFora",
+    "platforms": ["apple", "android", "web"],
+    "description": {
+      "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
+      "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+    },
+    "image": "/images/project-dfora-2.webp"
+  },
+  {
+    "id": "dfora-3",
+    "name": "dFora",
+    "platforms": ["apple", "android", "kotlin", "swift", "flutter"],
+    "description": {
+      "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
+      "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+    },
+    "image": "/images/project-dfora-3.webp"
+  }
+]

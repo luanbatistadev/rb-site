@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "contact": "Contact",
+    "cta": "Book a Consultation"
+  },
+  "hero": {
+    "tag": "RB Computing Development",
+    "title": "DEVELOPMENT, DESIGN & EXPERIENCE",
+    "subtitle": "We build high-impact digital applications focused on performance and experiences that engage users and drive results.",
+    "cta": "START YOUR PROJECT"
+  },
+  "services": {
+    "title": "End-to-end engineering.",
+    "subtitle": "We develop complete solutions for every stage of your digital project.",
+    "mobile": {
+      "title": "Native & Hybrid Mobile",
+      "description": "Fluid apps for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+    },
+    "web": {
+      "title": "High Performance Web",
+      "description": "Fast and scalable web applications with the most modern technologies on the market."
+    },
+    "ux": {
+      "title": "User Experience",
+      "description": "User-centered design. Intuitive interfaces that delight and convert based on research and data."
+    }
+  },
+  "projects": {
+    "tag": "Projects",
+    "title": "From zero to launch.",
+    "subtitle": "Selected projects where we participated from start to launch in an integrated and iterative way.",
+    "viewMore": "View more details",
+    "viewAll": "View all projects"
+  },
+  "metrics": {
+    "tag": "About Software",
+    "title": "Built to scale, ready to perform.",
+    "subtitle": "Behind every line of code, there's a commitment to deliver with the best practices.",
+    "experience": {
+      "value": "6+",
+      "label": "Senior Experience"
+    },
+    "focus": {
+      "value": "100%",
+      "label": "Experience Focused"
+    },
+    "multi": {
+      "value": "Multi",
+      "label": "Multiplatform Solutions"
+    }
+  },
+  "cta": {
+    "title": "Experience-focused Software!",
+    "subtitle": "Book a consultation to discover how RB Computing uses senior engineering and UX focus to accelerate your business.",
+    "button": "Book a consultation"
+  },
+  "footer": {
+    "menu": "Menu",
+    "social": "Social",
+    "contactTitle": "Contact",
+    "rights": "© RB Computing Development — 2026",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy"
+  },
+  "contact": {
+    "title": "Book a consultation",
+    "subtitle": "Fill in the form and we'll get in touch.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send message",
+    "success": "Message sent successfully!",
+    "error": "Error sending. Please try again."
+  }
+}

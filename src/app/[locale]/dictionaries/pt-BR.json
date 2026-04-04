@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "home": "Início",
+    "services": "Serviços",
+    "projects": "Projetos",
+    "contact": "Contato",
+    "cta": "Agendar Consulta"
+  },
+  "hero": {
+    "tag": "RB Computing Development",
+    "title": "DESENVOLVIMENTO, DESIGN & EXPERIÊNCIA",
+    "subtitle": "Construímos aplicações digitais de alto impacto com foco em performance e experiências que engajam usuários e geram resultados.",
+    "cta": "INICIAR SEU PROJETO"
+  },
+  "services": {
+    "title": "Engenharia de ponta a ponta.",
+    "subtitle": "Desenvolvemos soluções completas para todos os estágios do seu projeto digital.",
+    "mobile": {
+      "title": "Mobile Nativo & Híbrido",
+      "description": "Aplicativos fluidos para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter."
+    },
+    "web": {
+      "title": "Web de Alta Performance",
+      "description": "Aplicações web rápidas e escaláveis com as tecnologias mais modernas do mercado."
+    },
+    "ux": {
+      "title": "User Experience",
+      "description": "Design centrado no usuário. Interfaces intuitivas que encantam e convertem com base em pesquisa e dados."
+    }
+  },
+  "projects": {
+    "tag": "Projetos",
+    "title": "Do zero ao lançamento.",
+    "subtitle": "Alguns projetos selecionados onde participamos do início ao lançamento de forma integrada e iterativa.",
+    "viewMore": "Ver mais detalhes",
+    "viewAll": "Ver todos os projetos"
+  },
+  "metrics": {
+    "tag": "Sobre Software",
+    "title": "Construído para escalar, pronto para performar.",
+    "subtitle": "Por trás de cada linha de código, há compromisso de entregar com o melhor das melhores práticas.",
+    "experience": {
+      "value": "6+",
+      "label": "Experiência Sênior"
+    },
+    "focus": {
+      "value": "100%",
+      "label": "Foco na Experiência"
+    },
+    "multi": {
+      "value": "Multi",
+      "label": "Soluções Multiplataforma"
+    }
+  },
+  "cta": {
+    "title": "Software focado em Experiência!",
+    "subtitle": "Agende uma consultoria para descobrir como a RB Computing utiliza engenharia sênior e foco em UX para acelerar o seu negócio.",
+    "button": "Agendar consulta"
+  },
+  "footer": {
+    "menu": "Menu",
+    "social": "Social",
+    "contactTitle": "Contact",
+    "rights": "© RB Computing Development — 2026",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy"
+  },
+  "contact": {
+    "title": "Agende uma consulta",
+    "subtitle": "Preencha o formulário e entraremos em contato.",
+    "name": "Nome",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "message": "Mensagem",
+    "send": "Enviar mensagem",
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Erro ao enviar. Tente novamente."
+  }
+}
