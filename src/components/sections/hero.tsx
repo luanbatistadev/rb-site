@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { staggerFast, fadeInUp } from "@/lib/animations";
+import { pickRandomBg } from "@/lib/background-images";
 import { Tag } from "@/components/ui/tag";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 type HeroProps = {
   dict: {
@@ -26,6 +27,11 @@ const avatarGradients = [
 
 export function Hero({ dict, locale }: HeroProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const [bgSrc, setBgSrc] = useState("");
+
+  useEffect(() => {
+    setBgSrc(pickRandomBg());
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -50,52 +56,18 @@ export function Hero({ dict, locale }: HeroProps) {
           opacity: backgroundOpacity,
         }}
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse 80% 60% at 50% 40%, rgba(59, 130, 246, 0.15) 0%, transparent 60%),
-              radial-gradient(ellipse 60% 80% at 30% 50%, rgba(139, 92, 246, 0.18) 0%, transparent 55%),
-              radial-gradient(ellipse 50% 50% at 70% 60%, rgba(20, 184, 166, 0.12) 0%, transparent 50%),
-              radial-gradient(ellipse 90% 40% at 50% 70%, rgba(99, 102, 241, 0.1) 0%, transparent 60%)
-            `,
-          }}
-        />
-
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(circle 600px at 35% 35%, rgba(96, 165, 250, 0.12) 0%, transparent 50%),
-              radial-gradient(circle 500px at 65% 55%, rgba(168, 85, 247, 0.14) 0%, transparent 45%),
-              radial-gradient(circle 400px at 50% 45%, rgba(45, 212, 191, 0.1) 0%, transparent 40%),
-              radial-gradient(circle 300px at 45% 60%, rgba(129, 140, 248, 0.08) 0%, transparent 35%)
-            `,
-          }}
-        />
-
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(ellipse 40% 35% at 48% 45%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
-              radial-gradient(ellipse 35% 30% at 52% 48%, rgba(139, 92, 246, 0.15) 0%, transparent 45%)
-            `,
-          }}
-        />
-
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            background: `
-              conic-gradient(from 180deg at 50% 50%, rgba(59, 130, 246, 0.03) 0deg, rgba(139, 92, 246, 0.05) 60deg, rgba(20, 184, 166, 0.03) 120deg, rgba(99, 102, 241, 0.04) 180deg, rgba(168, 85, 247, 0.03) 240deg, rgba(45, 212, 191, 0.05) 300deg, rgba(59, 130, 246, 0.03) 360deg)
-            `,
-          }}
-        />
+        {bgSrc && (
+          <img
+            src={bgSrc}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
+          />
+        )}
+        <div className="absolute inset-0 bg-[#0a0a0a]/60" />
       </motion.div>
 
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-32"
+        className="pointer-events-none absolute inset-x-0 top-0 h-40"
         style={{
           background:
             "linear-gradient(to bottom, #0a0a0a 0%, transparent 100%)",
@@ -103,7 +75,7 @@ export function Hero({ dict, locale }: HeroProps) {
       />
 
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-48"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-56"
         style={{
           background: "linear-gradient(to top, #0a0a0a 0%, transparent 100%)",
         }}
@@ -122,7 +94,7 @@ export function Hero({ dict, locale }: HeroProps) {
 
           <motion.h1
             variants={fadeInUp}
-            className="mt-8 text-center text-4xl font-medium uppercase text-white sm:text-6xl lg:text-[80px] lg:leading-[1.2] lg:tracking-[-0.01em] xl:text-[96px]"
+            className="mt-8 text-center text-4xl font-medium uppercase text-white sm:text-6xl lg:text-7xl lg:leading-tight lg:tracking-tight xl:text-8xl"
           >
             {dict.titleLine1}
             <br />
@@ -136,49 +108,39 @@ export function Hero({ dict, locale }: HeroProps) {
             {dict.subtitle}
           </motion.p>
 
-          <motion.div variants={fadeInUp} className="mt-10">
-            <Button
-              href={`/${locale}#contato`}
-              variant="primary"
-              size="lg"
-              magnetic
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+          <motion.div
+            variants={fadeInUp}
+            className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:gap-8"
+          >
+            <Link
+              href={`/${locale}/contato`}
+              className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/4 py-2 pl-8 pr-2 backdrop-blur-sm transition-all duration-300 hover:bg-white/8 hover:border-white/15"
+            >
+              <span className="text-sm font-medium uppercase tracking-wide text-white">
+                {dict.cta}
+              </span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover:scale-110">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
                 </svg>
-              }
-            >
-              {dict.cta}
-            </Button>
-          </motion.div>
+              </span>
+            </Link>
 
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 flex items-center gap-3"
-          >
-            <div className="flex -space-x-3">
-              {avatarGradients.map((gradient, i) => (
-                <div
-                  key={i}
-                  className={`h-10 w-10 rounded-full bg-gradient-to-br ${gradient} ring-2 ring-[#0a0a0a]`}
-                  style={{ zIndex: avatarGradients.length - i }}
-                />
-              ))}
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2.5">
+                {avatarGradients.map((gradient, i) => (
+                  <div
+                    key={i}
+                    className={`h-10 w-10 rounded-full bg-linear-to-br ${gradient} ring-2 ring-[#0a0a0a]`}
+                    style={{ zIndex: avatarGradients.length - i }}
+                  />
+                ))}
+              </div>
+              <span className="text-sm text-white/40">
+                +50<br />clientes
+              </span>
             </div>
-            <span className="text-sm text-white/50">
-              +50 projetos entregues
-            </span>
           </motion.div>
         </motion.div>
       </div>

@@ -107,8 +107,8 @@ export function Services({ dict }: ServicesProps) {
         </div>
 
         <motion.div variants={fadeInUp} className="mt-12">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] aspect-video">
-            <div className="flex items-center gap-2 border-b border-white/[0.06] px-5 py-3">
+          <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-[#0a0a0a] to-[#1a1a1a] aspect-video">
+            <div className="flex items-center gap-2 border-b border-white/6 px-5 py-3">
               <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
               <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
               <span className="h-3 w-3 rounded-full bg-[#28c840]" />

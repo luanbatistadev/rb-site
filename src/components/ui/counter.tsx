@@ -52,7 +52,7 @@ export function Counter({ value, label }: CounterProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
-      className="flex flex-col items-center gap-2 rounded-2xl border border-foreground/5 bg-foreground/[0.02] px-8 py-10"
+      className="flex flex-col items-center gap-2 rounded-2xl border border-foreground/5 bg-foreground/2 px-8 py-10"
     >
       <span className="text-5xl font-bold tracking-tight">{display}</span>
       <span className="text-sm text-muted">{label}</span>

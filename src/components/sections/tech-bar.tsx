@@ -153,12 +153,12 @@ export default function TechBar() {
 
       <div className="animate-marquee flex w-max items-center gap-16">
         {technologies.map((tech) => (
-          <div key={tech.name} className="flex-shrink-0 px-6">
+          <div key={tech.name} className="shrink-0 px-6">
             {tech.render()}
           </div>
         ))}
         {technologies.map((tech) => (
-          <div key={`${tech.name}-dup`} className="flex-shrink-0 px-6">
+          <div key={`${tech.name}-dup`} className="shrink-0 px-6">
             {tech.render()}
           </div>
         ))}

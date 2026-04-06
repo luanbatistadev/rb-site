@@ -58,10 +58,10 @@ export function Header({ locale, dict }: HeaderProps) {
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6 lg:px-[120px] pt-4"
+        className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6 lg:px-30 pt-4"
       >
         <nav
-          className={`relative flex h-17 w-full max-w-300 items-center justify-between rounded-[50px] px-6 transition-all duration-500 ${
+          className={`relative flex h-17 w-full max-w-300 items-center justify-between rounded-full px-6 transition-all duration-500 ${
             scrolled
               ? "border border-white/10 bg-[#0a0a0a]/80 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl"
               : "border border-white/8 bg-white/4 shadow-[0_4px_24px_rgba(0,0,0,0.15)] backdrop-blur-xl"
@@ -78,7 +78,7 @@ export function Header({ locale, dict }: HeaderProps) {
               className="brightness-0 invert opacity-80 transition-opacity duration-300 group-hover:opacity-100"
             />
             <div className="hidden sm:flex flex-col leading-tight">
-              <span className="text-[13px] font-semibold text-white/90 tracking-tight">
+              <span className="text-xs font-semibold text-white/90 tracking-tight">
                 Computing
               </span>
               <span className="text-[11px] text-white/40">
@@ -92,7 +92,7 @@ export function Header({ locale, dict }: HeaderProps) {
               <a
                 key={link.key}
                 href={link.href}
-                className="flex h-[36px] items-center rounded-lg px-3 text-[14px] font-medium text-white/60 transition-all duration-200 hover:bg-white/8 hover:text-white"
+                className="flex h-9 items-center rounded-lg px-3 text-sm font-medium text-white/60 transition-all duration-200 hover:bg-white/8 hover:text-white"
               >
                 {dict[link.key]}
               </a>
@@ -102,7 +102,7 @@ export function Header({ locale, dict }: HeaderProps) {
           <div className="hidden md:block">
             <Link
               href={`/${locale}/contato`}
-              className="inline-flex h-10 items-center gap-1.5 rounded-full bg-white/10 px-5 text-[13px] font-medium text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
+              className="inline-flex h-10 items-center gap-1.5 rounded-full bg-white/10 px-5 text-xs font-medium text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
             >
               {dict.cta}
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="opacity-50">
@@ -117,7 +117,7 @@ export function Header({ locale, dict }: HeaderProps) {
             className="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-200 hover:bg-white/10 md:hidden"
             aria-label="Toggle menu"
           >
-            <div className="flex w-[18px] flex-col items-center gap-[5px]">
+            <div className="flex w-4.5 flex-col items-center gap-1.5">
               <motion.span
                 animate={
                   mobileOpen
@@ -125,7 +125,7 @@ export function Header({ locale, dict }: HeaderProps) {
                     : { rotate: 0, y: 0, width: 18 }
                 }
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="block h-[1.5px] w-[18px] rounded-full bg-white/80"
+                className="block h-[1.5px] w-4.5 rounded-full bg-white/80"
               />
               <motion.span
                 animate={
@@ -134,7 +134,7 @@ export function Header({ locale, dict }: HeaderProps) {
                     : { opacity: 1, scaleX: 1 }
                 }
                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                className="block h-[1.5px] w-[18px] rounded-full bg-white/80"
+                className="block h-[1.5px] w-4.5 rounded-full bg-white/80"
               />
               <motion.span
                 animate={
@@ -143,7 +143,7 @@ export function Header({ locale, dict }: HeaderProps) {
                     : { rotate: 0, y: 0, width: 18 }
                 }
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="block h-[1.5px] w-[18px] rounded-full bg-white/80"
+                className="block h-[1.5px] w-4.5 rounded-full bg-white/80"
               />
             </div>
           </button>

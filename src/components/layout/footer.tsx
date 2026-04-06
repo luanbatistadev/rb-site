@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { fadeInUp, viewportOnce } from "@/lib/animations";
+import { pickRandomBg } from "@/lib/background-images";
 
 type FooterProps = {
   dict: {
@@ -30,6 +32,12 @@ const menuLinks = [
 ];
 
 export function Footer({ dict, locale, navDict }: FooterProps) {
+  const [bgSrc, setBgSrc] = useState("");
+
+  useEffect(() => {
+    setBgSrc(pickRandomBg());
+  }, []);
+
   return (
     <footer className="bg-background px-2 pb-2">
       <motion.div
@@ -40,25 +48,12 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
         className="relative overflow-hidden rounded-xl"
       >
         <div className="absolute inset-0">
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `
-                radial-gradient(ellipse 80% 60% at 30% 60%, rgba(40, 40, 60, 0.9) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 80% at 70% 40%, rgba(20, 20, 40, 0.8) 0%, transparent 60%),
-                radial-gradient(ellipse 100% 100% at 50% 50%, rgba(10, 10, 20, 0.95) 0%, #0a0a0a 100%)
-              `,
-            }}
+          <img
+            src={bgSrc || undefined}
+            alt=""
+            className={`h-full w-full object-cover ${bgSrc ? "animate-fade-in" : "opacity-0"}`}
           />
-          <div
-            className="absolute inset-0 opacity-40"
-            style={{
-              background: `
-                conic-gradient(from 200deg at 40% 60%, transparent 0deg, rgba(80, 80, 120, 0.3) 60deg, transparent 120deg, rgba(60, 60, 100, 0.2) 200deg, transparent 300deg),
-                radial-gradient(ellipse 50% 40% at 60% 50%, rgba(100, 100, 160, 0.15) 0%, transparent 60%)
-              `,
-            }}
-          />
+          <div className="absolute inset-0 bg-[#0a0a0a]/80" />
         </div>
 
         <div className="relative z-10 px-10 py-12 lg:px-16 lg:py-14">

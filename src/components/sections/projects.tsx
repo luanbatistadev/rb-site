@@ -9,6 +9,7 @@ import {
   staggerContainer,
   viewportOnce,
 } from "@/lib/animations";
+import Image from "next/image";
 import { Tag } from "@/components/ui/tag";
 import { Button } from "@/components/ui/button";
 
@@ -90,7 +91,7 @@ function PlatformIcon({ platform }: { platform: string }) {
   if (!config) {
     return (
       <span
-        className="flex h-7 w-7 items-center justify-center rounded-full text-[10px] font-bold text-white"
+        className="flex h-7 w-7 items-center justify-center rounded-full text-2xs font-bold text-white"
         style={{ backgroundColor: "#6b7280" }}
         title={platform}
       >
@@ -155,14 +156,15 @@ function ProjectImage({
   return (
     <div ref={ref} className="overflow-hidden rounded-xl">
       <motion.div
-        className="relative aspect-[4/3] w-full overflow-hidden rounded-xl"
+        className="relative aspect-4/3 w-full overflow-hidden rounded-xl"
         style={{ y }}
       >
         {image ? (
-          <img
+          <Image
             src={image}
             alt={name}
-            className="h-full w-full object-cover"
+            fill
+            className="object-cover"
           />
         ) : (
           <div
@@ -221,7 +223,7 @@ function ArrowIcon() {
 
 export function Projects({ dict, projects, locale }: ProjectsProps) {
   return (
-    <section id="projetos" className="bg-foreground/[0.02] py-24 px-6">
+    <section id="projetos" className="bg-foreground/2 py-24 px-6">
       <motion.div
         className="mx-auto max-w-7xl"
         variants={staggerContainer}

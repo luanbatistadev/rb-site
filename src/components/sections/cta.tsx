@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import { pickRandomBg } from "@/lib/background-images";
 import Link from "next/link";
 
 type CtaProps = {
@@ -16,6 +17,11 @@ type CtaProps = {
 
 export function Cta({ dict, locale }: CtaProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [bgSrc, setBgSrc] = useState("");
+
+  useEffect(() => {
+    setBgSrc(pickRandomBg());
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -25,32 +31,18 @@ export function Cta({ dict, locale }: CtaProps) {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   return (
-    <section className="bg-background px-6 py-16 lg:px-[120px]">
+    <section className="bg-background px-6 py-16 lg:px-30">
       <div
         ref={cardRef}
-        className="relative mx-auto max-w-[1200px] overflow-hidden rounded-3xl"
+        className="relative mx-auto max-w-300 overflow-hidden rounded-3xl"
       >
         <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `
-                radial-gradient(ellipse 80% 70% at 60% 50%, rgba(80, 60, 120, 0.5) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 80% at 30% 60%, rgba(40, 60, 100, 0.4) 0%, transparent 55%),
-                radial-gradient(ellipse 50% 50% at 70% 40%, rgba(60, 80, 140, 0.3) 0%, transparent 50%),
-                #0a0a0a
-              `,
-            }}
+          <img
+            src={bgSrc || undefined}
+            alt=""
+            className={`h-full w-full object-cover ${bgSrc ? "animate-fade-in" : "opacity-0"}`}
           />
-          <div
-            className="absolute inset-0 opacity-50"
-            style={{
-              background: `
-                conic-gradient(from 180deg at 50% 55%, transparent 0deg, rgba(100, 80, 140, 0.25) 80deg, transparent 160deg, rgba(60, 80, 120, 0.2) 240deg, transparent 360deg),
-                radial-gradient(ellipse 40% 35% at 50% 50%, rgba(120, 100, 160, 0.15) 0%, transparent 60%)
-              `,
-            }}
-          />
+          <div className="absolute inset-0 bg-[#0a0a0a]/75" />
         </motion.div>
 
         <motion.div

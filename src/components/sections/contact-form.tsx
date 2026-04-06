@@ -70,7 +70,7 @@ export function ContactForm({ dict }: ContactFormProps) {
               name="name"
               type="text"
               required
-              className="rounded-xl border border-foreground/10 bg-foreground/[0.02] px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
+              className="rounded-xl border border-foreground/10 bg-foreground/2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
             />
           </div>
 
@@ -83,7 +83,7 @@ export function ContactForm({ dict }: ContactFormProps) {
               name="email"
               type="email"
               required
-              className="rounded-xl border border-foreground/10 bg-foreground/[0.02] px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
+              className="rounded-xl border border-foreground/10 bg-foreground/2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
             />
           </div>
 
@@ -95,7 +95,7 @@ export function ContactForm({ dict }: ContactFormProps) {
               id="phone"
               name="phone"
               type="tel"
-              className="rounded-xl border border-foreground/10 bg-foreground/[0.02] px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
+              className="rounded-xl border border-foreground/10 bg-foreground/2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
             />
           </div>
 
@@ -108,7 +108,7 @@ export function ContactForm({ dict }: ContactFormProps) {
               name="message"
               rows={5}
               required
-              className="resize-none rounded-xl border border-foreground/10 bg-foreground/[0.02] px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
+              className="resize-none rounded-xl border border-foreground/10 bg-foreground/2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent"
             />
           </div>
 
