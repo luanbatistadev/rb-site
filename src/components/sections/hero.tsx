@@ -70,7 +70,7 @@ export function Hero({ dict, locale }: HeroProps) {
               className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
             />
           )}
-          <div className="absolute inset-0 bg-linear-to-b from-transparent from-87% to-[rgba(0,0,0,0.8)]" />
+          <div className="absolute inset-0 bg-black/50" />
         </motion.div>
 
         <div className="relative z-10 flex min-h-screen items-center justify-center px-6">

@@ -237,7 +237,7 @@ function PageHero({
               className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
             />
           )}
-          <div className="absolute inset-0 bg-linear-to-b from-transparent from-7% to-93% to-black" />
+          <div className="absolute inset-0 bg-black/50" />
         </motion.div>
 
         <div className="relative z-10 pt-40 pb-56">
