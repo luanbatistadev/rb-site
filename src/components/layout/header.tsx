@@ -57,15 +57,12 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
 
   return (
     <>
-      <motion.header
+      <header
         data-testid="header"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6 lg:px-30 pt-4"
       >
         <nav
-          className={`relative flex h-17 w-full max-w-300 items-center justify-between rounded-full px-6 transition-all duration-500 ${
+          className={`relative flex h-17 w-full max-w-300 items-center justify-between rounded-full px-6 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ${
             isLight
               ? scrolled
                 ? "border border-foreground/5 bg-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl"
@@ -170,7 +167,7 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
             </div>
           </button>
         </nav>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {mobileOpen && (
