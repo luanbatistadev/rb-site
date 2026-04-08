@@ -30,12 +30,14 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
   const isLight = variant === "light";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
     handleScroll();
+    requestAnimationFrame(() => setMounted(true));
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -65,7 +67,7 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
         className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6 lg:px-30 pt-4"
       >
         <nav
-          className={`relative flex h-17 w-full max-w-300 items-center justify-between rounded-full px-6 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ${
+          className={`relative flex h-17 w-full max-w-300 items-center justify-between rounded-full px-6 ${mounted ? "transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300" : ""} ${
             isLight
               ? scrolled
                 ? "border border-foreground/5 bg-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl"
