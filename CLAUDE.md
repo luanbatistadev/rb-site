@@ -95,10 +95,38 @@ src/
 - Imagens em `public/images/`
 - SVGs como componentes ou via `<img>` / `<Image>`
 
-## Testes
-- Build deve passar sem erros antes de qualquer commit
-- Verificar visualmente com Playwright quando possível
+## Workflow Obrigatorio
 
-## Workflow
-- Após cada feature executar `code-simplifier`
-- Verificar localização de textos
+### Antes de implementar
+- Ler a spec em `docs/superpowers/specs/` se existir
+- Consultar design Figma local em `docs/figma/` se existir
+- Confirmar com o usuario o que vai ser feito (resumo em 2-3 bullets)
+
+### Durante
+- Figma e fonte de verdade para visual (cores, espacamentos, tipografia, layout)
+- Nao tomar decisoes criativas sem perguntar
+- Se algo no Figma nao fizer sentido tecnico, perguntar antes de adaptar
+
+### Depois
+- `next build` deve passar
+- `npx playwright test` deve passar
+- Se existir referencia Figma, comparar screenshot
+- Executar `code-simplifier`
+- Verificar localizacao de textos (todos os idiomas)
+
+### Regra de ouro
+- Na duvida, perguntar. Nunca assumir.
+
+## Figma Local
+
+- Designs ficam em `docs/figma/` (screenshots + specs)
+- 1 chamada MCP por secao, salvar resultado localmente
+- Usuario complementa espacamentos manualmente
+- Arquivos versionados no git
+
+## Testes Playwright
+
+- `npm test` roda todos os testes
+- `npm run test:smoke` roda smoke tests
+- `npm run test:visual` roda visual regression
+- `npm run test:update` atualiza snapshots quando mudanca visual for intencional

@@ -31,7 +31,7 @@ export function Cta({ dict, locale }: CtaProps) {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   return (
-    <section className="bg-background px-6 py-16 lg:px-30">
+    <section data-testid="cta" className="bg-background px-6 py-16 lg:px-30">
       <div
         ref={cardRef}
         className="relative mx-auto max-w-300 overflow-hidden rounded-3xl"

@@ -59,7 +59,7 @@ const codeLines = [
 
 export function Services({ dict }: ServicesProps) {
   return (
-    <section id="servicos" className="bg-white">
+    <section id="servicos" data-testid="services" className="bg-white">
       <motion.div
         variants={staggerContainer}
         initial="hidden"

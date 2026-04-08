@@ -18,7 +18,7 @@ type MetricsProps = {
 
 export function Metrics({ dict }: MetricsProps) {
   return (
-    <section className="bg-background py-24 px-6">
+    <section data-testid="metrics" className="bg-background py-24 px-6">
       <motion.div
         className="mx-auto max-w-7xl"
         variants={staggerContainer}

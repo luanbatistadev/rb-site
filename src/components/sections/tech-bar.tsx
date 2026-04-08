@@ -135,7 +135,7 @@ const technologies = [
 
 export default function TechBar() {
   return (
-    <section className="bg-white py-8 overflow-hidden relative">
+    <section data-testid="tech-bar" className="bg-white py-8 overflow-hidden relative">
       <div
         className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24"
         style={{

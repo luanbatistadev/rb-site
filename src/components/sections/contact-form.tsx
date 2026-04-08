@@ -29,6 +29,7 @@ export function ContactForm({ dict }: ContactFormProps) {
 
   return (
     <motion.div
+      data-testid="contact-form"
       variants={staggerContainer}
       initial="hidden"
       animate="visible"

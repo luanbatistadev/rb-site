@@ -39,7 +39,7 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
   }, []);
 
   return (
-    <footer className="bg-background px-2 pb-2">
+    <footer data-testid="footer" className="bg-background px-2 pb-2">
       <motion.div
         initial="hidden"
         whileInView="visible"

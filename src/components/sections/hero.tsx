@@ -46,6 +46,7 @@ export function Hero({ dict, locale }: HeroProps) {
     <section
       ref={sectionRef}
       id="inicio"
+      data-testid="hero"
       className="relative min-h-screen overflow-hidden bg-[#0a0a0a]"
     >
       <motion.div

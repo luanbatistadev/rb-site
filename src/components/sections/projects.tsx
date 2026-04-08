@@ -223,7 +223,7 @@ function ArrowIcon() {
 
 export function Projects({ dict, projects, locale }: ProjectsProps) {
   return (
-    <section id="projetos" className="bg-foreground/2 py-24 px-6">
+    <section id="projetos" data-testid="projects" className="bg-foreground/2 py-24 px-6">
       <motion.div
         className="mx-auto max-w-7xl"
         variants={staggerContainer}
