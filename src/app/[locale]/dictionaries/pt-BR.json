@@ -69,6 +69,43 @@
     "terms": "Terms of Use",
     "privacy": "Privacy Policy"
   },
+  "servicesPage": {
+    "tag": "RB Computing Development.",
+    "title": "ENGENHARIA DE PRECISAO PARA DESAFIOS COMPLEXOS.",
+    "subtitle": "Oferecemos soluções que vão desde a concepção do produto até a modernização de sistemas robustos, sempre com o foco no usuário final.",
+    "sectionTag": "Serviços",
+    "sectionTitle": "Tecnologia sênior para soluções escaláveis.",
+    "sectionSubtitle": "Unimos engenharia de software de ponta a uma experiência de usuário impecável para construir o futuro do seu produto digital.",
+    "viewMore": "Ver mais detalhes",
+    "cards": {
+      "software": {
+        "title": "Desenvolvimento de Software sob Medida",
+        "description": "Criamos aplicações Mobile (Nativo e Multiplataforma), Web e soluções de IoT do zero, utilizando as tecnologias mais performáticas do mercado."
+      },
+      "consulting": {
+        "title": "Consultoria Estratégica",
+        "description": "Diagnóstico técnico para empresas que precisam validar tecnologias, definir arquiteturas escaláveis ou otimizar processos de desenvolvimento."
+      },
+      "legacy": {
+        "title": "Modernização de Sistemas (Legacy)",
+        "description": "Migramos sistemas antigos para tecnologias atuais (NextJS, Kotlin, Swift), eliminando dívidas técnicas e melhorando a performance."
+      },
+      "maintenance": {
+        "title": "Manutenção e Evolução",
+        "description": "Suporte contínuo para garantir que seu produto digital continue performando enquanto seu negócio cresce."
+      }
+    }
+  },
+  "projectsPage": {
+    "tag": "RB Computing Development.",
+    "title": "DESENVOLVEMOS A TECNOLOGIA QUE IMPULSIONA O SEU CRESCIMENTO.",
+    "subtitle": "Soluções personalizadas em Swift, Kotlin e Flutter, criadas por especialistas para resolver desafios reais do mercado.",
+    "sectionTag": "Projetos",
+    "viewMore": "Ver mais detalhes"
+  },
+  "projectDetail": {
+    "description": "Descrição do projeto e tecnologias usadas"
+  },
   "contact": {
     "title": "Agende uma consulta",
     "subtitle": "Preencha o formulário e entraremos em contato.",

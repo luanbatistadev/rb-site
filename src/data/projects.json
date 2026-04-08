@@ -7,7 +7,8 @@
       "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
       "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
     },
-    "image": "/images/project-dfora-1.webp"
+    "image": "/images/project-dfora-1.webp",
+    "gallery": ["/images/project-dfora-1.webp"]
   },
   {
     "id": "dfora-2",
@@ -17,7 +18,8 @@
       "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
       "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
     },
-    "image": "/images/project-dfora-2.webp"
+    "image": "/images/project-dfora-2.webp",
+    "gallery": ["/images/project-dfora-2.webp"]
   },
   {
     "id": "dfora-3",
@@ -27,6 +29,29 @@
       "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
       "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
     },
-    "image": "/images/project-dfora-3.webp"
+    "image": "/images/project-dfora-3.webp",
+    "gallery": ["/images/project-dfora-3.webp"]
+  },
+  {
+    "id": "dfora-4",
+    "name": "dFora",
+    "platforms": ["apple", "android", "kotlin", "swift", "flutter"],
+    "description": {
+      "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
+      "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+    },
+    "image": "/images/project-dfora-1.webp",
+    "gallery": ["/images/project-dfora-1.webp"]
+  },
+  {
+    "id": "dfora-5",
+    "name": "dFora",
+    "platforms": ["apple", "android", "kotlin", "swift", "flutter"],
+    "description": {
+      "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
+      "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+    },
+    "image": "/images/project-dfora-2.webp",
+    "gallery": ["/images/project-dfora-2.webp"]
   }
 ]

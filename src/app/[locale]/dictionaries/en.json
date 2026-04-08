@@ -69,6 +69,43 @@
     "terms": "Terms of Use",
     "privacy": "Privacy Policy"
   },
+  "servicesPage": {
+    "tag": "RB Computing Development.",
+    "title": "PRECISION ENGINEERING FOR COMPLEX CHALLENGES.",
+    "subtitle": "We offer solutions ranging from product conception to modernization of robust systems, always focused on the end user.",
+    "sectionTag": "Services",
+    "sectionTitle": "Senior technology for scalable solutions.",
+    "sectionSubtitle": "We combine cutting-edge software engineering with impeccable user experience to build the future of your digital product.",
+    "viewMore": "View more details",
+    "cards": {
+      "software": {
+        "title": "Custom Software Development",
+        "description": "We create Mobile (Native and Cross-platform), Web applications and IoT solutions from scratch, using the most performant technologies on the market."
+      },
+      "consulting": {
+        "title": "Strategic Consulting",
+        "description": "Technical diagnosis for companies that need to validate technologies, define scalable architectures or optimize development processes."
+      },
+      "legacy": {
+        "title": "Legacy System Modernization",
+        "description": "We migrate old systems to current technologies (NextJS, Kotlin, Swift), eliminating technical debt and improving performance."
+      },
+      "maintenance": {
+        "title": "Maintenance & Evolution",
+        "description": "Continuous support to ensure your digital product keeps performing while your business grows."
+      }
+    }
+  },
+  "projectsPage": {
+    "tag": "RB Computing Development.",
+    "title": "WE DEVELOP THE TECHNOLOGY THAT DRIVES YOUR GROWTH.",
+    "subtitle": "Customized solutions in Swift, Kotlin and Flutter, created by specialists to solve real market challenges.",
+    "sectionTag": "Projects",
+    "viewMore": "View more details"
+  },
+  "projectDetail": {
+    "description": "Project description and technologies used"
+  },
   "contact": {
     "title": "Book a consultation",
     "subtitle": "Fill in the form and we'll get in touch.",

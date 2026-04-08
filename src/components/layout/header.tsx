@@ -15,6 +15,7 @@ type HeaderProps = {
     contact: string;
     cta: string;
   };
+  variant?: "dark" | "light";
 };
 
 const navLinks = [
@@ -24,7 +25,8 @@ const navLinks = [
   { key: "contact" as const, href: "#contato" },
 ];
 
-export function Header({ locale, dict }: HeaderProps) {
+export function Header({ locale, dict, variant = "dark" }: HeaderProps) {
+  const isLight = variant === "light";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -63,9 +65,13 @@ export function Header({ locale, dict }: HeaderProps) {
       >
         <nav
           className={`relative flex h-17 w-full max-w-300 items-center justify-between rounded-full px-6 transition-all duration-500 ${
-            scrolled
-              ? "border border-white/10 bg-[#0a0a0a]/80 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl"
-              : "border border-white/8 bg-white/4 shadow-[0_4px_24px_rgba(0,0,0,0.15)] backdrop-blur-xl"
+            isLight
+              ? scrolled
+                ? "border border-foreground/5 bg-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl"
+                : "border border-foreground/10 bg-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-xl"
+              : scrolled
+                ? "border border-white/10 bg-[#0a0a0a]/80 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl"
+                : "border border-white/8 bg-white/4 shadow-[0_4px_24px_rgba(0,0,0,0.15)] backdrop-blur-xl"
           }`}
         >
           <div className="absolute inset-x-0 top-0 h-px rounded-t-[50px] bg-linear-to-r from-transparent via-white/15 to-transparent" />
@@ -76,13 +82,13 @@ export function Header({ locale, dict }: HeaderProps) {
               alt="RB"
               width={40}
               height={40}
-              className="brightness-0 invert opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+              className={`opacity-80 transition-opacity duration-300 group-hover:opacity-100 ${isLight ? "" : "brightness-0 invert"}`}
             />
             <div className="hidden sm:flex flex-col leading-tight">
-              <span className="text-xs font-semibold text-white/90 tracking-tight">
+              <span className={`text-xs font-semibold tracking-tight ${isLight ? "text-foreground" : "text-white/90"}`}>
                 Computing
               </span>
-              <span className="text-[11px] text-white/40">
+              <span className={`text-[11px] ${isLight ? "text-foreground/40" : "text-white/40"}`}>
                 Development.
               </span>
             </div>
@@ -93,7 +99,11 @@ export function Header({ locale, dict }: HeaderProps) {
               <a
                 key={link.key}
                 href={link.href}
-                className={`flex h-9 items-center rounded-full text-sm font-medium text-white/60 transition-all duration-200 hover:bg-white/8 hover:text-white ${index === 0 ? "bg-black/10 px-4" : "px-3"}`}
+                className={`flex h-9 items-center rounded-full text-sm font-medium transition-all duration-200 ${
+                  isLight
+                    ? `text-foreground/60 hover:bg-foreground/5 hover:text-foreground ${index === 0 ? "bg-white/10 px-4" : "px-3"}`
+                    : `text-white/60 hover:bg-white/8 hover:text-white ${index === 0 ? "bg-black/10 px-4" : "px-3"}`
+                }`}
               >
                 {dict[link.key]}
               </a>
@@ -103,9 +113,13 @@ export function Header({ locale, dict }: HeaderProps) {
           <div className="hidden md:block">
             <Link
               href={`/${locale}/contato`}
-              className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/10 bg-white/5 py-1 pl-6 pr-1 backdrop-blur-sm transition-all duration-200 hover:bg-white/8 hover:border-white/15"
+              className={`group inline-flex h-12 items-center gap-3 rounded-full py-1 pl-6 pr-1 backdrop-blur-sm transition-all duration-200 ${
+                isLight
+                  ? "border border-foreground/10 bg-foreground/5 hover:bg-foreground/8 hover:border-foreground/15"
+                  : "border border-white/10 bg-white/5 hover:bg-white/8 hover:border-white/15"
+              }`}
             >
-              <span className="text-xs font-medium text-white">{dict.cta}</span>
+              <span className={`text-xs font-medium ${isLight ? "text-foreground" : "text-white"}`}>{dict.cta}</span>
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#00b6aa] to-[#00a5e7] transition-transform duration-200 group-hover:scale-110">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" />
@@ -129,7 +143,7 @@ export function Header({ locale, dict }: HeaderProps) {
                     : { rotate: 0, y: 0, width: 18 }
                 }
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="block h-[1.5px] w-4.5 rounded-full bg-white/80"
+                className={`block h-[1.5px] w-4.5 rounded-full ${isLight ? "bg-foreground" : "bg-white/80"}`}
               />
               <motion.span
                 animate={
@@ -138,7 +152,7 @@ export function Header({ locale, dict }: HeaderProps) {
                     : { opacity: 1, scaleX: 1 }
                 }
                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                className="block h-[1.5px] w-4.5 rounded-full bg-white/80"
+                className={`block h-[1.5px] w-4.5 rounded-full ${isLight ? "bg-foreground" : "bg-white/80"}`}
               />
               <motion.span
                 animate={
@@ -147,7 +161,7 @@ export function Header({ locale, dict }: HeaderProps) {
                     : { rotate: 0, y: 0, width: 18 }
                 }
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="block h-[1.5px] w-4.5 rounded-full bg-white/80"
+                className={`block h-[1.5px] w-4.5 rounded-full ${isLight ? "bg-foreground" : "bg-white/80"}`}
               />
             </div>
           </button>
