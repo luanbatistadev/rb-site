@@ -179,7 +179,7 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
             <div className="absolute inset-0 bg-linear-to-b from-transparent from-7% to-93% to-black" />
           </motion.div>
 
-          <div className="relative z-10 pt-25 pb-45">
+          <div className="relative z-10 pt-40 pb-56">
             <motion.div
               className="mx-auto flex max-w-300 flex-col items-center gap-4 px-6 text-center"
               variants={staggerFast}

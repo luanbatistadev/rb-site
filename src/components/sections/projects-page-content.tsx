@@ -240,7 +240,7 @@ function PageHero({
           <div className="absolute inset-0 bg-linear-to-b from-transparent from-7% to-93% to-black" />
         </motion.div>
 
-        <div className="relative z-10 pt-25 pb-45">
+        <div className="relative z-10 pt-40 pb-56">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
