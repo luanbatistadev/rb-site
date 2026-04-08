@@ -154,13 +154,16 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const backgroundOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+  const borderRadius = useTransform(scrollYProgress, [0, 0.3], [0, 12]);
+  const heroPadding = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
 
   return (
     <>
-      <div className="p-2">
-        <section
+      <motion.div style={{ padding: heroPadding }}>
+        <motion.section
           ref={heroRef}
-          className="relative overflow-hidden rounded-xl bg-[#0b0b0b]"
+          className="relative overflow-hidden bg-[#0b0b0b]"
+          style={{ borderRadius }}
         >
           <motion.div
             className="absolute inset-0"
@@ -173,12 +176,12 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
                 className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
               />
             )}
-            <div className="absolute inset-0 bg-linear-to-b from-transparent from-[7%] to-[93%] to-black" />
+            <div className="absolute inset-0 bg-linear-to-b from-transparent from-7% to-93% to-black" />
           </motion.div>
 
-          <div className="relative z-10 pt-[100px] pb-[180px]">
+          <div className="relative z-10 pt-25 pb-45">
             <motion.div
-              className="mx-auto flex max-w-[1200px] flex-col items-center gap-4 px-6 text-center"
+              className="mx-auto flex max-w-300 flex-col items-center gap-4 px-6 text-center"
               variants={staggerFast}
               initial="hidden"
               animate="visible"
@@ -202,8 +205,8 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
               </motion.p>
             </motion.div>
           </div>
-        </section>
-      </div>
+        </motion.section>
+      </motion.div>
 
       <section className="bg-background px-6 py-15">
         <motion.div

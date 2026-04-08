@@ -219,53 +219,55 @@ function PageHero({
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const borderRadius = useTransform(scrollYProgress, [0, 0.3], [0, 12]);
+  const heroPadding = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative overflow-hidden bg-[#0a0a0a] pb-[180px] pt-[80px]"
-    >
-      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
-        {bgSrc && (
-          <img
-            src={bgSrc}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
-          />
-        )}
-        <div className="absolute inset-0 bg-linear-to-b from-transparent from-[93%] to-black" />
-      </motion.div>
-
-      <div className="relative z-10 mx-auto max-w-300 px-6 pt-20">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col gap-6"
-        >
-          <motion.span
-            variants={fadeInUp}
-            className="text-[18px] font-normal text-[#eaeaea]"
-          >
-            {dict.tag}
-          </motion.span>
-
-          <motion.h1
-            variants={fadeInUp}
-            className="max-w-[960px] text-[48px] font-semibold uppercase leading-[1.2] tracking-[-0.48px] text-white"
-          >
-            {dict.title}
-          </motion.h1>
-
-          <motion.p
-            variants={fadeInUp}
-            className="max-w-[628px] text-[18px] font-normal leading-[1.4] text-white"
-          >
-            {dict.subtitle}
-          </motion.p>
+    <motion.div style={{ padding: heroPadding }}>
+      <motion.section
+        ref={sectionRef}
+        className="relative overflow-hidden bg-[#0b0b0b]"
+        style={{ borderRadius }}
+      >
+        <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
+          {bgSrc && (
+            <img
+              src={bgSrc}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
+            />
+          )}
+          <div className="absolute inset-0 bg-linear-to-b from-transparent from-7% to-93% to-black" />
         </motion.div>
-      </div>
-    </section>
+
+        <div className="relative z-10 pt-25 pb-45">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="mx-auto flex max-w-300 flex-col items-center gap-4 px-6 text-center"
+          >
+            <motion.div variants={fadeInUp}>
+              <Tag variant="dark">{dict.tag}</Tag>
+            </motion.div>
+
+            <motion.h1
+              variants={fadeInUp}
+              className="max-w-[960px] text-[48px] font-semibold uppercase leading-[1.2] tracking-[-0.48px] text-white"
+            >
+              {dict.title}
+            </motion.h1>
+
+            <motion.p
+              variants={fadeInUp}
+              className="max-w-[628px] text-[18px] leading-[1.2] text-white"
+            >
+              {dict.subtitle}
+            </motion.p>
+          </motion.div>
+        </div>
+      </motion.section>
+    </motion.div>
   );
 }
 
