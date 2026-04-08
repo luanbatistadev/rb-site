@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion";
 type CounterProps = {
   value: string;
   label: string;
+  description: string;
 };
 
 function parseTarget(value: string): { num: number; suffix: string } | null {
@@ -14,7 +15,7 @@ function parseTarget(value: string): { num: number; suffix: string } | null {
   return { num: parseInt(match[1], 10), suffix: match[2] };
 }
 
-export function Counter({ value, label }: CounterProps) {
+export function Counter({ value, label, description }: CounterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [display, setDisplay] = useState(value);
@@ -52,10 +53,19 @@ export function Counter({ value, label }: CounterProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}
-      className="flex flex-col items-center gap-2 rounded-2xl border border-foreground/5 bg-foreground/2 px-8 py-10"
+      className="flex flex-col items-start gap-8 rounded-xl bg-white p-6"
     >
-      <span className="text-5xl font-bold tracking-tight">{display}</span>
-      <span className="text-sm text-muted">{label}</span>
+      <span className="bg-linear-to-r from-accent-from to-accent-to bg-clip-text text-[56px] font-medium leading-[1.4] text-transparent">
+        {display}
+      </span>
+      <div className="flex flex-col gap-1">
+        <span className="text-xl font-medium leading-[1.4] text-foreground">
+          {label}
+        </span>
+        <span className="text-base leading-[1.3] tracking-[0.16px] text-muted">
+          {description}
+        </span>
+      </div>
     </motion.div>
   );
 }

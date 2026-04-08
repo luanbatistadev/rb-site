@@ -59,46 +59,48 @@ const codeLines = [
 
 export function Services({ dict }: ServicesProps) {
   return (
-    <section id="servicos" data-testid="services" className="bg-white">
+    <section id="servicos" data-testid="services" className="bg-background">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="mx-auto max-w-7xl px-6 py-24"
+        className="mx-auto max-w-300 px-6 py-15"
       >
         <motion.h2
           variants={fadeInUp}
-          className="text-center text-4xl font-bold tracking-tight text-foreground"
+          className="text-center text-[36px] font-semibold leading-[1.4] tracking-[-0.36px] text-foreground"
         >
           {dict.title}
         </motion.h2>
 
         <motion.p
           variants={fadeInUp}
-          className="mx-auto mt-4 max-w-2xl text-center text-muted"
+          className="mx-auto mt-4 max-w-2xl text-center text-[18px] leading-[1.2] text-muted"
         >
           {dict.subtitle}
         </motion.p>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-2 md:grid-cols-3">
           {services.map((service) => (
             <motion.div key={service.key} variants={fadeInUp}>
               <Card className="h-full">
-                <div className="mb-4 flex items-center gap-2">
+                <div className="mb-4 flex items-center -space-x-1.5">
                   {service.icons.map((icon, i) => (
                     <span
                       key={i}
-                      className={`inline-block h-3 w-3 ${icon.color} ${icon.shape}`}
-                    />
+                      className={`inline-flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]`}
+                    >
+                      <span className={`h-3 w-3 ${icon.color} ${icon.shape}`} />
+                    </span>
                   ))}
                 </div>
 
-                <h3 className="text-lg font-semibold text-foreground">
+                <h3 className="text-[18px] font-semibold leading-[1.2] text-foreground">
                   {dict[service.key].title}
                 </h3>
 
-                <p className="mt-2 text-sm text-muted">
+                <p className="mt-2 text-base leading-[1.2] tracking-[0.16px] text-muted">
                   {dict[service.key].description}
                 </p>
               </Card>
@@ -107,7 +109,7 @@ export function Services({ dict }: ServicesProps) {
         </div>
 
         <motion.div variants={fadeInUp} className="mt-12">
-          <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-[#0a0a0a] to-[#1a1a1a] aspect-video">
+          <div className="relative overflow-hidden rounded-xl bg-linear-to-br from-[#0a0a0a] to-[#1a1a1a] h-105.5">
             <div className="flex items-center gap-2 border-b border-white/6 px-5 py-3">
               <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
               <span className="h-3 w-3 rounded-full bg-[#febc2e]" />

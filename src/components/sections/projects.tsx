@@ -91,7 +91,7 @@ function PlatformIcon({ platform }: { platform: string }) {
   if (!config) {
     return (
       <span
-        className="flex h-7 w-7 items-center justify-center rounded-full text-2xs font-bold text-white"
+        className="flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)] text-2xs font-bold text-white"
         style={{ backgroundColor: "#6b7280" }}
         title={platform}
       >
@@ -103,8 +103,8 @@ function PlatformIcon({ platform }: { platform: string }) {
   if (platform.toLowerCase() === "web") {
     return (
       <span
-        className="flex h-7 w-7 items-center justify-center rounded-full"
-        style={{ color: config.color, backgroundColor: `${config.color}14` }}
+        className="flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]"
+        style={{ color: config.color }}
         title={config.label}
       >
         <svg
@@ -121,8 +121,7 @@ function PlatformIcon({ platform }: { platform: string }) {
 
   return (
     <span
-      className="flex h-7 w-7 items-center justify-center rounded-full"
-      style={{ backgroundColor: `${config.color}18` }}
+      className="flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]"
       title={config.label}
     >
       <svg
@@ -154,10 +153,10 @@ function ProjectImage({
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
-    <div ref={ref} className="overflow-hidden rounded-xl">
+    <div ref={ref} className="bg-[#f9fffc] border border-[#ececec] rounded-lg overflow-hidden h-121.25">
       <motion.div
-        className="relative aspect-4/3 w-full overflow-hidden rounded-xl"
-        style={{ y }}
+        className="relative w-full h-full shadow-[-14px_13px_13.4px_0px_rgba(0,0,0,0.1)]"
+        style={{ y, perspective: 1000, rotateY: -5, scaleY: 0.9, skewX: 26.05 }}
       >
         {image ? (
           <Image
@@ -223,9 +222,9 @@ function ArrowIcon() {
 
 export function Projects({ dict, projects, locale }: ProjectsProps) {
   return (
-    <section id="projetos" data-testid="projects" className="bg-foreground/2 py-24 px-6">
+    <section id="projetos" data-testid="projects" className="bg-foreground/2 py-15 px-6">
       <motion.div
-        className="mx-auto max-w-7xl"
+        className="mx-auto max-w-300"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
@@ -236,7 +235,7 @@ export function Projects({ dict, projects, locale }: ProjectsProps) {
 
           <motion.h2
             variants={fadeInUp}
-            className="mt-6 text-4xl font-bold tracking-tight text-foreground"
+            className="mt-6 text-[36px] font-semibold leading-[1.4] tracking-[-0.36px] text-foreground"
           >
             {dict.title}
           </motion.h2>
@@ -249,24 +248,24 @@ export function Projects({ dict, projects, locale }: ProjectsProps) {
           </motion.p>
         </div>
 
-        <div className="mt-16 flex flex-col gap-10">
+        <div className="mt-16 flex flex-col gap-6">
           {projects.map((project, index) => {
             const isOdd = index % 2 === 0;
             const slideVariant = isOdd ? fadeInLeft : fadeInRight;
 
             const textContent = (
               <div className="flex flex-col justify-center gap-5">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center -space-x-1.5">
                   {project.platforms.map((platform) => (
                     <PlatformIcon key={platform} platform={platform} />
                   ))}
                 </div>
 
-                <h3 className="text-2xl font-bold text-foreground">
+                <h3 className="text-[32px] font-semibold leading-[1.4] tracking-[-0.32px] text-foreground">
                   {project.name}
                 </h3>
 
-                <p className="leading-relaxed text-muted">
+                <p className="text-xl leading-[1.3] text-muted">
                   {project.description[locale] ||
                     Object.values(project.description)[0]}
                 </p>
@@ -295,7 +294,7 @@ export function Projects({ dict, projects, locale }: ProjectsProps) {
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportOnce}
-                className="rounded-2xl border border-foreground/5 bg-white p-8 shadow-sm"
+                className="rounded-2xl bg-white pl-14.5 pr-6 py-6"
               >
                 <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
                   {isOdd ? (
@@ -322,14 +321,12 @@ export function Projects({ dict, projects, locale }: ProjectsProps) {
           viewport={viewportOnce}
           className="mt-16 flex justify-center"
         >
-          <Button
+          <a
             href={`/${locale}/projetos`}
-            variant="outline"
-            size="lg"
-            icon={<ArrowIcon />}
+            className="text-[18px] font-semibold leading-[1.4] text-foreground underline"
           >
             {dict.viewAll}
-          </Button>
+          </a>
         </motion.div>
       </motion.div>
     </section>

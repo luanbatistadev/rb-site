@@ -31,10 +31,10 @@ export function Cta({ dict, locale }: CtaProps) {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   return (
-    <section data-testid="cta" className="bg-background px-6 py-16 lg:px-30">
+    <section data-testid="cta" className="bg-background px-6 pb-20 pt-10">
       <div
         ref={cardRef}
-        className="relative mx-auto max-w-300 overflow-hidden rounded-3xl"
+        className="relative mx-auto max-w-300 overflow-hidden rounded-xl"
       >
         <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
           <img
@@ -42,17 +42,17 @@ export function Cta({ dict, locale }: CtaProps) {
             alt=""
             className={`h-full w-full object-cover ${bgSrc ? "animate-fade-in" : "opacity-0"}`}
           />
-          <div className="absolute inset-0 bg-[#0a0a0a]/75" />
+          <div className="absolute inset-0 bg-[#0b0b0b]/80" />
         </motion.div>
 
         <motion.div
-          className="relative z-10 flex flex-col items-center px-8 py-20 text-center md:py-24"
+          className="relative z-10 flex flex-col items-center px-8 py-15 text-center"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
         >
-          <motion.div variants={fadeInUp} className="flex items-center gap-2">
+          <motion.div variants={fadeInUp} className="flex w-40 h-11 items-center gap-2">
             <img
               src="/logo-512.svg"
               alt="RB"
@@ -67,14 +67,14 @@ export function Cta({ dict, locale }: CtaProps) {
 
           <motion.h2
             variants={fadeInUp}
-            className="mt-8 text-3xl font-bold tracking-tight text-white md:text-5xl"
+            className="mt-6 text-[48px] font-medium leading-[1.2] tracking-[-0.48px] text-white max-w-228"
           >
             {dict.title}
           </motion.h2>
 
           <motion.p
             variants={fadeInUp}
-            className="mt-5 max-w-lg text-base leading-relaxed text-white/60"
+            className="mt-4 max-w-171 text-[18px] font-light leading-[1.4] text-[#eaeaea]"
           >
             {dict.subtitle}
           </motion.p>
@@ -82,10 +82,10 @@ export function Cta({ dict, locale }: CtaProps) {
           <motion.div variants={fadeInUp} className="mt-10">
             <Link
               href={`/${locale}/contato`}
-              className="group inline-flex items-center gap-3 text-base font-medium text-white transition-colors hover:text-white/80"
+              className="inline-flex h-12 items-center gap-2 rounded-full bg-white/5 pl-8 pr-1 text-[18px] font-semibold text-white"
             >
               {dict.button}
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent transition-transform duration-300 group-hover:scale-110">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#00b6aa] to-[#00a5e7]">
                 <svg
                   width="18"
                   height="18"

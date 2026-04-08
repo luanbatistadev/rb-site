@@ -88,12 +88,12 @@ export function Header({ locale, dict }: HeaderProps) {
             </div>
           </Link>
 
-          <div className="hidden items-center gap-0 md:flex absolute left-1/2 -translate-x-1/2">
-            {navLinks.map((link) => (
+          <div className="hidden items-center gap-4 md:flex absolute left-1/2 -translate-x-1/2">
+            {navLinks.map((link, index) => (
               <a
                 key={link.key}
                 href={link.href}
-                className="flex h-9 items-center rounded-lg px-3 text-sm font-medium text-white/60 transition-all duration-200 hover:bg-white/8 hover:text-white"
+                className={`flex h-9 items-center rounded-full text-sm font-medium text-white/60 transition-all duration-200 hover:bg-white/8 hover:text-white ${index === 0 ? "bg-black/10 px-4" : "px-3"}`}
               >
                 {dict[link.key]}
               </a>
@@ -103,12 +103,15 @@ export function Header({ locale, dict }: HeaderProps) {
           <div className="hidden md:block">
             <Link
               href={`/${locale}/contato`}
-              className="inline-flex h-10 items-center gap-1.5 rounded-full bg-white/10 px-5 text-xs font-medium text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:shadow-[0_0_20px_rgba(255,255,255,0.08)]"
+              className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/10 bg-white/5 py-1 pl-6 pr-1 backdrop-blur-sm transition-all duration-200 hover:bg-white/8 hover:border-white/15"
             >
-              {dict.cta}
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="opacity-50">
-                <path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <span className="text-xs font-medium text-white">{dict.cta}</span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#00b6aa] to-[#00a5e7] transition-transform duration-200 group-hover:scale-110">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
             </Link>
           </div>
 

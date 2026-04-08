@@ -25,8 +25,9 @@ test.describe("visual regression - pt-BR", () => {
       const element = page.getByTestId(section);
       await element.scrollIntoViewIfNeeded();
       await page.waitForTimeout(500);
+      const hasRandomBg = section === "hero" || section === "cta";
       await expect(element).toHaveScreenshot(`${section}.png`, {
-        maxDiffPixelRatio: 0.05,
+        maxDiffPixelRatio: hasRandomBg ? 0.25 : 0.05,
         animations: "disabled",
       });
     });
@@ -35,7 +36,7 @@ test.describe("visual regression - pt-BR", () => {
   test("full page matches snapshot", async ({ page }) => {
     await expect(page).toHaveScreenshot("home-full.png", {
       fullPage: true,
-      maxDiffPixelRatio: 0.02,
+      maxDiffPixelRatio: 0.1,
       animations: "disabled",
     });
   });

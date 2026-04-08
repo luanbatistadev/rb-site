@@ -42,15 +42,18 @@
     "subtitle": "Behind every line of code, there's a commitment to deliver with the best practices.",
     "experience": {
       "value": "6+",
-      "label": "Senior Experience"
+      "label": "Senior Experience",
+      "description": "+6 years of strategic experience building robust solutions for Mobile, Web, and IoT with technical maturity."
     },
     "focus": {
       "value": "100%",
-      "label": "Experience Focused"
+      "label": "Experience Focused",
+      "description": "Projects designed to be intuitive, ensuring your product stands out through ease of use."
     },
     "multi": {
       "value": "Multi",
-      "label": "Multiplatform Solutions"
+      "label": "Multiplatform Solutions",
+      "description": "Complete mastery of technologies like Flutter, Swift, Kotlin, and NextJS so your product is on every screen."
     }
   },
   "cta": {

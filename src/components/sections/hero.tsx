@@ -64,7 +64,7 @@ export function Hero({ dict, locale }: HeroProps) {
             className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
           />
         )}
-        <div className="absolute inset-0 bg-[#0a0a0a]/60" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent from-87% to-[rgba(0,0,0,0.8)]" />
       </motion.div>
 
       <div
@@ -90,12 +90,12 @@ export function Hero({ dict, locale }: HeroProps) {
           animate="visible"
         >
           <motion.div variants={fadeInUp}>
-            <Tag>{dict.tag}</Tag>
+            <Tag variant="dark">{dict.tag}</Tag>
           </motion.div>
 
           <motion.h1
             variants={fadeInUp}
-            className="mt-8 text-center text-4xl font-medium uppercase text-white sm:text-6xl lg:text-7xl lg:leading-tight lg:tracking-tight xl:text-8xl"
+            className="mt-8 text-center text-4xl font-medium uppercase leading-[1.2] text-white sm:text-6xl md:text-7xl lg:text-[96px] lg:tracking-[-0.96px]"
           >
             {dict.titleLine1}
             <br />
@@ -104,7 +104,7 @@ export function Hero({ dict, locale }: HeroProps) {
 
           <motion.p
             variants={fadeInUp}
-            className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl"
+            className="mt-6 max-w-171 text-lg leading-[1.4] text-[#eaeaea] md:text-[18px]"
           >
             {dict.subtitle}
           </motion.p>
@@ -115,12 +115,12 @@ export function Hero({ dict, locale }: HeroProps) {
           >
             <Link
               href={`/${locale}/contato`}
-              className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/4 py-2 pl-8 pr-2 backdrop-blur-sm transition-all duration-300 hover:bg-white/8 hover:border-white/15"
+              className="group inline-flex items-center gap-3 rounded-full border border-white/10 h-12 bg-white/5 py-1 pl-8 pr-1 backdrop-blur-sm transition-all duration-300 hover:bg-white/8 hover:border-white/15"
             >
               <span className="text-sm font-medium uppercase tracking-wide text-white">
                 {dict.cta}
               </span>
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover:scale-110">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#00b6aa] to-[#00a5e7] transition-transform duration-300 group-hover:scale-110">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
@@ -129,11 +129,11 @@ export function Hero({ dict, locale }: HeroProps) {
             </Link>
 
             <div className="flex items-center gap-3">
-              <div className="flex -space-x-2.5">
+              <div className="flex -space-x-5">
                 {avatarGradients.map((gradient, i) => (
                   <div
                     key={i}
-                    className={`h-10 w-10 rounded-full bg-linear-to-br ${gradient} ring-2 ring-[#0a0a0a]`}
+                    className={`h-12.5 w-12.5 rounded-full bg-linear-to-br ${gradient} ring-2 ring-[#0b0b0b]`}
                     style={{ zIndex: avatarGradients.length - i }}
                   />
                 ))}

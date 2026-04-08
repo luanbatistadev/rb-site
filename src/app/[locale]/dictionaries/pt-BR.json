@@ -42,15 +42,18 @@
     "subtitle": "Por trás de cada linha de código, há compromisso de entregar com o melhor das melhores práticas.",
     "experience": {
       "value": "6+",
-      "label": "Experiência Sênior"
+      "label": "Experiência Sênior",
+      "description": "+6 Anos de atuacao estrategica no desenvolvimento de solucoes robustas para Mobile, Web e IoT com maturidade tecnica."
     },
     "focus": {
       "value": "100%",
-      "label": "Foco na Experiência"
+      "label": "Foco na Experiência",
+      "description": "Projetos desenhados para serem intuitivos, garantindo que o diferencial do seu produto seja a facilidade de uso."
     },
     "multi": {
       "value": "Multi",
-      "label": "Soluções Multiplataforma"
+      "label": "Soluções Multiplataforma",
+      "description": "Dominio completo de tecnologias como Flutter, Swift, Kotlin e NextJS para que seu produto esteja em todas as telas."
     }
   },
   "cta": {
