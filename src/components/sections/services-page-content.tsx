@@ -102,32 +102,33 @@ function ServiceCard({
       variants={fadeInUp}
       className="flex h-[668px] flex-col justify-between rounded-xl bg-white p-8"
     >
-      <div className="flex flex-col gap-5">
-        <div className="h-[353px] w-full rounded-lg bg-[#f0f0f0]" />
+      <div className="flex flex-col gap-6">
+        <div className="h-[353px] w-full overflow-hidden rounded-lg bg-[#f0f0f0]" />
 
         <div className="flex items-center -space-x-1.5">
           {icons.map((icon, i) => (
             <span
               key={i}
               className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]"
+              style={{ zIndex: icons.length - i }}
             >
               <span className={`h-3 w-3 ${icon.color} ${icon.shape}`} />
             </span>
           ))}
         </div>
 
-        <h3 className="text-[24px] font-semibold leading-[1.3] text-[#121212]">
+        <h3 className="text-[24px] font-semibold leading-[1.2] text-[#121212]">
           {title}
         </h3>
 
-        <p className="text-[18px] leading-[1.4] tracking-[0.18px] text-[#8e8e93]">
+        <p className="text-[18px] leading-[1.2] tracking-[0.18px] text-[#8e8e93]">
           {description}
         </p>
       </div>
 
       <Link
         href={`/${locale}/contato`}
-        className="group inline-flex h-12 w-full items-center justify-between rounded-full bg-[#121212] pl-6 pr-1 text-sm font-medium text-white"
+        className="group inline-flex h-12 w-fit items-center gap-3 rounded-full bg-[#121212] pl-8 pr-1 text-[18px] font-semibold text-white"
       >
         {viewMore}
         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#00b6aa] to-[#00a5e7] transition-transform duration-200 group-hover:scale-110">
@@ -156,49 +157,53 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
 
   return (
     <>
-      <section
-        ref={heroRef}
-        className="relative overflow-hidden bg-[#0a0a0a] pb-[180px] pt-[80px]"
-      >
-        <motion.div
-          className="absolute inset-0"
-          style={{ y: backgroundY, opacity: backgroundOpacity }}
+      <div className="p-2">
+        <section
+          ref={heroRef}
+          className="relative overflow-hidden rounded-xl bg-[#0b0b0b]"
         >
-          {bgSrc && (
-            <img
-              src={bgSrc}
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
-            />
-          )}
-          <div className="absolute inset-0 bg-linear-to-b from-transparent from-[87%] to-black" />
-        </motion.div>
-
-        <motion.div
-          className="relative z-10 mx-auto max-w-300 px-6"
-          variants={staggerFast}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div variants={fadeInUp}>
-            <Tag variant="dark">{dict.tag}</Tag>
+          <motion.div
+            className="absolute inset-0"
+            style={{ y: backgroundY, opacity: backgroundOpacity }}
+          >
+            {bgSrc && (
+              <img
+                src={bgSrc}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
+              />
+            )}
+            <div className="absolute inset-0 bg-linear-to-b from-transparent from-[7%] to-[93%] to-black" />
           </motion.div>
 
-          <motion.h1
-            variants={fadeInUp}
-            className="mt-6 max-w-[854px] text-[48px] font-semibold uppercase leading-[1.2] tracking-[-0.48px] text-white"
-          >
-            {dict.title}
-          </motion.h1>
+          <div className="relative z-10 pt-[100px] pb-[180px]">
+            <motion.div
+              className="mx-auto flex max-w-[1200px] flex-col items-center gap-4 px-6 text-center"
+              variants={staggerFast}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.div variants={fadeInUp}>
+                <Tag variant="dark">{dict.tag}</Tag>
+              </motion.div>
 
-          <motion.p
-            variants={fadeInUp}
-            className="mt-4 max-w-[684px] text-[18px] leading-[1.4] text-white"
-          >
-            {dict.subtitle}
-          </motion.p>
-        </motion.div>
-      </section>
+              <motion.h1
+                variants={fadeInUp}
+                className="max-w-[854px] text-[48px] font-semibold uppercase leading-[1.2] tracking-[-0.48px] text-white"
+              >
+                {dict.title}
+              </motion.h1>
+
+              <motion.p
+                variants={fadeInUp}
+                className="max-w-[684px] text-[18px] leading-[1.2] text-white"
+              >
+                {dict.subtitle}
+              </motion.p>
+            </motion.div>
+          </div>
+        </section>
+      </div>
 
       <section className="bg-background px-6 py-15">
         <motion.div
