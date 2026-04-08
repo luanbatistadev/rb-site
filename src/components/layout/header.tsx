@@ -57,8 +57,11 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
 
   return (
     <>
-      <header
+      <motion.header
         data-testid="header"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6 lg:px-30 pt-4"
       >
         <nav
@@ -167,7 +170,7 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
             </div>
           </button>
         </nav>
-      </header>
+      </motion.header>
 
       <AnimatePresence>
         {mobileOpen && (
