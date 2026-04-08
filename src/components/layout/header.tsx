@@ -16,16 +16,17 @@ type HeaderProps = {
     cta: string;
   };
   variant?: "dark" | "light";
+  activePath?: string;
 };
 
 const navLinks = [
-  { key: "home" as const, href: "#inicio" },
-  { key: "services" as const, href: "#servicos" },
-  { key: "projects" as const, href: "#projetos" },
-  { key: "contact" as const, href: "#contato" },
+  { key: "home" as const, href: "" },
+  { key: "services" as const, href: "/servicos" },
+  { key: "projects" as const, href: "/projetos" },
+  { key: "contact" as const, href: "/contato" },
 ];
 
-export function Header({ locale, dict, variant = "dark" }: HeaderProps) {
+export function Header({ locale, dict, variant = "dark", activePath = "" }: HeaderProps) {
   const isLight = variant === "light";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -95,19 +96,22 @@ export function Header({ locale, dict, variant = "dark" }: HeaderProps) {
           </Link>
 
           <div className="hidden items-center gap-4 md:flex absolute left-1/2 -translate-x-1/2">
-            {navLinks.map((link, index) => (
-              <a
-                key={link.key}
-                href={link.href}
-                className={`flex h-9 items-center rounded-full text-sm font-medium transition-all duration-200 ${
-                  isLight
-                    ? `text-foreground/60 hover:bg-foreground/5 hover:text-foreground ${index === 0 ? "bg-white/10 px-4" : "px-3"}`
-                    : `text-white/60 hover:bg-white/8 hover:text-white ${index === 0 ? "bg-black/10 px-4" : "px-3"}`
-                }`}
-              >
-                {dict[link.key]}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.href === activePath;
+              return (
+                <Link
+                  key={link.key}
+                  href={`/${locale}${link.href}`}
+                  className={`flex h-9 items-center rounded-full text-sm font-medium transition-all duration-200 ${
+                    isLight
+                      ? `text-foreground/60 hover:bg-foreground/5 hover:text-foreground ${isActive ? "bg-white/10 px-4" : "px-3"}`
+                      : `text-white/60 hover:bg-white/8 hover:text-white ${isActive ? "bg-black/10 px-4" : "px-3"}`
+                  }`}
+                >
+                  {dict[link.key]}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="hidden md:block">
@@ -185,9 +189,8 @@ export function Header({ locale, dict, variant = "dark" }: HeaderProps) {
               className="flex h-full flex-col items-center justify-center gap-8"
             >
               {navLinks.map((link, index) => (
-                <motion.a
+                <motion.div
                   key={link.key}
-                  href={link.href}
                   onClick={handleNavClick}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -197,10 +200,14 @@ export function Header({ locale, dict, variant = "dark" }: HeaderProps) {
                     ease: [0.25, 0.1, 0.25, 1],
                     delay: 0.15 + index * 0.08,
                   }}
-                  className="text-3xl font-semibold text-white transition-colors duration-200 hover:text-accent"
                 >
-                  {dict[link.key]}
-                </motion.a>
+                  <Link
+                    href={`/${locale}${link.href}`}
+                    className="text-3xl font-semibold text-white transition-colors duration-200 hover:text-accent"
+                  >
+                    {dict[link.key]}
+                  </Link>
+                </motion.div>
               ))}
 
               <motion.div

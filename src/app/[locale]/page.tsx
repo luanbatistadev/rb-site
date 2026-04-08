@@ -24,7 +24,7 @@ export default async function HomePage({
 
   return (
     <>
-      <Header locale={locale} dict={dict.nav} />
+      <Header locale={locale} dict={dict.nav} activePath="" />
       <main>
         <Hero dict={dict.hero} locale={locale} />
         <TechBar />

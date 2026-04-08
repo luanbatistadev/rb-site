@@ -18,7 +18,7 @@ export default async function ContatoPage({
 
   return (
     <>
-      <Header locale={locale} dict={dict.nav} />
+      <Header locale={locale} dict={dict.nav} activePath="/contato" />
       <main className="min-h-screen pt-32 pb-24">
         <ContactForm dict={dict.contact} />
       </main>

@@ -29,7 +29,7 @@ export default async function ProjectDetailPage({
 
   return (
     <>
-      <Header locale={locale} dict={dict.nav} variant="light" />
+      <Header locale={locale} dict={dict.nav} variant="light" activePath="/projetos" />
       <ProjectDetailContent
         project={project}
         description={dict.projectDetail.description}

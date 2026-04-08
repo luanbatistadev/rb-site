@@ -20,7 +20,7 @@ export default async function ProjetosPage({
 
   return (
     <>
-      <Header locale={locale} dict={dict.nav} />
+      <Header locale={locale} dict={dict.nav} activePath="/projetos" />
       <main>
         <ProjectsPageContent
           dict={dict.projectsPage}

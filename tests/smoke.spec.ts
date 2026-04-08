@@ -47,9 +47,10 @@ for (const locale of locales) {
       await expect(page.getByTestId("footer")).toBeVisible();
     });
 
-    test("navigation links scroll to correct section", async ({ page }) => {
-      await page.click(`a[href="#servicos"]`);
-      await expect(page.getByTestId("services")).toBeInViewport();
+    test("navigation links go to correct pages", async ({ page }) => {
+      await page.click(`a[href="/${locale}/servicos"]`);
+      await page.waitForURL(`**/servicos`);
+      expect(page.url()).toContain("/servicos");
     });
 
     test("CTA link navigates to contact page", async ({ page }) => {

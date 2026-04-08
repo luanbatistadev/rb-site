@@ -25,10 +25,10 @@ type FooterProps = {
 };
 
 const menuLinks = [
-  { key: "home" as const, label: "Início" },
-  { label: "Sobre", href: "#servicos" },
-  { key: "services" as const, label: "Serviços" },
-  { key: "projects" as const, label: "Projetos" },
+  { key: "home" as const, href: "" },
+  { key: "services" as const, href: "/servicos" },
+  { key: "projects" as const, href: "/projetos" },
+  { key: "contact" as const, href: "/contato" },
 ];
 
 export function Footer({ dict, locale, navDict }: FooterProps) {
@@ -86,13 +86,13 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
                 </h3>
                 <ul className="mt-4 flex flex-col gap-2">
                   {menuLinks.map((link) => (
-                    <li key={link.label}>
-                      <a
-                        href={link.href || `#${link.key}`}
+                    <li key={link.key}>
+                      <Link
+                        href={`/${locale}${link.href}`}
                         className="text-base text-[#eaeaea] transition-colors duration-200 hover:text-white"
                       >
-                        {link.key ? navDict[link.key] : link.label}
-                      </a>
+                        {navDict[link.key]}
+                      </Link>
                     </li>
                   ))}
                 </ul>
