@@ -1,57 +1,82 @@
 [
   {
-    "id": "dfora-1",
+    "id": "dfora",
     "name": "dFora",
     "platforms": ["apple", "android", "kotlin", "swift", "flutter"],
     "description": {
       "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
       "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
     },
-    "image": "/images/project-dfora-1.webp",
-    "gallery": ["/images/project-dfora-1.webp"]
+    "image": "/dfora_image.png",
+    "gallery": ["/dfora_image.png"]
   },
   {
-    "id": "dfora-2",
-    "name": "dFora",
-    "platforms": ["apple", "android", "web"],
+    "id": "cimed-tech",
+    "name": "Cimed Tech",
+    "platforms": ["android", "flutter", "kotlin"],
     "description": {
-      "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
-      "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+      "pt-BR": "Sistema de gestão de pedidos para o Grupo Cimed, funcionando online e offline. Solução mobile para distribuidores e representantes farmacêuticos.",
+      "en": "Order management system for Grupo Cimed, working online and offline. Mobile solution for pharmaceutical distributors and representatives."
     },
-    "image": "/images/project-dfora-2.webp",
-    "gallery": ["/images/project-dfora-2.webp"]
+    "image": "/cimed_image.png",
+    "gallery": ["/cimed_image.png"],
+    "bgColor": "#f5c518"
   },
   {
-    "id": "dfora-3",
-    "name": "dFora",
-    "platforms": ["apple", "android", "kotlin", "swift", "flutter"],
+    "id": "meu-tim",
+    "name": "Meu TIM",
+    "platforms": ["apple", "android", "web", "flutter", "kotlin", "swift"],
     "description": {
-      "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
-      "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+      "pt-BR": "Aplicativo oficial da TIM Brasil para autoatendimento. Gerencie seu plano, consulte consumo em tempo real, pague faturas e faça recargas.",
+      "en": "Official TIM Brasil self-service app. Manage your plan, check real-time usage, pay bills and top up your balance."
     },
-    "image": "/images/project-dfora-3.webp",
-    "gallery": ["/images/project-dfora-3.webp"]
+    "image": "/meutim_image.webp",
+    "gallery": ["/meutim_image.webp"]
   },
   {
-    "id": "dfora-4",
-    "name": "dFora",
-    "platforms": ["apple", "android", "kotlin", "swift", "flutter"],
+    "id": "guio",
+    "name": "Guio",
+    "platforms": ["apple", "android", "flutter", "kotlin", "swift"],
     "description": {
-      "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
-      "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+      "pt-BR": "Software de gestão de Field Service da Eunerd. Gerencie operações de campo em tempo real, acompanhe técnicos e SLAs com atribuição automática de chamados.",
+      "en": "Eunerd's Field Service management software. Manage field operations in real time, track technicians and SLAs with automatic ticket assignment."
     },
-    "image": "/images/project-dfora-1.webp",
-    "gallery": ["/images/project-dfora-1.webp"]
+    "image": "/guio.png",
+    "gallery": ["/guio.png"],
+    "bgColor": "#1A0F36"
   },
   {
-    "id": "dfora-5",
-    "name": "dFora",
-    "platforms": ["apple", "android", "kotlin", "swift", "flutter"],
+    "id": "meu-carrefour",
+    "name": "Meu Carrefour",
+    "platforms": ["apple", "android", "web", "flutter", "kotlin", "swift"],
     "description": {
-      "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
-      "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+      "pt-BR": "Aplicativo oficial do Carrefour Brasil. Compras online de supermercado, cupons exclusivos, cashback e programa de recompensas com entrega ou retirada em loja.",
+      "en": "Official Carrefour Brazil app. Online grocery shopping, exclusive coupons, cashback and rewards program with delivery or in-store pickup."
     },
-    "image": "/images/project-dfora-2.webp",
-    "gallery": ["/images/project-dfora-2.webp"]
+    "image": "/carrefour_image_2.png",
+    "gallery": ["/carrefour_image_2.png"]
+  },
+  {
+    "id": "denga-love",
+    "name": "Denga Love",
+    "platforms": ["apple", "android", "flutter", "kotlin", "swift"],
+    "description": {
+      "pt-BR": "Primeiro aplicativo de relacionamento para pessoas negras do Brasil. Um ambiente de conexões autênticas com mais de 300 mil usuários.",
+      "en": "Brazil's first dating app for Black people. An environment for authentic connections with over 300,000 users."
+    },
+    "image": "/denga_image.webp",
+    "gallery": ["/denga_image.webp"]
+  },
+  {
+    "id": "off-esquilo",
+    "name": "Off Esquilo",
+    "platforms": ["android", "flutter", "kotlin"],
+    "description": {
+      "pt-BR": "Rede social do consumidor para publicar e compartilhar ofertas e promoções. A comunidade colabora para encontrar os melhores descontos.",
+      "en": "Consumer social network for publishing and sharing deals and promotions. The community collaborates to find the best discounts."
+    },
+    "image": "/offesquilo_image.png",
+    "gallery": ["/offesquilo_image.png"],
+    "bgColor": "transparent"
   }
 ]

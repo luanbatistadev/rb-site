@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ViewTransition } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { staggerFast, fadeInUp } from "@/lib/animations";
 import { pickRandomBg } from "@/lib/background-images";
@@ -51,6 +52,7 @@ export function Hero({ dict, locale }: HeroProps) {
       id="inicio"
       style={{ padding }}
     >
+      <ViewTransition name="hero-bg">
       <motion.section
         className="relative min-h-screen overflow-hidden bg-[#0b0b0b]"
         style={{ borderRadius }}
@@ -137,6 +139,7 @@ export function Hero({ dict, locale }: HeroProps) {
           </motion.div>
         </div>
       </motion.section>
+      </ViewTransition>
     </motion.div>
   );
 }

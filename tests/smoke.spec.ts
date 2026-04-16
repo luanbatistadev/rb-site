@@ -68,6 +68,29 @@ for (const locale of locales) {
         await expect(img).not.toHaveJSProperty("naturalWidth", 0);
       }
     });
+
+    test("services section has correct technology logos", async ({ page }) => {
+      const services = page.getByTestId("services");
+      await services.scrollIntoViewIfNeeded();
+
+      const mobileLogos = ["Apple", "Android", "Swift", "Kotlin", "Flutter"];
+      for (const alt of mobileLogos) {
+        await expect(services.locator(`img[alt="${alt}"]`)).toBeVisible();
+      }
+
+      const webLogos = ["Next.js", "JavaScript"];
+      for (const alt of webLogos) {
+        await expect(services.locator(`img[alt="${alt}"]`)).toBeVisible();
+      }
+
+      const uxLogos = ["Figma", "Notion"];
+      for (const alt of uxLogos) {
+        await expect(services.locator(`img[alt="${alt}"]`)).toBeVisible();
+      }
+
+      const allLogos = services.locator("img");
+      expect(await allLogos.count()).toBe(mobileLogos.length + webLogos.length + uxLogos.length);
+    });
   });
 
   test.describe(`${locale} - Contact`, () => {

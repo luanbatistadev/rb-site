@@ -32,18 +32,18 @@
   "projects": {
     "tag": "Projetos",
     "title": "Do zero ao lançamento.",
-    "subtitle": "Alguns projetos selecionados onde participamos do início ao lançamento de forma integrada e iterativa.",
+    "subtitle": "Veja como transformamos problemas complexos em produtos digitais elegantes.",
     "viewMore": "Ver mais detalhes",
     "viewAll": "Ver todos os projetos"
   },
   "metrics": {
-    "tag": "Sobre Software",
+    "tag": "O que a RB Computing entrega",
     "title": "Construído para escalar, pronto para performar.",
-    "subtitle": "Por trás de cada linha de código, há compromisso de entregar com o melhor das melhores práticas.",
+    "subtitle": "Por trás de cada linha de código, há o compromisso de entregar valor real ao seu negócio e uma experiência impecável aos seus usuários.",
     "experience": {
       "value": "6+",
       "label": "Experiência Sênior",
-      "description": "+6 Anos de atuacao estrategica no desenvolvimento de solucoes robustas para Mobile, Web e IoT com maturidade tecnica."
+      "description": "+6 Anos de atuação estratégica no desenvolvimento de soluções robustas para Mobile, Web e IoT com maturidade técnica."
     },
     "focus": {
       "value": "100%",
@@ -53,10 +53,13 @@
     "multi": {
       "value": "Multi",
       "label": "Soluções Multiplataforma",
-      "description": "Dominio completo de tecnologias como Flutter, Swift, Kotlin e NextJS para que seu produto esteja em todas as telas."
+      "description": "Domínio completo de tecnologias como Flutter, Swift, Kotlin e NextJS para que seu produto esteja em todas as telas."
     }
   },
   "cta": {
+    "tag": "Contato",
+    "heading": "Vamos conversar?!",
+    "description": "Entre em contato conosco! Estamos aqui para ouvir e ajudar você. Agende uma consulta de 30 minutos onde podemos discutir suas necessidades e explorar como podemos ajudar em seus projetos de desenvolvimento de software.",
     "title": "Software focado em Experiência!",
     "subtitle": "Agende uma consultoria para descobrir como a RB Computing utiliza engenharia sênior e foco em UX para acelerar o seu negócio.",
     "button": "Agendar consulta"

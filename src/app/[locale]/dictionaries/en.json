@@ -32,14 +32,14 @@
   "projects": {
     "tag": "Projects",
     "title": "From zero to launch.",
-    "subtitle": "Selected projects where we participated from start to launch in an integrated and iterative way.",
+    "subtitle": "See how we transform complex problems into elegant digital products.",
     "viewMore": "View more details",
     "viewAll": "View all projects"
   },
   "metrics": {
-    "tag": "About Software",
+    "tag": "What RB Computing delivers",
     "title": "Built to scale, ready to perform.",
-    "subtitle": "Behind every line of code, there's a commitment to deliver with the best practices.",
+    "subtitle": "Behind every line of code, there's a commitment to deliver real value to your business and a flawless experience to your users.",
     "experience": {
       "value": "6+",
       "label": "Senior Experience",
@@ -57,6 +57,9 @@
     }
   },
   "cta": {
+    "tag": "Contact",
+    "heading": "Let's talk?!",
+    "description": "Get in touch with us! We're here to listen and help you. Schedule a 30-minute consultation where we can discuss your needs and explore how we can help with your software development projects.",
     "title": "Experience-focused Software!",
     "subtitle": "Book a consultation to discover how RB Computing uses senior engineering and UX focus to accelerate your business.",
     "button": "Book a consultation"

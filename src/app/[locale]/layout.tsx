@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   title: "RB Computing Development — Desenvolvimento, Design & Experiência",
   description:
     "Construímos aplicações digitais de alto impacto com foco em performance e experiências que engajam usuários e geram resultados.",
+  icons: {
+    icon: "/logo-512.svg",
+  },
 };
 
 export default async function LocaleLayout({

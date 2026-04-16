@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ViewTransition } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { staggerContainer, staggerFast, fadeInUp, viewportOnce } from "@/lib/animations";
 import { pickRandomBg } from "@/lib/background-images";
@@ -160,6 +161,7 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
   return (
     <>
       <motion.div style={{ padding: heroPadding }}>
+        <ViewTransition name="hero-bg">
         <motion.section
           ref={heroRef}
           className="relative overflow-hidden bg-[#0b0b0b]"
@@ -206,6 +208,7 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
             </motion.div>
           </div>
         </motion.section>
+        </ViewTransition>
       </motion.div>
 
       <section className="bg-background px-6 py-15">

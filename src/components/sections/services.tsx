@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { staggerContainer, fadeInUp, viewportOnce } from "@/lib/animations";
 import { Card } from "@/components/ui/card";
@@ -17,29 +18,26 @@ type ServicesProps = {
 const services = [
   {
     key: "mobile" as const,
-    icons: [
-      { color: "bg-blue-500", shape: "rounded-full" },
-      { color: "bg-cyan-400", shape: "rounded-full" },
-      { color: "bg-indigo-500", shape: "rounded-sm" },
-      { color: "bg-violet-400", shape: "rounded-full" },
+    logos: [
+      { src: "/apple_logo.svg", alt: "Apple" },
+      { src: "/android_logo.svg", alt: "Android" },
+      { src: "/swift_logo.svg", alt: "Swift" },
+      { src: "/kotlin_logo.svg", alt: "Kotlin" },
+      { src: "/flutter_logo.svg", alt: "Flutter" },
     ],
   },
   {
     key: "web" as const,
-    icons: [
-      { color: "bg-accent", shape: "rounded-sm" },
-      { color: "bg-yellow-400", shape: "rounded-full" },
-      { color: "bg-orange-500", shape: "rounded-sm" },
-      { color: "bg-rose-400", shape: "rounded-full" },
+    logos: [
+      { src: "/next_logo.svg", alt: "Next.js" },
+      { src: "/js_logo.svg", alt: "JavaScript" },
     ],
   },
   {
     key: "ux" as const,
-    icons: [
-      { color: "bg-pink-500", shape: "rounded-full" },
-      { color: "bg-purple-400", shape: "rounded-sm" },
-      { color: "bg-fuchsia-500", shape: "rounded-full" },
-      { color: "bg-teal-400", shape: "rounded-sm" },
+    logos: [
+      { src: "/figma_logo.svg", alt: "Figma" },
+      { src: "/notion_logo.svg", alt: "Notion" },
     ],
   },
 ];
@@ -76,22 +74,28 @@ export function Services({ dict }: ServicesProps) {
 
         <motion.p
           variants={fadeInUp}
-          className="mx-auto mt-4 max-w-2xl text-center text-[18px] leading-[1.2] text-muted"
+          className="mx-auto mt-1 max-w-2xl text-center text-[18px] leading-[1.2] text-muted"
         >
           {dict.subtitle}
         </motion.p>
 
-        <div className="mt-14 grid grid-cols-1 gap-2 md:grid-cols-3">
+        <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-3">
           {services.map((service) => (
             <motion.div key={service.key} variants={fadeInUp}>
               <Card className="h-full">
                 <div className="mb-4 flex items-center -space-x-1.5">
-                  {service.icons.map((icon, i) => (
+                  {service.logos.map((logo) => (
                     <span
-                      key={i}
-                      className={`inline-flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]`}
+                      key={logo.alt}
+                      className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]"
                     >
-                      <span className={`h-3 w-3 ${icon.color} ${icon.shape}`} />
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={20}
+                        height={20}
+                        className="h-5 w-5 object-contain"
+                      />
                     </span>
                   ))}
                 </div>

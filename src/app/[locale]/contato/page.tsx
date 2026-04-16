@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ContactForm } from "@/components/sections/contact-form";
+import { ContactHero } from "@/components/sections/contact-hero";
 
 export default async function ContatoPage({
   params,
@@ -19,8 +20,11 @@ export default async function ContatoPage({
   return (
     <>
       <Header locale={locale} dict={dict.nav} activePath="/contato" />
-      <main className="min-h-screen pt-32 pb-24">
-        <ContactForm dict={dict.contact} />
+      <main>
+        <ContactHero dict={dict.contact} />
+        <div className="bg-background py-20 px-6">
+          <ContactForm dict={dict.contact} />
+        </div>
       </main>
       <Footer dict={dict.footer} locale={locale} navDict={dict.nav} />
     </>
