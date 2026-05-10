@@ -2,10 +2,37 @@
   {
     "id": "dfora",
     "name": "dFora",
+    "tagline": {
+      "pt-BR": "Conectando atletas amadores aos melhores espaços esportivos",
+      "en": "Connecting amateur athletes to the best sports venues"
+    },
+    "year": "2024",
+    "client": "dFora",
+    "role": {
+      "pt-BR": "Mobile Nativo & Híbrido",
+      "en": "Native & Hybrid Mobile"
+    },
     "platforms": ["apple", "android", "kotlin", "swift", "flutter"],
     "description": {
       "pt-BR": "Aplicativo fluido para iOS e Android. Entregamos o máximo desempenho nativo com Swift, Kotlin, e Flutter.",
       "en": "Fluid app for iOS and Android. We deliver maximum native performance with Swift, Kotlin, and Flutter."
+    },
+    "challenge": {
+      "pt-BR": "O mercado esportivo amador no Brasil sofria com a falta de uma plataforma confiável para localizar, reservar e gerenciar espaços esportivos. Times, atletas e administradores de quadras dependiam de grupos de WhatsApp e ligações para coordenar partidas, gerando atritos e ineficiências.",
+      "en": "Brazil's amateur sports market lacked a reliable platform to find, book and manage sports venues. Teams, athletes and venue managers relied on WhatsApp groups and phone calls, generating friction and inefficiencies."
+    },
+    "solution": {
+      "pt-BR": "Construímos um app multiplataforma que centraliza a descoberta de espaços, reserva de horários, formação de times e gestão de partidas. Implementamos geolocalização inteligente, sistema de reservas em tempo real e painel administrativo para donos de quadras.",
+      "en": "We built a multiplatform app that centralizes venue discovery, time booking, team formation and match management. We implemented smart geolocation, real-time booking and an admin dashboard for venue owners."
+    },
+    "metrics": [
+      { "value": "iOS + Android", "label": { "pt-BR": "Plataformas", "en": "Platforms" } },
+      { "value": "Real-time", "label": { "pt-BR": "Reservas ao vivo", "en": "Live bookings" } },
+      { "value": "Live", "label": { "pt-BR": "Disponível nas stores", "en": "Available on stores" } }
+    ],
+    "links": {
+      "playStore": "https://play.google.com/store/apps/details?id=com.dfora",
+      "appStore": "https://apps.apple.com/br/app/dfora/id6749180917"
     },
     "image": "/dfora_image.png",
     "gallery": ["/dfora_image.png"]
@@ -13,10 +40,36 @@
   {
     "id": "cimed-tech",
     "name": "Cimed Tech",
+    "tagline": {
+      "pt-BR": "Gestão de pedidos farmacêuticos sem depender de internet",
+      "en": "Pharmaceutical order management that works offline-first"
+    },
+    "year": "2023",
+    "client": "Grupo Cimed",
+    "role": {
+      "pt-BR": "Mobile Android & Backend",
+      "en": "Android Mobile & Backend"
+    },
     "platforms": ["android", "flutter", "kotlin"],
     "description": {
       "pt-BR": "Sistema de gestão de pedidos para o Grupo Cimed, funcionando online e offline. Solução mobile para distribuidores e representantes farmacêuticos.",
       "en": "Order management system for Grupo Cimed, working online and offline. Mobile solution for pharmaceutical distributors and representatives."
+    },
+    "challenge": {
+      "pt-BR": "Representantes farmacêuticos da Cimed precisavam visitar clientes em cidades remotas com conectividade instável. O sistema legado dependia de internet contínua e travava no campo, gerando perda de pedidos e retrabalho.",
+      "en": "Cimed pharmaceutical reps visit clients in remote cities with unstable connectivity. The legacy system relied on continuous internet and crashed in the field, causing lost orders and rework."
+    },
+    "solution": {
+      "pt-BR": "Desenvolvemos um app Android offline-first com sincronização inteligente. Catálogo, clientes e histórico ficam disponíveis localmente, e os pedidos são sincronizados automaticamente quando há conexão, sem perda de dados.",
+      "en": "We built an offline-first Android app with smart sync. Catalog, customers and history are available locally, and orders sync automatically when connected, with zero data loss."
+    },
+    "metrics": [
+      { "value": "4.0★", "label": { "pt-BR": "Google Play", "en": "Google Play" } },
+      { "value": "Offline-first", "label": { "pt-BR": "Arquitetura", "en": "Architecture" } },
+      { "value": "B2B", "label": { "pt-BR": "Distribuição", "en": "Distribution" } }
+    ],
+    "links": {
+      "playStore": "https://play.google.com/store/apps/details?id=br.com.cimed"
     },
     "image": "/cimed_image.png",
     "gallery": ["/cimed_image.png"],
@@ -25,10 +78,38 @@
   {
     "id": "meu-tim",
     "name": "Meu TIM",
+    "tagline": {
+      "pt-BR": "Autoatendimento para mais de 60 milhões de clientes TIM",
+      "en": "Self-service for over 60 million TIM customers"
+    },
+    "year": "2024",
+    "client": "TIM Brasil",
+    "role": {
+      "pt-BR": "Desenvolvimento Mobile",
+      "en": "Mobile Development"
+    },
     "platforms": ["apple", "android", "web", "flutter", "kotlin", "swift"],
     "description": {
       "pt-BR": "Aplicativo oficial da TIM Brasil para autoatendimento. Gerencie seu plano, consulte consumo em tempo real, pague faturas e faça recargas.",
       "en": "Official TIM Brasil self-service app. Manage your plan, check real-time usage, pay bills and top up your balance."
+    },
+    "challenge": {
+      "pt-BR": "A TIM precisava de um app que reduzisse drasticamente o volume de ligações ao call center, oferecendo autoatendimento completo, com consumo em tempo real, pagamentos via PIX e gestão de planos sem gastar a franquia do cliente.",
+      "en": "TIM needed an app that drastically reduced call center volume, offering full self-service with real-time usage, PIX payments and plan management without consuming the user's data plan."
+    },
+    "solution": {
+      "pt-BR": "Trabalhamos no time de desenvolvimento mobile entregando features críticas de billing, gestão de planos e integrações com Open Finance. Foco em performance, acessibilidade e zero-rating para que o app funcione mesmo sem dados.",
+      "en": "We worked in the mobile dev team delivering critical billing features, plan management and Open Finance integrations. Focus on performance, accessibility and zero-rating so the app works even without data."
+    },
+    "metrics": [
+      { "value": "4.6★", "label": { "pt-BR": "2.4M avaliações", "en": "2.4M reviews" } },
+      { "value": "60M+", "label": { "pt-BR": "Clientes ativos", "en": "Active customers" } },
+      { "value": "iOS + Android", "label": { "pt-BR": "Plataformas", "en": "Platforms" } }
+    ],
+    "links": {
+      "playStore": "https://play.google.com/store/apps/details?id=br.com.timbrasil.meutim",
+      "appStore": "https://apps.apple.com/br/app/meu-tim/id378906790",
+      "web": "https://www.tim.com.br/meutim"
     },
     "image": "/meutim_image.webp",
     "gallery": ["/meutim_image.webp"]
@@ -36,10 +117,38 @@
   {
     "id": "guio",
     "name": "Guio",
+    "tagline": {
+      "pt-BR": "Field Service inteligente para times de TI em todo o Brasil",
+      "en": "Smart Field Service for IT teams across Brazil"
+    },
+    "year": "2023",
+    "client": "Eunerd",
+    "role": {
+      "pt-BR": "Mobile + Plataforma Web",
+      "en": "Mobile + Web Platform"
+    },
     "platforms": ["apple", "android", "flutter", "kotlin", "swift"],
     "description": {
       "pt-BR": "Software de gestão de Field Service da Eunerd. Gerencie operações de campo em tempo real, acompanhe técnicos e SLAs com atribuição automática de chamados.",
       "en": "Eunerd's Field Service management software. Manage field operations in real time, track technicians and SLAs with automatic ticket assignment."
+    },
+    "challenge": {
+      "pt-BR": "Empresas com times de campo dispersos em milhares de cidades brasileiras lutavam para acompanhar técnicos em tempo real, calcular SLAs e atribuir chamados de forma eficiente. Planilhas e ferramentas genéricas não escalavam.",
+      "en": "Companies with field teams spread across thousands of Brazilian cities struggled to track technicians in real time, calculate SLAs and assign tickets efficiently. Spreadsheets and generic tools didn't scale."
+    },
+    "solution": {
+      "pt-BR": "Entregamos a primeira versão do Guio: SaaS white-label com app para técnicos (iOS + Android), painel web para gestão e atribuição automática de chamados via marketplace de +28.000 técnicos da Eunerd.",
+      "en": "We delivered the first Guio release: white-label SaaS with technician app (iOS + Android), web management panel and automatic ticket assignment via Eunerd's marketplace of 28,000+ technicians."
+    },
+    "metrics": [
+      { "value": "+28k", "label": { "pt-BR": "Técnicos na rede", "en": "Technicians in network" } },
+      { "value": "2.818", "label": { "pt-BR": "Cidades atendidas", "en": "Cities covered" } },
+      { "value": "+80k", "label": { "pt-BR": "Atendimentos", "en": "Field services" } }
+    ],
+    "links": {
+      "playStore": "https://play.google.com/store/apps/details?id=br.com.eunerd.guio",
+      "appStore": "https://apps.apple.com/br/app/guio/id1558474605",
+      "web": "https://encontreumnerd.com.br/guio"
     },
     "image": "/guio.png",
     "gallery": ["/guio.png"],
@@ -48,10 +157,38 @@
   {
     "id": "meu-carrefour",
     "name": "Meu Carrefour",
-    "platforms": ["apple", "android", "web", "flutter", "kotlin", "swift"],
+    "tagline": {
+      "pt-BR": "E-commerce e supermercado no maior varejista do Brasil",
+      "en": "E-commerce and grocery for Brazil's largest retailer"
+    },
+    "year": "2024",
+    "client": "Carrefour Brasil",
+    "role": {
+      "pt-BR": "Mobile + Web",
+      "en": "Mobile + Web"
+    },
+    "platforms": ["apple", "swift"],
     "description": {
       "pt-BR": "Aplicativo oficial do Carrefour Brasil. Compras online de supermercado, cupons exclusivos, cashback e programa de recompensas com entrega ou retirada em loja.",
       "en": "Official Carrefour Brazil app. Online grocery shopping, exclusive coupons, cashback and rewards program with delivery or in-store pickup."
+    },
+    "challenge": {
+      "pt-BR": "Unificar a experiência de compra entre supermercado, eletro e marketplace em um único app, com cupons personalizados, cashback do programa Meu Carrefour e checkout rápido — tudo escalando para milhões de usuários simultâneos.",
+      "en": "Unify the shopping experience across grocery, electronics and marketplace in a single app, with personalized coupons, Meu Carrefour cashback and fast checkout — scaling to millions of simultaneous users."
+    },
+    "solution": {
+      "pt-BR": "Atuamos no time de desenvolvimento entregando features de fidelidade, cupons inteligentes e integrações com o programa de recompensas. Otimizamos jornadas de checkout e implementamos tracking de cashback em tempo real.",
+      "en": "We worked in the dev team delivering loyalty features, smart coupons and rewards program integrations. We optimized checkout journeys and implemented real-time cashback tracking."
+    },
+    "metrics": [
+      { "value": "4.7★", "label": { "pt-BR": "139k avaliações", "en": "139k reviews" } },
+      { "value": "10M+", "label": { "pt-BR": "Downloads", "en": "Downloads" } },
+      { "value": "2.500+", "label": { "pt-BR": "Lojas conectadas", "en": "Stores connected" } }
+    ],
+    "links": {
+      "playStore": "https://play.google.com/store/apps/details?id=br.com.carrefour",
+      "appStore": "https://apps.apple.com/br/app/meu-carrefour/id1165071392",
+      "web": "https://www.carrefour.com.br/"
     },
     "image": "/carrefour_image_2.png",
     "gallery": ["/carrefour_image_2.png"]
@@ -59,10 +196,38 @@
   {
     "id": "denga-love",
     "name": "Denga Love",
+    "tagline": {
+      "pt-BR": "O primeiro app de relacionamento criado para pessoas negras",
+      "en": "The first dating app built for Black people"
+    },
+    "year": "2024",
+    "client": "Denga Love",
+    "role": {
+      "pt-BR": "Mobile End-to-End",
+      "en": "End-to-End Mobile"
+    },
     "platforms": ["apple", "android", "flutter", "kotlin", "swift"],
     "description": {
       "pt-BR": "Primeiro aplicativo de relacionamento para pessoas negras do Brasil. Um ambiente de conexões autênticas com mais de 300 mil usuários.",
       "en": "Brazil's first dating app for Black people. An environment for authentic connections with over 300,000 users."
+    },
+    "challenge": {
+      "pt-BR": "Apps de relacionamento genéricos não criavam um ambiente seguro e representativo para pessoas negras. Faltava um espaço onde a comunidade pudesse se valorizar, com curadoria, segurança e identidade visual que respeitasse a cultura afro.",
+      "en": "Generic dating apps didn't create a safe, representative space for Black people. The community lacked a space with proper curation, safety and visual identity that respected Afro culture."
+    },
+    "solution": {
+      "pt-BR": "Desenvolvemos um app de matchmaking com algoritmo próprio, sistema de moderação ativa, planos VIP com 'passport' para encontrar pessoas em outras cidades e identidade visual celebrando a cultura negra.",
+      "en": "We developed a matchmaking app with proprietary algorithm, active moderation, VIP plans with 'passport' to find people in other cities and visual identity celebrating Black culture."
+    },
+    "metrics": [
+      { "value": "300k+", "label": { "pt-BR": "Usuários", "en": "Users" } },
+      { "value": "20M+", "label": { "pt-BR": "Conexões realizadas", "en": "Connections made" } },
+      { "value": "4.7★", "label": { "pt-BR": "App Store + Play", "en": "App Store + Play" } }
+    ],
+    "links": {
+      "playStore": "https://play.google.com/store/apps/details?id=com.denga",
+      "appStore": "https://apps.apple.com/br/app/denga-black-relationship/id6443517625",
+      "web": "https://dengalove.com"
     },
     "image": "/denga_image.webp",
     "gallery": ["/denga_image.webp"]
@@ -70,13 +235,39 @@
   {
     "id": "off-esquilo",
     "name": "Off Esquilo",
+    "tagline": {
+      "pt-BR": "A comunidade brasileira de descontos e ofertas reais",
+      "en": "Brazil's community-driven deals network"
+    },
+    "year": "2024",
+    "client": "Off Esquilo",
+    "role": {
+      "pt-BR": "Mobile + Web",
+      "en": "Mobile + Web"
+    },
     "platforms": ["android", "flutter", "kotlin"],
     "description": {
       "pt-BR": "Rede social do consumidor para publicar e compartilhar ofertas e promoções. A comunidade colabora para encontrar os melhores descontos.",
       "en": "Consumer social network for publishing and sharing deals and promotions. The community collaborates to find the best discounts."
     },
+    "challenge": {
+      "pt-BR": "Criar uma rede social do zero, focada em descobertas de ofertas reais (não patrocinadas), com curadoria comunitária. O desafio era garantir qualidade dos posts, evitar spam e dar destaque a achados genuínos.",
+      "en": "Build a social network from scratch, focused on real (non-sponsored) deals discovery with community curation. The challenge was ensuring post quality, avoiding spam and highlighting genuine finds."
+    },
+    "solution": {
+      "pt-BR": "Construímos app Android e plataforma web com sistema de votos, comentários, perfis verificados e algoritmo de ranking baseado em engajamento real. A comunidade decide quais ofertas merecem destaque.",
+      "en": "We built an Android app and web platform with voting system, comments, verified profiles and an engagement-based ranking algorithm. The community decides which deals deserve the spotlight."
+    },
+    "metrics": [
+      { "value": "Comunidade", "label": { "pt-BR": "Curadoria coletiva", "en": "Crowd-curated" } },
+      { "value": "Web + App", "label": { "pt-BR": "Multiplataforma", "en": "Multiplatform" } },
+      { "value": "Real-time", "label": { "pt-BR": "Feed colaborativo", "en": "Collaborative feed" } }
+    ],
+    "links": {
+      "playStore": "https://play.google.com/store/apps/details?id=off.off_community_app",
+      "web": "https://offesquilo.com"
+    },
     "image": "/offesquilo_image.png",
-    "gallery": ["/offesquilo_image.png"],
-    "bgColor": "transparent"
+    "gallery": ["/offesquilo_image.png"]
   }
 ]

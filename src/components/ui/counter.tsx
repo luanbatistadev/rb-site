@@ -25,6 +25,7 @@ export function Counter({ value, label, description }: CounterProps) {
 
     const parsed = parseTarget(value);
     if (!parsed) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: animation only runs on viewport entry
       setDisplay(value);
       return;
     }

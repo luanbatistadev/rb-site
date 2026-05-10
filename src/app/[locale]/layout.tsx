@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale } from "./dictionaries";
 import { CustomCursor } from "@/components/ui/custom-cursor";
+import { LiquidGlassFilter } from "@/components/ui/liquid-glass";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -47,6 +48,7 @@ export default async function LocaleLayout({
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body className="min-h-screen bg-background text-foreground">
+        <LiquidGlassFilter />
         <CustomCursor />
         {children}
       </body>

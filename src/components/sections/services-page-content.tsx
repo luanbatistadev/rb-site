@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { ViewTransition } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { staggerContainer, staggerFast, fadeInUp, viewportOnce } from "@/lib/animations";
 import { pickRandomBg } from "@/lib/background-images";
 import { Tag } from "@/components/ui/tag";
+import { LiquidGlass } from "@/components/ui/liquid-glass";
 import Link from "next/link";
 
 type ServicesPageDict = {
@@ -29,33 +31,31 @@ type ServicesPageContentProps = {
   locale: string;
 };
 
-const serviceIcons: Record<
-  keyof ServicesPageDict["cards"],
-  Array<{ color: string; shape: string }>
-> = {
+type ServiceLogo = { src: string; alt: string };
+
+const serviceLogos: Record<keyof ServicesPageDict["cards"], ServiceLogo[]> = {
   software: [
-    { color: "bg-blue-500", shape: "rounded-full" },
-    { color: "bg-cyan-400", shape: "rounded-full" },
-    { color: "bg-indigo-500", shape: "rounded-sm" },
-    { color: "bg-violet-400", shape: "rounded-full" },
+    { src: "/apple_logo.svg", alt: "Apple" },
+    { src: "/android_logo.svg", alt: "Android" },
+    { src: "/swift_logo.svg", alt: "Swift" },
+    { src: "/kotlin_logo.svg", alt: "Kotlin" },
+    { src: "/flutter_logo.svg", alt: "Flutter" },
+    { src: "/next_logo.svg", alt: "Next.js" },
   ],
   consulting: [
-    { color: "bg-accent", shape: "rounded-sm" },
-    { color: "bg-yellow-400", shape: "rounded-full" },
-    { color: "bg-orange-500", shape: "rounded-sm" },
-    { color: "bg-rose-400", shape: "rounded-full" },
+    { src: "/next_logo.svg", alt: "Next.js" },
+    { src: "/js_logo.svg", alt: "JavaScript" },
   ],
   legacy: [
-    { color: "bg-pink-500", shape: "rounded-full" },
-    { color: "bg-purple-400", shape: "rounded-sm" },
-    { color: "bg-fuchsia-500", shape: "rounded-full" },
-    { color: "bg-teal-400", shape: "rounded-sm" },
+    { src: "/apple_logo.svg", alt: "Apple" },
+    { src: "/android_logo.svg", alt: "Android" },
+    { src: "/swift_logo.svg", alt: "Swift" },
+    { src: "/kotlin_logo.svg", alt: "Kotlin" },
+    { src: "/flutter_logo.svg", alt: "Flutter" },
   ],
   maintenance: [
-    { color: "bg-emerald-500", shape: "rounded-full" },
-    { color: "bg-sky-400", shape: "rounded-sm" },
-    { color: "bg-green-400", shape: "rounded-full" },
-    { color: "bg-lime-500", shape: "rounded-sm" },
+    { src: "/next_logo.svg", alt: "Next.js" },
+    { src: "/js_logo.svg", alt: "JavaScript" },
   ],
 };
 
@@ -85,35 +85,84 @@ function ArrowIcon() {
   );
 }
 
+function DesktopIcon() {
+  return (
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <path d="M8 21h8" />
+      <path d="M12 17v4" />
+    </svg>
+  );
+}
+
+function MobileIcon() {
+  return (
+    <svg width="28" height="36" viewBox="0 0 18 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="2" width="12" height="20" rx="2.5" />
+      <path d="M8 18h2" />
+    </svg>
+  );
+}
+
+function GlassDeviceCircles() {
+  return (
+    <div className="absolute inset-0 z-10 flex items-center justify-center gap-4">
+      <LiquidGlass variant="circle" className="h-26 w-26">
+        <DesktopIcon />
+      </LiquidGlass>
+      <LiquidGlass variant="circle" className="h-26 w-26">
+        <MobileIcon />
+      </LiquidGlass>
+    </div>
+  );
+}
+
 function ServiceCard({
   title,
   description,
-  icons,
+  logos,
   viewMore,
   locale,
 }: {
   title: string;
   description: string;
-  icons: Array<{ color: string; shape: string }>;
+  logos: ServiceLogo[];
   viewMore: string;
   locale: string;
 }) {
+  const [bgSrc, setBgSrc] = useState("");
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defer random pick to client to avoid hydration mismatch
+    setBgSrc(pickRandomBg());
+  }, []);
+
   return (
     <motion.div
       variants={fadeInUp}
-      className="flex h-[668px] flex-col justify-between rounded-xl bg-white p-8"
+      className="flex flex-col justify-between rounded-xl bg-white p-8 gap-6"
     >
       <div className="flex flex-col gap-6">
-        <div className="h-[353px] w-full overflow-hidden rounded-lg bg-[#f0f0f0]" />
+        <div className="relative h-88.25 w-full overflow-hidden rounded-lg bg-[#0b0b0b]">
+          {bgSrc && (
+            <Image
+              src={bgSrc}
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover animate-fade-in"
+            />
+          )}
+          <GlassDeviceCircles />
+        </div>
 
         <div className="flex items-center -space-x-1.5">
-          {icons.map((icon, i) => (
+          {logos.map((logo) => (
             <span
-              key={i}
+              key={logo.alt}
               className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]"
-              style={{ zIndex: icons.length - i }}
             >
-              <span className={`h-3 w-3 ${icon.color} ${icon.shape}`} />
+              <Image src={logo.src} alt={logo.alt} width={16} height={16} className="h-4 w-4 object-contain" />
             </span>
           ))}
         </div>
@@ -129,7 +178,7 @@ function ServiceCard({
 
       <Link
         href={`/${locale}/contato`}
-        className="group inline-flex h-12 w-fit items-center gap-3 rounded-full bg-[#121212] pl-8 pr-1 text-[18px] font-semibold text-white"
+        className="group inline-flex h-12 w-fit items-center gap-3 rounded-full bg-[#121212] pl-8 pr-1 text-[18px] font-semibold text-white transition-all duration-200 hover:bg-[#2a2a2a]"
       >
         {viewMore}
         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#00b6aa] to-[#00a5e7] transition-transform duration-200 group-hover:scale-110">
@@ -145,6 +194,7 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
   const [bgSrc, setBgSrc] = useState("");
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defer random pick to client to avoid hydration mismatch
     setBgSrc(pickRandomBg());
   }, []);
 
@@ -172,10 +222,12 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
             style={{ y: backgroundY, opacity: backgroundOpacity }}
           >
             {bgSrc && (
-              <img
+              <Image
                 src={bgSrc}
                 alt=""
-                className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
+                fill
+                sizes="100vw"
+                className="object-cover object-center animate-fade-in"
               />
             )}
             <div className="absolute inset-0 bg-black/50" />
@@ -243,7 +295,7 @@ export function ServicesPageContent({ dict, locale }: ServicesPageContentProps) 
                 key={key}
                 title={dict.cards[key].title}
                 description={dict.cards[key].description}
-                icons={serviceIcons[key]}
+                logos={serviceLogos[key]}
                 viewMore={dict.viewMore}
                 locale={locale}
               />

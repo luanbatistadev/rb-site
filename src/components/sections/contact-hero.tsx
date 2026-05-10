@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ViewTransition } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { staggerFast, fadeInUp } from "@/lib/animations";
 import { pickRandomBg } from "@/lib/background-images";
 import { Tag } from "@/components/ui/tag";
@@ -19,6 +20,7 @@ export function ContactHero({ dict }: ContactHeroProps) {
   const [bgSrc, setBgSrc] = useState("");
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defer random pick to client to avoid hydration mismatch
     setBgSrc(pickRandomBg());
   }, []);
 
@@ -45,10 +47,12 @@ export function ContactHero({ dict }: ContactHeroProps) {
           style={{ y: backgroundY, opacity: backgroundOpacity }}
         >
           {bgSrc && (
-            <img
+            <Image
               src={bgSrc}
               alt=""
-              className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
+              fill
+              sizes="100vw"
+              className="object-cover object-center animate-fade-in"
             />
           )}
           <div className="absolute inset-0 bg-black/50" />

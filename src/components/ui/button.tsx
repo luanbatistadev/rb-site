@@ -91,6 +91,13 @@ export function Button({
 
   const glowXVal = useTransform(glowX, (v) => `${v}%`);
   const glowYVal = useTransform(glowY, (v) => `${v}%`);
+  const glowBackground = useTransform(
+    [glowXVal, glowYVal],
+    ([x, y]) =>
+      variant === "primary"
+        ? `radial-gradient(circle 80px at ${x} ${y}, rgba(255,255,255,0.25), transparent)`
+        : `radial-gradient(circle 80px at ${x} ${y}, rgba(255,255,255,0.08), transparent)`
+  );
 
   const base =
     "relative inline-flex items-center justify-center gap-2 rounded-full font-medium cursor-pointer overflow-hidden transition-colors";
@@ -114,13 +121,7 @@ export function Button({
       <motion.span
         className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-300"
         style={{
-          background: useTransform(
-            [glowXVal, glowYVal],
-            ([x, y]) =>
-              variant === "primary"
-                ? `radial-gradient(circle 80px at ${x} ${y}, rgba(255,255,255,0.25), transparent)`
-                : `radial-gradient(circle 80px at ${x} ${y}, rgba(255,255,255,0.08), transparent)`
-          ),
+          background: glowBackground,
           opacity: hovering ? 1 : 0,
         }}
       />

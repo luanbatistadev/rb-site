@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 type ContactFormProps = {
   dict: {

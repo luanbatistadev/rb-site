@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { fadeInUp, viewportOnce } from "@/lib/animations";
 import { pickRandomBg } from "@/lib/background-images";
 
@@ -35,6 +36,7 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
   const [bgSrc, setBgSrc] = useState("");
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defer random pick to client to avoid hydration mismatch
     setBgSrc(pickRandomBg());
   }, []);
 
@@ -48,11 +50,15 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
         className="relative overflow-hidden rounded-xl"
       >
         <div className="absolute inset-0">
-          <img
-            src={bgSrc || undefined}
-            alt=""
-            className={`h-full w-full object-cover ${bgSrc ? "animate-fade-in" : "opacity-0"}`}
-          />
+          {bgSrc && (
+            <Image
+              src={bgSrc}
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover animate-fade-in"
+            />
+          )}
           <div className="absolute inset-0 bg-[#0b0b0b]/80" />
         </div>
 
@@ -62,7 +68,7 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
               href={`/${locale}`}
               className="group flex items-center gap-3"
             >
-              <img
+              <Image
                 src="/logo-512.svg"
                 alt="RB"
                 width={56}
@@ -105,7 +111,7 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
                 <ul className="mt-4 flex flex-col gap-2">
                   <li>
                     <a
-                      href="https://instagram.com"
+                      href="https://www.instagram.com/rbcdevelopment"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-base text-[#eaeaea] transition-colors duration-200 hover:text-white"
@@ -115,7 +121,7 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
                   </li>
                   <li>
                     <a
-                      href="https://linkedin.com"
+                      href="https://linkedin.com/company/rb-computing-development"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-base text-[#eaeaea] transition-colors duration-200 hover:text-white"
@@ -133,16 +139,19 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
                 <ul className="mt-4 flex flex-col gap-2">
                   <li>
                     <a
-                      href="mailto:email@gmail.com"
+                      href="mailto:luanbatistadev@gmail.com"
                       className="text-base text-[#eaeaea] transition-colors duration-200 hover:text-white"
                     >
-                      email@gmail.com
+                      luanbatistadev@gmail.com
                     </a>
                   </li>
                   <li>
-                    <span className="text-base text-[#eaeaea]">
-                      82988888888
-                    </span>
+                    <a
+                      href="tel:+5569992950959"
+                      className="text-base text-[#eaeaea] transition-colors duration-200 hover:text-white"
+                    >
+                      +55 69 99295-0959
+                    </a>
                   </li>
                 </ul>
               </div>

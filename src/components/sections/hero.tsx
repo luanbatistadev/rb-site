@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { ViewTransition } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { staggerFast, fadeInUp } from "@/lib/animations";
 import { pickRandomBg } from "@/lib/background-images";
 import { Tag } from "@/components/ui/tag";
 import Link from "next/link";
+import projectsData from "@/data/projects.json";
 
 type HeroProps = {
   dict: {
@@ -19,11 +21,11 @@ type HeroProps = {
   locale: string;
 };
 
-const avatarGradients = [
-  "from-emerald-400 to-cyan-500",
-  "from-violet-500 to-fuchsia-500",
-  "from-amber-400 to-orange-500",
-  "from-sky-400 to-indigo-500",
+const clientLogos: Array<{ src: string; fit: "cover" | "contain"; bg?: string }> = [
+  { src: "/cimed_image.png", fit: "contain", bg: "#f5c518" },
+  { src: "/tim_icon.svg", fit: "contain", bg: "#ffffff" },
+  { src: "/carrefour_icon.svg", fit: "contain", bg: "#ffffff" },
+  { src: "/denga_icon.png", fit: "cover" },
 ];
 
 export function Hero({ dict, locale }: HeroProps) {
@@ -31,6 +33,7 @@ export function Hero({ dict, locale }: HeroProps) {
   const [bgSrc, setBgSrc] = useState("");
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defer random pick to client to avoid hydration mismatch
     setBgSrc(pickRandomBg());
   }, []);
 
@@ -66,10 +69,13 @@ export function Hero({ dict, locale }: HeroProps) {
           }}
         >
           {bgSrc && (
-            <img
+            <Image
               src={bgSrc}
               alt=""
-              className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center animate-fade-in"
             />
           )}
           <div className="absolute inset-0 bg-black/50" />
@@ -122,17 +128,24 @@ export function Hero({ dict, locale }: HeroProps) {
               </Link>
 
               <div className="flex items-center gap-3">
-                <div className="flex -space-x-5">
-                  {avatarGradients.map((gradient, i) => (
-                    <div
-                      key={i}
-                      className={`h-12.5 w-12.5 rounded-full bg-linear-to-br ${gradient} ring-2 ring-[#0b0b0b]`}
-                      style={{ zIndex: avatarGradients.length - i }}
-                    />
+                <div className="flex -space-x-3">
+                  {clientLogos.map((logo, i) => (
+                    <span
+                      key={logo.src}
+                      className="relative h-12.5 w-12.5 overflow-hidden rounded-full ring-2 ring-[#0b0b0b]"
+                      style={{ zIndex: clientLogos.length - i, backgroundColor: logo.bg ?? "#ffffff" }}
+                    >
+                      <Image
+                        src={logo.src}
+                        alt=""
+                        fill
+                        className={logo.fit === "contain" ? "object-contain p-1.5" : "object-cover"}
+                      />
+                    </span>
                   ))}
                 </div>
                 <span className="text-sm text-white/40">
-                  +50<br />clientes
+                  +{projectsData.length}<br />clientes
                 </span>
               </div>
             </motion.div>

@@ -70,12 +70,18 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
           className={`relative flex h-17 w-full max-w-300 items-center justify-between rounded-full px-6 ${mounted ? "transition-[background-color,border-color,box-shadow] duration-300" : ""} ${
             isLight
               ? scrolled
-                ? "border border-foreground/5 bg-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl"
-                : "border border-foreground/10 bg-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-xl"
+                ? "border border-foreground/5 bg-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+                : "border border-foreground/10 bg-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
               : scrolled
-                ? "border border-white/10 bg-[#0a0a0a]/80 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl"
-                : "border border-white/8 bg-white/4 shadow-[0_4px_24px_rgba(0,0,0,0.15)] backdrop-blur-xl"
+                ? "border border-white/10 bg-[#0a0a0a]/80 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.06)]"
+                : "border border-white/8 bg-white/4 shadow-[0_4px_24px_rgba(0,0,0,0.15)]"
           }`}
+          style={{
+            clipPath: "inset(0 round 9999px)",
+            WebkitClipPath: "inset(0 round 9999px)",
+            backdropFilter: `url(#liquid-glass) blur(${scrolled ? 24 : 16}px) saturate(1.5)`,
+            WebkitBackdropFilter: `blur(${scrolled ? 24 : 16}px) saturate(1.5)`,
+          }}
         >
           <div className="absolute inset-x-0 top-0 h-px rounded-t-[50px] bg-linear-to-r from-transparent via-white/15 to-transparent" />
 

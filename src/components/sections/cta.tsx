@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { pickRandomBg } from "@/lib/background-images";
 import { Tag } from "@/components/ui/tag";
@@ -24,6 +25,7 @@ export function Cta({ dict, locale }: CtaProps) {
   const [bgSrc, setBgSrc] = useState("");
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defer random pick to client to avoid hydration mismatch
     setBgSrc(pickRandomBg());
   }, []);
 
@@ -67,11 +69,15 @@ export function Cta({ dict, locale }: CtaProps) {
         className="relative mx-auto mt-12 max-w-300 overflow-hidden rounded-xl"
       >
         <motion.div className="absolute -top-1/4 right-0 bottom-0 left-0" style={{ y: backgroundY }}>
-          <img
-            src={bgSrc || undefined}
-            alt=""
-            className={`h-full w-full object-cover ${bgSrc ? "animate-fade-in" : "opacity-0"}`}
-          />
+          {bgSrc && (
+            <Image
+              src={bgSrc}
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover animate-fade-in"
+            />
+          )}
           <div className="absolute inset-0 bg-[#0b0b0b]/80" />
         </motion.div>
 
@@ -83,7 +89,7 @@ export function Cta({ dict, locale }: CtaProps) {
           viewport={viewportOnce}
         >
           <motion.div variants={fadeInUp} className="flex items-center gap-3">
-            <img
+            <Image
               src="/logo-512.svg"
               alt="RB"
               width={49}

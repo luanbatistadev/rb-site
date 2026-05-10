@@ -29,10 +29,11 @@ export default async function ProjectDetailPage({
 
   return (
     <>
-      <Header locale={locale} dict={dict.nav} variant="light" activePath="/projetos" />
+      <Header locale={locale} dict={dict.nav} activePath="/projetos" />
       <ProjectDetailContent
         project={project}
-        description={dict.projectDetail.description}
+        locale={locale as Locale}
+        dict={dict.projectDetail}
       />
       <Cta dict={dict.cta} locale={locale} />
       <Footer dict={dict.footer} locale={locale} navDict={dict.nav} />

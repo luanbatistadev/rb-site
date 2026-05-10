@@ -19,6 +19,7 @@ type Project = {
   platforms: string[];
   description: Record<string, string>;
   image: string;
+  bgColor?: string;
 };
 
 type ProjectsPageContentProps = {
@@ -33,97 +34,43 @@ type ProjectsPageContentProps = {
   locale: string;
 };
 
-const platformConfig: Record<
-  string,
-  { color: string; label: string; icon: React.ReactNode }
-> = {
-  apple: {
-    color: "#6b7280",
-    label: "Apple",
-    icon: (
-      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-    ),
-  },
-  android: {
-    color: "#22c55e",
-    label: "Android",
-    icon: (
-      <>
-        <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.27-.86a.633.633 0 00-.83.22l-1.88 3.24a11.463 11.463 0 00-8.92 0L5.66 5.66c-.16-.31-.55-.44-.83-.22-.31.17-.43.55-.27.86L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z" />
-      </>
-    ),
-  },
-  kotlin: {
-    color: "#a855f7",
-    label: "Kotlin",
-    icon: <path d="M2 2h20L12 12l10 10H2z" />,
-  },
-  swift: {
-    color: "#f97316",
-    label: "Swift",
-    icon: (
-      <path d="M21.985 14.187c.054-.186.1-.373.138-.562.037-.186.066-.374.088-.564a8.47 8.47 0 00-.3-3.325 8.037 8.037 0 00-1.465-2.724A9.15 9.15 0 0018.03 5.1a13.745 13.745 0 00-2.085-1.213c1.747 1.812 2.735 3.96 2.735 3.96s-1.556-1.88-4.08-3.625a18.94 18.94 0 01-.876-.625c-.074-.06-.13-.105-.186-.155a5.62 5.62 0 01-.075-.064l.03.03c2.22 3.212 1.2 6.66 1.2 6.66a8.663 8.663 0 00-2.655-4.315 8.493 8.493 0 00-1.654-1.215c.495 1.068.495 2.055.495 2.055s-.894-1.836-3.065-3.455c-1.156-.864-1.916-2.158-2.16-2.595-.014-.026-.024-.046-.03-.058a10.073 10.073 0 00.87 3.69 14.088 14.088 0 005.12 5.93 12.097 12.097 0 01-4.875-1.98l.06.045a10.073 10.073 0 006.88 3.406c3.27.39 6.49-1.01 8.01-3.795.126-.155.23-.32.33-.495a4.86 4.86 0 00.33-1.28c.133-.825.09-1.672-.14-2.475z" />
-    ),
-  },
-  flutter: {
-    color: "#3b82f6",
-    label: "Flutter",
-    icon: (
-      <path d="M14.314 0L3.098 11.216l3.228 3.228L19.694 1.27h-5.38zM14.314 11.9l-5.26 5.26 3.228 3.228 2.032-2.032 5.26-5.26h-5.26z" />
-    ),
-  },
-  web: {
-    color: "#171717",
-    label: "Web",
-    icon: (
-      <>
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <ellipse
-          cx="12"
-          cy="12"
-          rx="4"
-          ry="10"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <path d="M2 12h20" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      </>
-    ),
-  },
+const svgLogos: Record<string, { src: string; alt: string }> = {
+  apple: { src: "/apple_logo.svg", alt: "Apple" },
+  android: { src: "/android_logo.svg", alt: "Android" },
+  kotlin: { src: "/kotlin_logo.svg", alt: "Kotlin" },
+  swift: { src: "/swift_logo.svg", alt: "Swift" },
+  flutter: { src: "/flutter_logo.svg", alt: "Flutter" },
+  figma: { src: "/figma_logo.svg", alt: "Figma" },
+  js: { src: "/js_logo.svg", alt: "JavaScript" },
+  next: { src: "/next_logo.svg", alt: "Next.js" },
+  notion: { src: "/notion_logo.svg", alt: "Notion" },
 };
 
 function PlatformIcon({ platform }: { platform: string }) {
-  const config = platformConfig[platform.toLowerCase()];
+  const key = platform.toLowerCase();
+  const logo = svgLogos[key];
 
-  if (!config) {
+  if (logo) {
     return (
       <span
-        className="flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)] text-2xs font-bold text-white"
-        style={{ backgroundColor: "#6b7280" }}
-        title={platform}
+        className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]"
+        title={logo.alt}
       >
-        {platform.charAt(0).toUpperCase()}
+        <Image src={logo.src} alt={logo.alt} width={16} height={16} className="h-4 w-4 object-contain" />
       </span>
     );
   }
 
-  if (platform.toLowerCase() === "web") {
+  if (key === "web") {
     return (
       <span
         className="flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]"
-        style={{ color: config.color }}
-        title={config.label}
+        title="Web"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-          {config.icon}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ color: "#171717" }}>
+          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <ellipse cx="12" cy="12" rx="4" ry="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M2 12h20" fill="none" stroke="currentColor" strokeWidth="1.5" />
         </svg>
       </span>
     );
@@ -131,17 +78,23 @@ function PlatformIcon({ platform }: { platform: string }) {
 
   return (
     <span
-      className="flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)]"
-      title={config.label}
+      className="flex h-7 w-7 items-center justify-center rounded-full bg-white shadow-[3px_1px_3.6px_0px_rgba(0,0,0,0.1)] text-2xs font-bold text-foreground/50"
+      title={platform}
     >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill={config.color}>
-        {config.icon}
-      </svg>
+      {platform.charAt(0).toUpperCase()}
     </span>
   );
 }
 
-function ProjectCardImage({ image, name }: { image: string; name: string }) {
+function ProjectCardImage({
+  image,
+  name,
+  bgColor,
+}: {
+  image: string;
+  name: string;
+  bgColor?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -149,32 +102,24 @@ function ProjectCardImage({ image, name }: { image: string; name: string }) {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
     <div
       ref={ref}
-      className="h-[243px] overflow-hidden rounded-lg border border-[#ececec] bg-[#f9fffc]"
+      className="relative h-75 overflow-hidden rounded-xl"
+      style={bgColor ? { backgroundColor: bgColor } : undefined}
     >
-      <motion.div
-        className="relative h-full w-full"
-        style={{
-          y,
-          scaleY: 0.9,
-          skewX: 26.05,
-          boxShadow: "-14px 13px 13.4px rgba(0,0,0,0.1)",
-        }}
-      >
+      <motion.div className="relative h-full w-full" style={{ y }}>
         {image ? (
-          <Image src={image} alt={name} fill className="object-cover" />
-        ) : (
-          <div
-            className="h-full w-full"
-            style={{
-              background:
-                "linear-gradient(135deg, #e0f2fe 0%, #dbeafe 25%, #ede9fe 50%, #fae8ff 75%, #fce7f3 100%)",
-            }}
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className={bgColor ? "object-contain p-8" : "object-cover"}
           />
+        ) : (
+          <div className="h-full w-full bg-foreground/3" />
         )}
       </motion.div>
     </div>
@@ -183,7 +128,7 @@ function ProjectCardImage({ image, name }: { image: string; name: string }) {
 
 function GradientArrow() {
   return (
-    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#00b6aa] to-[#00a5e7]">
+    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-r from-[#00b6aa] to-[#00a5e7] transition-transform duration-200 group-hover:scale-110">
       <svg
         width="16"
         height="16"
@@ -210,6 +155,7 @@ function PageHero({
   const [bgSrc, setBgSrc] = useState("");
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defer random pick to client to avoid hydration mismatch
     setBgSrc(pickRandomBg());
   }, []);
 
@@ -231,10 +177,12 @@ function PageHero({
       >
         <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
           {bgSrc && (
-            <img
+            <Image
               src={bgSrc}
               alt=""
-              className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
+              fill
+              sizes="100vw"
+              className="object-cover object-center animate-fade-in"
             />
           )}
           <div className="absolute inset-0 bg-black/50" />
@@ -322,7 +270,7 @@ export function ProjectsPageContent({
                       <div>
                         <Link
                           href={`/${locale}/projetos/${project.id}`}
-                          className="inline-flex h-12 items-center gap-2 rounded-full bg-[#121212] pl-8 pr-1 text-[14px] font-medium text-white"
+                          className="group inline-flex h-12 items-center gap-2 rounded-full bg-[#121212] pl-8 pr-1 text-[14px] font-medium text-white transition-all duration-200 hover:bg-[#2a2a2a]"
                         >
                           {dict.viewMore}
                           <GradientArrow />
@@ -334,6 +282,7 @@ export function ProjectsPageContent({
                       <ProjectCardImage
                         image={project.image}
                         name={project.name}
+                        bgColor={project.bgColor}
                       />
                     </div>
                   </div>

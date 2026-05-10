@@ -27,6 +27,13 @@
     "ux": {
       "title": "User Experience",
       "description": "User-centered design. Intuitive interfaces that delight and convert based on research and data."
+    },
+    "codePreview": {
+      "tag": "RB Computing",
+      "titleLine1": "DEVELOPMENT,",
+      "titleLine2": "DESIGN & EXPERIENCE",
+      "subtitle": "Custom-built apps.",
+      "button": "START PROJECT"
     }
   },
   "projects": {
@@ -107,7 +114,17 @@
     "viewMore": "View more details"
   },
   "projectDetail": {
-    "description": "Project description and technologies used"
+    "pageTag": "</>",
+    "challengeTitle": "The Challenge",
+    "solutionTitle": "The Solution",
+    "impactTitle": "Impact & Numbers",
+    "galleryTitle": "Gallery",
+    "visitAppStore": "View on App Store",
+    "visitPlayStore": "View on Google Play",
+    "visitWebsite": "Visit website",
+    "yearLabel": "Year",
+    "clientLabel": "Client",
+    "roleLabel": "Role"
   },
   "contact": {
     "title": "Book a consultation",

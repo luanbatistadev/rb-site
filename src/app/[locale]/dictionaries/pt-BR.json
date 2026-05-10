@@ -27,6 +27,13 @@
     "ux": {
       "title": "User Experience",
       "description": "Design centrado no usuário. Interfaces intuitivas que encantam e convertem com base em pesquisa e dados."
+    },
+    "codePreview": {
+      "tag": "RB Computing",
+      "titleLine1": "DESENVOLVIMENTO,",
+      "titleLine2": "DESIGN & EXPERIÊNCIA",
+      "subtitle": "Aplicativos sob medida.",
+      "button": "INICIAR PROJETO"
     }
   },
   "projects": {
@@ -107,7 +114,17 @@
     "viewMore": "Ver mais detalhes"
   },
   "projectDetail": {
-    "description": "Descrição do projeto e tecnologias usadas"
+    "pageTag": "</>",
+    "challengeTitle": "O Desafio",
+    "solutionTitle": "A Solução",
+    "impactTitle": "Impacto e Números",
+    "galleryTitle": "Galeria",
+    "visitAppStore": "Ver na App Store",
+    "visitPlayStore": "Ver no Google Play",
+    "visitWebsite": "Visitar site",
+    "yearLabel": "Ano",
+    "clientLabel": "Cliente",
+    "roleLabel": "Atuação"
   },
   "contact": {
     "title": "Agende uma consulta",

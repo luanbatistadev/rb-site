@@ -133,6 +133,7 @@ export function CustomCursor() {
   const [hasPointer, setHasPointer] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: client-only mount detection (window) for SSR safety
     setMounted(true);
     setHasPointer(window.matchMedia("(pointer: fine)").matches);
   }, []);
