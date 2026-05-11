@@ -89,8 +89,9 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
             <Image
               src="/logo-512.svg"
               alt="RB"
-              width={40}
+              width={44}
               height={40}
+              priority
               className={`opacity-80 transition-opacity duration-300 group-hover:opacity-100 ${isLight ? "" : "brightness-0 invert"}`}
             />
             <div className="hidden sm:flex flex-col leading-tight">

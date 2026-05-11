@@ -103,7 +103,7 @@ function ProjectImage({
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
-    <div ref={ref} className="rounded-xl overflow-hidden h-121.25" style={bgColor ? { backgroundColor: bgColor } : undefined}>
+    <div ref={ref} className="relative rounded-xl overflow-hidden h-121.25" style={bgColor ? { backgroundColor: bgColor } : undefined}>
       <motion.div
         className="relative w-full h-full"
         style={{ y }}
@@ -113,6 +113,7 @@ function ProjectImage({
             src={image}
             alt={name}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className={bgColor ? "object-contain p-8" : "object-cover"}
           />
         ) : (

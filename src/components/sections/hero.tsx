@@ -5,7 +5,7 @@ import { ViewTransition } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { staggerFast, fadeInUp } from "@/lib/animations";
-import { pickRandomBg } from "@/lib/background-images";
+import { pickRandomBg, BG_PLACEHOLDER_STYLE } from "@/lib/background-images";
 import { Tag } from "@/components/ui/tag";
 import Link from "next/link";
 import projectsData from "@/data/projects.json";
@@ -53,6 +53,7 @@ export function Hero({ dict, locale }: HeroProps) {
       ref={wrapperRef}
       data-testid="hero"
       id="inicio"
+      className="relative"
       style={{ padding }}
     >
       <ViewTransition name="hero-bg">
@@ -63,6 +64,7 @@ export function Hero({ dict, locale }: HeroProps) {
         <motion.div
           className="absolute inset-0"
           style={{
+            ...BG_PLACEHOLDER_STYLE,
             y: backgroundY,
             scale: backgroundScale,
             opacity: backgroundOpacity,
@@ -139,6 +141,7 @@ export function Hero({ dict, locale }: HeroProps) {
                         src={logo.src}
                         alt=""
                         fill
+                        sizes="50px"
                         className={logo.fit === "contain" ? "object-contain p-1.5" : "object-cover"}
                       />
                     </span>

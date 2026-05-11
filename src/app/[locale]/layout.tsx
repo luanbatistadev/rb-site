@@ -46,6 +46,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-screen bg-background text-foreground">
         <LiquidGlassFilter />

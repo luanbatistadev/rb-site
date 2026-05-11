@@ -10,7 +10,7 @@ import {
 } from "@/lib/animations";
 import Image from "next/image";
 import { Tag } from "@/components/ui/tag";
-import { pickRandomBg } from "@/lib/background-images";
+import { pickRandomBg, BG_PLACEHOLDER_STYLE } from "@/lib/background-images";
 import Link from "next/link";
 
 type Project = {
@@ -116,6 +116,7 @@ function ProjectCardImage({
             src={image}
             alt={name}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className={bgColor ? "object-contain p-8" : "object-cover"}
           />
         ) : (
@@ -169,18 +170,19 @@ function PageHero({
   const heroPadding = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
 
   return (
-    <motion.div style={{ padding: heroPadding }}>
+    <motion.div className="relative" style={{ padding: heroPadding }}>
       <motion.section
         ref={sectionRef}
         className="relative overflow-hidden bg-[#0b0b0b]"
         style={{ borderRadius }}
       >
-        <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
+        <motion.div className="absolute inset-0" style={{ ...BG_PLACEHOLDER_STYLE, y: backgroundY }}>
           {bgSrc && (
             <Image
               src={bgSrc}
               alt=""
               fill
+              priority
               sizes="100vw"
               className="object-cover object-center animate-fade-in"
             />
@@ -201,14 +203,14 @@ function PageHero({
 
             <motion.h1
               variants={fadeInUp}
-              className="max-w-[960px] text-[48px] font-semibold uppercase leading-[1.2] tracking-[-0.48px] text-white"
+              className="max-w-240 text-[48px] font-semibold uppercase leading-[1.2] tracking-[-0.48px] text-white"
             >
               {dict.title}
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
-              className="max-w-[628px] text-[18px] leading-[1.2] text-white"
+              className="max-w-157 text-[18px] leading-[1.2] text-white"
             >
               {dict.subtitle}
             </motion.p>

@@ -72,7 +72,7 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
                 src="/logo-512.svg"
                 alt="RB"
                 width={56}
-                height={56}
+                height={50}
                 className="brightness-0 invert opacity-70 transition-opacity duration-300 group-hover:opacity-100"
               />
               <div className="flex flex-col leading-tight">

@@ -5,7 +5,7 @@ import { ViewTransition } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { staggerFast, fadeInUp } from "@/lib/animations";
-import { pickRandomBg } from "@/lib/background-images";
+import { pickRandomBg, BG_PLACEHOLDER_STYLE } from "@/lib/background-images";
 import { Tag } from "@/components/ui/tag";
 
 type ContactHeroProps = {
@@ -35,7 +35,7 @@ export function ContactHero({ dict }: ContactHeroProps) {
   const heroPadding = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
 
   return (
-    <motion.div style={{ padding: heroPadding }}>
+    <motion.div className="relative" style={{ padding: heroPadding }}>
       <ViewTransition name="hero-bg">
       <motion.section
         ref={heroRef}
@@ -44,13 +44,14 @@ export function ContactHero({ dict }: ContactHeroProps) {
       >
         <motion.div
           className="absolute inset-0"
-          style={{ y: backgroundY, opacity: backgroundOpacity }}
+          style={{ ...BG_PLACEHOLDER_STYLE, y: backgroundY, opacity: backgroundOpacity }}
         >
           {bgSrc && (
             <Image
               src={bgSrc}
               alt=""
               fill
+              priority
               sizes="100vw"
               className="object-cover object-center animate-fade-in"
             />
@@ -71,7 +72,7 @@ export function ContactHero({ dict }: ContactHeroProps) {
 
             <motion.h1
               variants={fadeInUp}
-              className="max-w-[854px] text-[48px] font-semibold leading-[1.2] tracking-[-0.48px] text-white"
+              className="max-w-213.5 text-[48px] font-semibold leading-[1.2] tracking-[-0.48px] text-white"
             >
               {dict.title}
             </motion.h1>

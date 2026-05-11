@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/animations";
-import { pickRandomBg } from "@/lib/background-images";
+import { pickRandomBg, BG_PLACEHOLDER_STYLE } from "@/lib/background-images";
 import { Tag } from "@/components/ui/tag";
 
 type Locale = "pt-BR" | "en";
@@ -186,13 +186,13 @@ function ProjectHero({ project, locale, dict }: ProjectDetailContentProps) {
   const role = project.role?.[locale] ?? project.role?.["pt-BR"];
 
   return (
-    <motion.div style={{ padding: heroPadding }}>
+    <motion.div className="relative" style={{ padding: heroPadding }}>
       <motion.section
         ref={sectionRef}
         className="relative overflow-hidden bg-[#0b0b0b]"
         style={{ borderRadius }}
       >
-        <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
+        <motion.div className="absolute inset-0" style={{ ...BG_PLACEHOLDER_STYLE, y: backgroundY }}>
           {bgSrc && (
             <Image
               src={bgSrc}
