@@ -96,7 +96,7 @@ export function Hero({ dict, locale }: HeroProps) {
 
             <motion.h1
               variants={fadeInUp}
-              className="mt-8 text-center text-4xl font-medium uppercase leading-[1.2] text-white sm:text-6xl md:text-7xl lg:text-[96px] lg:tracking-[-0.96px]"
+              className="mt-8 text-center text-[28px] font-medium uppercase leading-[1.2] text-white sm:text-6xl md:text-7xl lg:text-[96px] lg:tracking-[-0.96px]"
             >
               {dict.titleLine1}
               <br />
