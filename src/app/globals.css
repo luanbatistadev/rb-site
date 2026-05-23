@@ -55,12 +55,14 @@
 
 html {
   overscroll-behavior: none;
+  overflow-x: clip;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Switzer", var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: clip;
 }
 
 @keyframes marquee {
