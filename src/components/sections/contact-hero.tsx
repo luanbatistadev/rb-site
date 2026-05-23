@@ -10,6 +10,7 @@ import { Tag } from "@/components/ui/tag";
 
 type ContactHeroProps = {
   dict: {
+    tag: string;
     title: string;
     subtitle: string;
   };
@@ -67,7 +68,7 @@ export function ContactHero({ dict }: ContactHeroProps) {
             animate="visible"
           >
             <motion.div variants={fadeInUp}>
-              <Tag variant="dark">Contato</Tag>
+              <Tag variant="dark">{dict.tag}</Tag>
             </motion.div>
 
             <motion.h1

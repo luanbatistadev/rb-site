@@ -4,14 +4,17 @@
     "services": "Serviços",
     "projects": "Projetos",
     "contact": "Contato",
-    "cta": "Agendar Consulta"
+    "cta": "Agendar Consulta",
+    "toggleMenu": "Abrir menu",
+    "languageSwitcher": "Seletor de idioma"
   },
   "hero": {
     "tag": "RB Computing Development.",
     "titleLine1": "DESENVOLVIMENTO,",
     "titleLine2": "DESIGN & EXPERIÊNCIA",
     "subtitle": "Construímos aplicativos e plataformas web sob medida para empreendedores que exigem performance, escalabilidade e design centrado no usuário.",
-    "cta": "INICIAR UM PROJETO"
+    "cta": "INICIAR UM PROJETO",
+    "clients": "clientes"
   },
   "services": {
     "title": "Engenharia de ponta a ponta.",
@@ -74,10 +77,10 @@
   "footer": {
     "menu": "Menu",
     "social": "Social",
-    "contactTitle": "Contact",
+    "contactTitle": "Contato",
     "rights": "© RB Computing Development — 2026",
-    "terms": "Terms of Use",
-    "privacy": "Privacy Policy"
+    "terms": "Termos de Uso",
+    "privacy": "Política de Privacidade"
   },
   "servicesPage": {
     "tag": "RB Computing Development.",
@@ -127,6 +130,7 @@
     "roleLabel": "Atuação"
   },
   "contact": {
+    "tag": "Contato",
     "title": "Agende uma consulta",
     "subtitle": "Preencha o formulário e entraremos em contato.",
     "name": "Nome",

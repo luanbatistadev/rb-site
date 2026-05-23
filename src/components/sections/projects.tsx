@@ -219,7 +219,7 @@ export function Projects({ dict, projects, locale }: ProjectsProps) {
 
                 <div className="mt-2">
                   <Link
-                    href={`/${locale}/projetos/${project.id}`}
+                    href={`/projetos/${project.id}`}
                     className="group inline-flex h-12 items-center gap-3 rounded-full bg-[#121212] py-1 pl-8 pr-1 text-[18px] font-semibold text-white transition-all duration-200 hover:bg-[#2a2a2a]"
                   >
                     {dict.viewMore}
@@ -261,7 +261,7 @@ export function Projects({ dict, projects, locale }: ProjectsProps) {
           className="mt-16 flex justify-center"
         >
           <a
-            href={`/${locale}/projetos`}
+            href={"/projetos"}
             className="text-[18px] font-semibold leading-[1.4] text-foreground underline"
           >
             {dict.viewAll}

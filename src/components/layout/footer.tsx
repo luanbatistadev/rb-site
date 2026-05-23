@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { fadeInUp, viewportOnce } from "@/lib/animations";
 import { pickRandomBg } from "@/lib/background-images";
+import { LogoRB } from "@/components/ui/logo-rb";
+import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 
 type FooterProps = {
   dict: {
@@ -22,6 +24,7 @@ type FooterProps = {
     services: string;
     projects: string;
     contact: string;
+    languageSwitcher: string;
   };
 };
 
@@ -65,15 +68,13 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
         <div className="relative z-10 px-10 py-10 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
             <Link
-              href={`/${locale}`}
+              href={"/"}
               className="group flex items-center gap-3"
             >
-              <Image
-                src="/logo-512.svg"
-                alt="RB"
+              <LogoRB
                 width={56}
                 height={50}
-                className="brightness-0 invert opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+                className="text-white opacity-70 transition-opacity duration-300 group-hover:opacity-100"
               />
               <div className="flex flex-col leading-tight">
                 <span className="text-base font-semibold tracking-tight text-white">
@@ -94,7 +95,7 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
                   {menuLinks.map((link) => (
                     <li key={link.key}>
                       <Link
-                        href={`/${locale}${link.href}`}
+                        href={link.href || "/"}
                         className="text-base text-[#eaeaea] transition-colors duration-200 hover:text-white"
                       >
                         {navDict[link.key]}
@@ -164,16 +165,21 @@ export function Footer({ dict, locale, navDict }: FooterProps) {
             <p className="text-base font-light text-white">
               {dict.rights}
             </p>
-            <div className="flex items-center gap-1 text-base font-light text-white">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-base font-light text-white">
+              <LocaleSwitcher
+                currentLocale={locale}
+                ariaLabel={navDict.languageSwitcher}
+              />
+              <span className="text-white/30">•</span>
               <Link
-                href={`/${locale}/termos`}
+                href={"/termos"}
                 className="transition-colors duration-200 hover:text-white/70"
               >
                 {dict.terms}
               </Link>
-              <span>•</span>
+              <span className="text-white/30">•</span>
               <Link
-                href={`/${locale}/privacidade`}
+                href={"/privacidade"}
                 className="transition-colors duration-200 hover:text-white/70"
               >
                 {dict.privacy}

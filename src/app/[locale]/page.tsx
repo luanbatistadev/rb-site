@@ -24,9 +24,9 @@ export default async function HomePage({
 
   return (
     <>
-      <Header locale={locale} dict={dict.nav} activePath="" />
+      <Header dict={dict.nav} activePath="" />
       <main>
-        <Hero dict={dict.hero} locale={locale} />
+        <Hero dict={dict.hero} />
         <TechBar />
         <Services dict={dict.services} />
         <Projects
@@ -35,7 +35,7 @@ export default async function HomePage({
           locale={locale}
         />
         <Metrics dict={dict.metrics} />
-        <Cta dict={dict.cta} locale={locale} />
+        <Cta dict={dict.cta} />
       </main>
       <Footer dict={dict.footer} locale={locale} navDict={dict.nav} />
     </>

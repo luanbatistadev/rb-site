@@ -431,7 +431,7 @@ function ProjectsNavigation({ currentId, locale }: { currentId: string; locale: 
     <section className="border-t border-foreground/10 px-6 py-12">
       <div className="mx-auto max-w-300 grid grid-cols-2 gap-6">
         <Link
-          href={`/${locale}/projetos/${prev.id}`}
+          href={`/projetos/${prev.id}`}
           className="group flex flex-col gap-1 text-left"
         >
           <span className="text-xs uppercase tracking-wider text-foreground/40">←</span>
@@ -440,7 +440,7 @@ function ProjectsNavigation({ currentId, locale }: { currentId: string; locale: 
           </span>
         </Link>
         <Link
-          href={`/${locale}/projetos/${next.id}`}
+          href={`/projetos/${next.id}`}
           className="group flex flex-col gap-1 text-right"
         >
           <span className="text-xs uppercase tracking-wider text-foreground/40">→</span>

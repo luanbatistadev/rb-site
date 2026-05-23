@@ -17,8 +17,8 @@ type HeroProps = {
     titleLine2: string;
     subtitle: string;
     cta: string;
+    clients: string;
   };
-  locale: string;
 };
 
 const clientLogos: Array<{ src: string; fit: "cover" | "contain"; bg?: string }> = [
@@ -28,7 +28,7 @@ const clientLogos: Array<{ src: string; fit: "cover" | "contain"; bg?: string }>
   { src: "/denga_icon.png", fit: "cover" },
 ];
 
-export function Hero({ dict, locale }: HeroProps) {
+export function Hero({ dict }: HeroProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [bgSrc, setBgSrc] = useState("");
 
@@ -42,9 +42,14 @@ export function Hero({ dict, locale }: HeroProps) {
     offset: ["start start", "end start"],
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "55%"]);
+  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
+  const backgroundRotateX = useTransform(scrollYProgress, [0, 1], [0, -3]);
+  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.4]);
+
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.55, 1], [0, 0.4, 0.55]);
+  const glowScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+
   const borderRadius = useTransform(scrollYProgress, [0, 0.3], [0, 12]);
   const padding = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
 
@@ -58,15 +63,16 @@ export function Hero({ dict, locale }: HeroProps) {
     >
       <ViewTransition name="hero-bg">
       <motion.section
-        className="relative min-h-screen overflow-hidden bg-[#0b0b0b]"
+        className="relative min-h-screen overflow-hidden bg-[#0b0b0b] perspective-distant"
         style={{ borderRadius }}
       >
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 origin-[center_70%] transform-gpu will-change-transform"
           style={{
             ...BG_PLACEHOLDER_STYLE,
             y: backgroundY,
             scale: backgroundScale,
+            rotateX: backgroundRotateX,
             opacity: backgroundOpacity,
           }}
         >
@@ -82,6 +88,17 @@ export function Hero({ dict, locale }: HeroProps) {
           )}
           <div className="absolute inset-0 bg-black/50" />
         </motion.div>
+
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 mix-blend-screen transform-gpu will-change-transform"
+          style={{
+            opacity: glowOpacity,
+            scale: glowScale,
+            background:
+              "radial-gradient(60% 50% at 30% 35%, rgba(120,90,255,0.5) 0%, transparent 60%), radial-gradient(50% 45% at 75% 65%, rgba(0,200,230,0.4) 0%, transparent 65%)",
+          }}
+        />
 
         <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
           <motion.div
@@ -115,7 +132,7 @@ export function Hero({ dict, locale }: HeroProps) {
               className="mt-10 flex flex-col items-center gap-6 sm:flex-row sm:gap-8"
             >
               <Link
-                href={`/${locale}/contato`}
+                href={"/contato"}
                 className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/10 bg-white/5 py-1 pl-8 pr-1 backdrop-blur-sm transition-all duration-300 hover:border-white/15 hover:bg-white/8"
               >
                 <span className="text-sm font-medium uppercase tracking-wide text-white">
@@ -148,7 +165,7 @@ export function Hero({ dict, locale }: HeroProps) {
                   ))}
                 </div>
                 <span className="text-sm text-white/40">
-                  +{projectsData.length}<br />clientes
+                  +{projectsData.length}<br />{dict.clients}
                 </span>
               </div>
             </motion.div>

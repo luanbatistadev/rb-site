@@ -4,14 +4,17 @@
     "services": "Services",
     "projects": "Projects",
     "contact": "Contact",
-    "cta": "Book a Consultation"
+    "cta": "Book a Consultation",
+    "toggleMenu": "Toggle menu",
+    "languageSwitcher": "Language switcher"
   },
   "hero": {
     "tag": "RB Computing Development.",
     "titleLine1": "DEVELOPMENT,",
     "titleLine2": "DESIGN & EXPERIENCE",
     "subtitle": "We build high-impact digital applications focused on performance and experiences that engage users and drive results.",
-    "cta": "START YOUR PROJECT"
+    "cta": "START YOUR PROJECT",
+    "clients": "clients"
   },
   "services": {
     "title": "End-to-end engineering.",
@@ -127,6 +130,7 @@
     "roleLabel": "Role"
   },
   "contact": {
+    "tag": "Contact",
     "title": "Book a consultation",
     "subtitle": "Fill in the form and we'll get in touch.",
     "name": "Name",

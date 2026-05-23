@@ -3,17 +3,18 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { LogoRB } from "@/components/ui/logo-rb";
 
 type HeaderProps = {
-  locale: string;
   dict: {
     home: string;
     services: string;
     projects: string;
     contact: string;
     cta: string;
+    toggleMenu: string;
+    languageSwitcher: string;
   };
   variant?: "dark" | "light";
   activePath?: string;
@@ -26,7 +27,7 @@ const navLinks = [
   { key: "contact" as const, href: "/contato" },
 ];
 
-export function Header({ locale, dict, variant = "dark", activePath = "" }: HeaderProps) {
+export function Header({ dict, variant = "dark", activePath = "" }: HeaderProps) {
   const isLight = variant === "light";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -85,14 +86,11 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
         >
           <div className="absolute inset-x-0 top-0 h-px rounded-t-[50px] bg-linear-to-r from-transparent via-white/15 to-transparent" />
 
-          <Link href={`/${locale}`} className="group flex h-11 items-center gap-2.5">
-            <Image
-              src="/logo-512.svg"
-              alt="RB"
+          <Link href={"/"} className="group flex h-11 items-center gap-2.5">
+            <LogoRB
               width={44}
               height={40}
-              priority
-              className={`opacity-80 transition-opacity duration-300 group-hover:opacity-100 ${isLight ? "" : "brightness-0 invert"}`}
+              className={`opacity-80 transition-opacity duration-300 group-hover:opacity-100 ${isLight ? "text-foreground" : "text-white"}`}
             />
             <div className="hidden sm:flex flex-col leading-tight">
               <span className={`text-xs font-semibold tracking-tight ${isLight ? "text-foreground" : "text-white/90"}`}>
@@ -110,7 +108,7 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
               return (
                 <Link
                   key={link.key}
-                  href={`/${locale}${link.href}`}
+                  href={link.href || "/"}
                   className={`flex h-9 items-center rounded-full text-sm font-medium transition-all duration-200 ${
                     isLight
                       ? `text-foreground/60 hover:bg-foreground/5 hover:text-foreground ${isActive ? "bg-white/10 px-4" : "px-3"}`
@@ -125,7 +123,7 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
 
           <div className="hidden md:block">
             <Link
-              href={`/${locale}/contato`}
+              href={"/contato"}
               className={`group inline-flex h-12 items-center gap-3 rounded-full py-1 pl-6 pr-1 backdrop-blur-sm transition-all duration-200 ${
                 isLight
                   ? "border border-foreground/10 bg-foreground/5 hover:bg-foreground/8 hover:border-foreground/15"
@@ -146,7 +144,7 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
             className="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-200 hover:bg-white/10 md:hidden"
-            aria-label="Toggle menu"
+            aria-label={dict.toggleMenu}
           >
             <div className="flex w-4.5 flex-col items-center gap-1.5">
               <motion.span
@@ -211,7 +209,7 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
                   }}
                 >
                   <Link
-                    href={`/${locale}${link.href}`}
+                    href={link.href || "/"}
                     className="text-3xl font-semibold text-white transition-colors duration-200 hover:text-accent"
                   >
                     {dict[link.key]}
@@ -231,7 +229,7 @@ export function Header({ locale, dict, variant = "dark", activePath = "" }: Head
                 className="mt-4"
               >
                 <Button
-                  href={`/${locale}/contato`}
+                  href={"/contato"}
                   variant="primary"
                   size="lg"
                   onClick={handleNavClick}

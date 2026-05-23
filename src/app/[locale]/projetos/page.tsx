@@ -20,14 +20,14 @@ export default async function ProjetosPage({
 
   return (
     <>
-      <Header locale={locale} dict={dict.nav} activePath="/projetos" />
+      <Header dict={dict.nav} activePath="/projetos" />
       <main>
         <ProjectsPageContent
           dict={dict.projectsPage}
           projects={projectsData}
           locale={locale}
         />
-        <Cta dict={dict.cta} locale={locale} />
+        <Cta dict={dict.cta} />
       </main>
       <Footer dict={dict.footer} locale={locale} navDict={dict.nav} />
     </>

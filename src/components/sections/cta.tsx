@@ -7,6 +7,7 @@ import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { pickRandomBg } from "@/lib/background-images";
 import { Tag } from "@/components/ui/tag";
 import Link from "next/link";
+import { LogoRB } from "@/components/ui/logo-rb";
 
 type CtaProps = {
   dict: {
@@ -17,10 +18,9 @@ type CtaProps = {
     subtitle: string;
     button: string;
   };
-  locale: string;
 };
 
-export function Cta({ dict, locale }: CtaProps) {
+export function Cta({ dict }: CtaProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [bgSrc, setBgSrc] = useState("");
 
@@ -89,12 +89,10 @@ export function Cta({ dict, locale }: CtaProps) {
           viewport={viewportOnce}
         >
           <motion.div variants={fadeInUp} className="flex items-center gap-3">
-            <Image
-              src="/logo-512.svg"
-              alt="RB"
+            <LogoRB
               width={49}
               height={44}
-              className="brightness-0 invert opacity-70"
+              className="text-white opacity-70"
             />
             <div className="flex flex-col leading-[1.4] text-left">
               <span className="text-[12.74px] text-white/60">Computing</span>
@@ -118,7 +116,7 @@ export function Cta({ dict, locale }: CtaProps) {
 
           <motion.div variants={fadeInUp} className="mt-10">
             <Link
-              href={`/${locale}/contato`}
+              href={"/contato"}
               className="group inline-flex h-12 items-center gap-3 rounded-full border border-white/10 bg-white/5 py-1 pl-8 pr-1 transition-all duration-200 hover:bg-white/8 hover:border-white/15"
             >
               <span className="text-[18px] font-semibold leading-[1.4] text-white">{dict.button}</span>

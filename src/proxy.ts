@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const locales = ["pt-BR", "en"];
+const locales = ["pt-BR", "en"] as const;
 const defaultLocale = "pt-BR";
+const LOCALE_COOKIE = "NEXT_LOCALE";
 
-function getLocale(request: NextRequest): string {
+function getLocaleFromAcceptLanguage(request: NextRequest): string {
   const acceptLanguage = request.headers.get("accept-language") || "";
 
   const preferred = acceptLanguage
@@ -16,7 +17,7 @@ function getLocale(request: NextRequest): string {
     .sort((a, b) => b.q - a.q);
 
   for (const { lang } of preferred) {
-    if (locales.includes(lang)) return lang;
+    if ((locales as readonly string[]).includes(lang)) return lang;
     const match = locales.find(
       (l) => l.startsWith(lang) || lang.startsWith(l)
     );
@@ -26,35 +27,38 @@ function getLocale(request: NextRequest): string {
   return defaultLocale;
 }
 
+function getLocale(request: NextRequest): string {
+  const cookieLocale = request.cookies.get(LOCALE_COOKIE)?.value;
+  if (cookieLocale && (locales as readonly string[]).includes(cookieLocale)) {
+    return cookieLocale;
+  }
+  return getLocaleFromAcceptLanguage(request);
+}
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith("/_next") || pathname.startsWith("/api") || pathname.includes(".")) {
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api") ||
+    pathname.includes(".")
+  ) {
     return;
   }
 
-  const pathnameHasLocale = locales.some(
+  const pathnameLocale = locales.find(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) {
-    if (pathname.startsWith(`/${defaultLocale}/`) || pathname === `/${defaultLocale}`) {
-      const newPath = pathname.replace(`/${defaultLocale}`, "") || "/";
-      request.nextUrl.pathname = newPath;
-      return NextResponse.redirect(request.nextUrl);
-    }
-    return;
+  if (pathnameLocale) {
+    const newPath = pathname.replace(`/${pathnameLocale}`, "") || "/";
+    request.nextUrl.pathname = newPath;
+    return NextResponse.redirect(request.nextUrl);
   }
 
   const locale = getLocale(request);
-
-  if (locale === defaultLocale) {
-    request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
-    return NextResponse.rewrite(request.nextUrl);
-  }
-
   request.nextUrl.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  return NextResponse.rewrite(request.nextUrl);
 }
 
 export const config = {

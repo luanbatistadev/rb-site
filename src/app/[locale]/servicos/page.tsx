@@ -19,10 +19,10 @@ export default async function ServicosPage({
 
   return (
     <>
-      <Header locale={locale} dict={dict.nav} activePath="/servicos" />
+      <Header dict={dict.nav} activePath="/servicos" />
       <main>
         <ServicesPageContent dict={dict.servicesPage} locale={locale} />
-        <Cta dict={dict.cta} locale={locale} />
+        <Cta dict={dict.cta} />
       </main>
       <Footer dict={dict.footer} locale={locale} navDict={dict.nav} />
     </>

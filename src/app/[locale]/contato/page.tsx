@@ -19,7 +19,7 @@ export default async function ContatoPage({
 
   return (
     <>
-      <Header locale={locale} dict={dict.nav} activePath="/contato" />
+      <Header dict={dict.nav} activePath="/contato" />
       <main>
         <ContactHero dict={dict.contact} />
         <div className="bg-background py-20 px-6">

@@ -271,7 +271,7 @@ export function ProjectsPageContent({
 
                       <div>
                         <Link
-                          href={`/${locale}/projetos/${project.id}`}
+                          href={`/projetos/${project.id}`}
                           className="group inline-flex h-12 items-center gap-2 rounded-full bg-[#121212] pl-8 pr-1 text-[14px] font-medium text-white transition-all duration-200 hover:bg-[#2a2a2a]"
                         >
                           {dict.viewMore}
