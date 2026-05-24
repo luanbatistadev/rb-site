@@ -160,11 +160,11 @@ export function ContactForm({ dict }: ContactFormProps) {
       >
         <input
           type="text"
-          name="company"
+          name="website"
           tabIndex={-1}
           autoComplete="off"
           aria-hidden="true"
-          className="absolute -left-[9999px] h-0 w-0 opacity-0"
+          style={{ display: "none" }}
         />
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">

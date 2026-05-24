@@ -20,7 +20,7 @@ export type ContactFormData = {
   subject: SubjectKey | "";
   budget: BudgetKey | "";
   message: string;
-  company: string;
+  website: string;
 };
 
 export type ValidationError =
@@ -61,12 +61,12 @@ export function parseFormData(form: FormData): ContactFormData {
     subject: field(form, "subject") as ContactFormData["subject"],
     budget: field(form, "budget") as ContactFormData["budget"],
     message: field(form, "message"),
-    company: field(form, "company"),
+    website: field(form, "website"),
   };
 }
 
 export function validate(data: ContactFormData): ValidationError | null {
-  if (data.company) return "spam";
+  if (data.website) return "spam";
   if (data.name.length < 2) return "invalid_name";
   if (!EMAIL_RE.test(data.email)) return "invalid_email";
   if (!SUBJECTS.has(data.subject)) return "invalid_subject";
