@@ -7,7 +7,7 @@ const localeConfig = {
     contactLinkHref: "/pt-BR/contato",
     browserLocale: "pt-BR",
     heroText: "DESENVOLVIMENTO",
-    successText: "Mensagem enviada com sucesso!",
+    successText: "Recebemos sua mensagem",
   },
   en: {
     homeUrl: "/en",
@@ -15,7 +15,7 @@ const localeConfig = {
     contactLinkHref: "/en/contato",
     browserLocale: "en-US",
     heroText: "DEVELOPMENT",
-    successText: "Message sent successfully!",
+    successText: "We received your message",
   },
 } as const;
 
@@ -101,18 +101,26 @@ for (const locale of locales) {
       expect(response?.status()).toBe(200);
     });
 
+    test("contact info methods are visible", async ({ page }) => {
+      await page.goto(config.contactUrl);
+      await expect(page.getByTestId("contact-info")).toBeVisible();
+      const links = page.getByTestId("contact-info").locator("a");
+      const count = await links.count();
+      expect(count).toBeGreaterThanOrEqual(5);
+    });
+
     test("form fields exist", async ({ page }) => {
       await page.goto(config.contactUrl);
       await expect(page.locator("#name")).toBeVisible();
       await expect(page.locator("#email")).toBeVisible();
       await expect(page.locator("#phone")).toBeVisible();
+      await expect(page.locator("#subject")).toBeVisible();
+      await expect(page.locator("#budget")).toBeVisible();
       await expect(page.locator("#message")).toBeVisible();
     });
 
-    test("form validation works", async ({ page }) => {
+    test("form validation requires name", async ({ page }) => {
       await page.goto(config.contactUrl);
-      const submitButton = page.locator("button[type='submit']");
-      await submitButton.click();
       const nameInput = page.locator("#name");
       await expect(nameInput).toHaveAttribute("required", "");
     });
@@ -122,7 +130,8 @@ for (const locale of locales) {
       await page.fill("#name", "Teste");
       await page.fill("#email", "teste@teste.com");
       await page.fill("#phone", "11999999999");
-      await page.fill("#message", "Mensagem de teste");
+      await page.selectOption("#subject", "web");
+      await page.fill("#message", "Mensagem de teste com mais de dez caracteres.");
       await page.click("button[type='submit']");
       await expect(page.getByText(config.successText)).toBeVisible({ timeout: 10000 });
     });
