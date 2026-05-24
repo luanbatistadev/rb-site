@@ -170,19 +170,19 @@ export function ContactForm({ dict }: ContactFormProps) {
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="flex flex-col gap-2">
             <FieldLabel htmlFor="name">{dict.name}</FieldLabel>
-            <input id="name" name="name" type="text" required placeholder={dict.name} className={inputClasses} />
+            <input id="name" name="name" type="text" required autoComplete="name" placeholder={dict.name} className={inputClasses} />
           </div>
 
           <div className="flex flex-col gap-2">
             <FieldLabel htmlFor="email">{dict.email}</FieldLabel>
-            <input id="email" name="email" type="email" required placeholder={dict.email} className={inputClasses} />
+            <input id="email" name="email" type="email" required autoComplete="email" placeholder={dict.email} className={inputClasses} />
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="flex flex-col gap-2">
             <FieldLabel htmlFor="phone">{dict.phone}</FieldLabel>
-            <input id="phone" name="phone" type="tel" placeholder={dict.phone} className={inputClasses} />
+            <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder={dict.phone} className={inputClasses} />
           </div>
 
           <div className="flex flex-col gap-2">
