@@ -40,7 +40,7 @@ export const terms: Record<"pt-BR" | "en", LegalDocument> = {
           {
             kind: "p",
             text:
-              "A RB Computing Development é uma operação de desenvolvimento de software com sede em Rondônia, Brasil, que oferece os seguintes serviços:",
+              "RB - Computing Development LTDA (CNPJ 50.487.858/0001-09), sociedade empresária limitada, ME, com sede na Rua Luiza Villaça, nº 277, Bairro Canadá, Cascavel/PR, CEP 85.813-742, oferece os seguintes serviços:",
           },
           {
             kind: "list",
@@ -144,7 +144,7 @@ export const terms: Record<"pt-BR" | "en", LegalDocument> = {
           {
             kind: "p",
             text:
-              "Estes Termos são regidos pela legislação brasileira. Fica eleito o foro da comarca de Porto Velho - RO para dirimir quaisquer questões oriundas deste documento, com renúncia a qualquer outro, por mais privilegiado que seja.",
+              "Estes Termos são regidos pela legislação brasileira. Fica eleito o foro da comarca de Cascavel - PR para dirimir quaisquer questões oriundas deste documento, com renúncia a qualquer outro, por mais privilegiado que seja.",
           },
         ],
       },
@@ -186,7 +186,7 @@ export const terms: Record<"pt-BR" | "en", LegalDocument> = {
           {
             kind: "p",
             text:
-              "RB Computing Development is a software development operation based in Rondônia, Brazil, offering the following services:",
+              "RB - Computing Development LTDA (CNPJ 50.487.858/0001-09), a Brazilian limited liability company (ME), headquartered at Rua Luiza Villaça, 277, Canadá district, Cascavel/PR, ZIP 85.813-742, offers the following services:",
           },
           {
             kind: "list",
@@ -289,7 +289,7 @@ export const terms: Record<"pt-BR" | "en", LegalDocument> = {
           {
             kind: "p",
             text:
-              "These Terms are governed by Brazilian law. The jurisdiction of Porto Velho - RO, Brazil, is elected to resolve any matters arising from this document, with waiver of any other, however privileged.",
+              "These Terms are governed by Brazilian law. The jurisdiction of Cascavel - PR, Brazil, is elected to resolve any matters arising from this document, with waiver of any other, however privileged.",
           },
         ],
       },

@@ -15,7 +15,7 @@ export const privacy: Record<"pt-BR" | "en", LegalDocument> = {
           {
             kind: "p",
             text:
-              'Esta Política de Privacidade explica como a RB Computing Development ("nós", "nosso") coleta, utiliza, compartilha e protege seus dados pessoais quando você acessa nosso site ou entra em contato conosco, em conformidade com a Lei nº 13.709/2018 (LGPD).',
+              'Esta Política de Privacidade explica como a RB - Computing Development LTDA ("nós", "nosso") coleta, utiliza, compartilha e protege seus dados pessoais quando você acessa nosso site ou entra em contato conosco, em conformidade com a Lei nº 13.709/2018 (LGPD).',
           },
         ],
       },
@@ -25,12 +25,14 @@ export const privacy: Record<"pt-BR" | "en", LegalDocument> = {
           {
             kind: "p",
             text:
-              "A RB Computing Development atua como controladora dos dados pessoais coletados por meio deste site.",
+              "A RB - Computing Development LTDA atua como controladora dos dados pessoais coletados por meio deste site.",
           },
           {
             kind: "list",
             items: [
-              "Sede: Rondônia, Brasil",
+              "Razão social: RB - Computing Development LTDA",
+              "CNPJ: 50.487.858/0001-09",
+              "Endereço: Rua Luiza Villaça, 277, Bairro Canadá, Cascavel/PR, CEP 85.813-742",
               "E-mail para questões de privacidade: luanbatistadev@gmail.com",
               "Telefone: +55 69 99295-0959",
             ],
@@ -263,7 +265,7 @@ export const privacy: Record<"pt-BR" | "en", LegalDocument> = {
           {
             kind: "p",
             text:
-              'This Privacy Policy explains how RB Computing Development ("we", "our") collects, uses, shares and protects your personal data when you access our website or contact us, in compliance with Brazilian Law No. 13.709/2018 (LGPD).',
+              'This Privacy Policy explains how RB - Computing Development LTDA ("we", "our") collects, uses, shares and protects your personal data when you access our website or contact us, in compliance with Brazilian Law No. 13.709/2018 (LGPD).',
           },
         ],
       },
@@ -273,12 +275,14 @@ export const privacy: Record<"pt-BR" | "en", LegalDocument> = {
           {
             kind: "p",
             text:
-              "RB Computing Development acts as the controller of personal data collected through this site.",
+              "RB - Computing Development LTDA acts as the controller of personal data collected through this site.",
           },
           {
             kind: "list",
             items: [
-              "Headquarters: Rondônia, Brazil",
+              "Legal name: RB - Computing Development LTDA",
+              "CNPJ: 50.487.858/0001-09",
+              "Address: Rua Luiza Villaça, 277, Canadá district, Cascavel/PR, ZIP 85.813-742, Brazil",
               "Privacy contact email: luanbatistadev@gmail.com",
               "Phone: +55 69 99295-0959",
             ],
