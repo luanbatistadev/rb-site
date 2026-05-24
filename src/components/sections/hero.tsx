@@ -69,20 +69,19 @@ export function Hero({ dict }: HeroProps) {
       data-testid="hero"
       id="inicio"
       className="relative"
-      style={{ padding }}
+      style={isMobile ? undefined : { padding }}
     >
       <ViewTransition name="hero-bg">
       <motion.section
         className="relative min-h-dvh overflow-hidden bg-[#0b0b0b] md:perspective-distant"
-        style={{ borderRadius }}
+        style={isMobile ? { borderRadius: 12 } : { borderRadius }}
       >
         <motion.div
           className="absolute inset-0 origin-[center_70%] transform-gpu will-change-transform"
           style={{
             ...BG_PLACEHOLDER_STYLE,
             y: backgroundY,
-            opacity: backgroundOpacity,
-            ...(isMobile ? {} : { scale: backgroundScale, rotateX: backgroundRotateX }),
+            ...(isMobile ? {} : { opacity: backgroundOpacity, scale: backgroundScale, rotateX: backgroundRotateX }),
           }}
         >
           {bgSrc && (
