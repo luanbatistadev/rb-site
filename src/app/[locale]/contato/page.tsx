@@ -3,7 +3,7 @@ import type { Locale } from "../dictionaries";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { ContactForm } from "@/components/sections/contact-form";
+import { ContactSection } from "@/components/sections/contact-section";
 import { ContactHero } from "@/components/sections/contact-hero";
 
 export default async function ContatoPage({
@@ -22,9 +22,7 @@ export default async function ContatoPage({
       <Header dict={dict.nav} activePath="/contato" />
       <main>
         <ContactHero dict={dict.contact} />
-        <div className="bg-background py-20 px-6">
-          <ContactForm dict={dict.contact} />
-        </div>
+        <ContactSection dict={dict.contact} />
       </main>
       <Footer dict={dict.footer} locale={locale} navDict={dict.nav} />
     </>
