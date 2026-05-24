@@ -74,8 +74,10 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
   if (validationError === "spam") return { ok: true };
   if (validationError) return { ok: false, error: "validation" };
 
-  const ip = await getClientIp();
-  if (!checkLimit(ip)) return { ok: false, error: "rate_limit" };
+  if (process.env.NODE_ENV === "production") {
+    const ip = await getClientIp();
+    if (!checkLimit(ip)) return { ok: false, error: "rate_limit" };
+  }
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL ?? "luanbatistadev@gmail.com";
