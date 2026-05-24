@@ -132,13 +132,56 @@
   "contact": {
     "tag": "Contact",
     "title": "Book a consultation",
-    "subtitle": "Fill in the form and we'll get in touch.",
+    "subtitle": "Tell us about your project. We respond within 24h on business days.",
+    "infoTitle": "Let's build together.",
+    "infoSubtitle": "Pick your preferred channel or fill in the form on the side.",
+    "methods": {
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "whatsappValue": "Chat on WhatsApp",
+      "linkedin": "LinkedIn",
+      "linkedinValue": "linkedin.com/company/rb-computing-development",
+      "instagram": "Instagram",
+      "instagramValue": "@rbcdevelopment",
+      "location": "Location",
+      "locationValue": "Rondônia, Brazil",
+      "hours": "Hours",
+      "hoursValue": "Mon–Fri, 9am–6pm (BRT)"
+    },
+    "formTitle": "Reach out",
     "name": "Name",
     "email": "Email",
-    "phone": "Phone",
+    "phone": "Phone (optional)",
+    "subject": "Project type",
+    "subjectPlaceholder": "Select a type",
+    "subjectOptions": {
+      "mobile": "Mobile (iOS / Android / Flutter)",
+      "web": "Web (Next.js / Front-end / Back-end)",
+      "consulting": "Consulting / Architecture",
+      "legacy": "Legacy modernization",
+      "maintenance": "Maintenance & Evolution",
+      "other": "Other"
+    },
+    "budget": "Estimated budget (optional)",
+    "budgetPlaceholder": "Select a range",
+    "budgetOptions": {
+      "lt10k": "Up to $2k",
+      "10to30k": "$2k – $6k",
+      "30to80k": "$6k – $16k",
+      "gt80k": "$16k +",
+      "undecided": "Still deciding"
+    },
     "message": "Message",
     "send": "Send message",
-    "success": "Message sent successfully!",
-    "error": "Error sending. Please try again."
+    "sending": "Sending...",
+    "successTitle": "We received your message",
+    "successBody": "We'll get back to you within 24 business hours.",
+    "sendAnother": "Send another message",
+    "errors": {
+      "validation": "Please check the fields and try again.",
+      "rate_limit": "Too many attempts. Please wait a few minutes.",
+      "send_failed": "We couldn't send your message right now. Please try again shortly."
+    }
   }
 }

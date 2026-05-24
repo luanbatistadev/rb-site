@@ -132,13 +132,56 @@
   "contact": {
     "tag": "Contato",
     "title": "Agende uma consulta",
-    "subtitle": "Preencha o formulário e entraremos em contato.",
+    "subtitle": "Conte sobre seu projeto. Respondemos em até 24h úteis.",
+    "infoTitle": "Vamos construir juntos.",
+    "infoSubtitle": "Escolha o canal que preferir ou preencha o formulário ao lado.",
+    "methods": {
+      "email": "E-mail",
+      "phone": "Telefone",
+      "whatsapp": "WhatsApp",
+      "whatsappValue": "Conversar no WhatsApp",
+      "linkedin": "LinkedIn",
+      "linkedinValue": "linkedin.com/company/rb-computing-development",
+      "instagram": "Instagram",
+      "instagramValue": "@rbcdevelopment",
+      "location": "Localização",
+      "locationValue": "Rondônia, Brasil",
+      "hours": "Horário",
+      "hoursValue": "Seg–Sex, 9h–18h (BRT)"
+    },
+    "formTitle": "Fale com a gente",
     "name": "Nome",
     "email": "E-mail",
-    "phone": "Telefone",
+    "phone": "Telefone (opcional)",
+    "subject": "Tipo de projeto",
+    "subjectPlaceholder": "Selecione um tipo",
+    "subjectOptions": {
+      "mobile": "Mobile (iOS / Android / Flutter)",
+      "web": "Web (Next.js / Front-end / Back-end)",
+      "consulting": "Consultoria / Arquitetura",
+      "legacy": "Modernização de legado",
+      "maintenance": "Manutenção / Evolução",
+      "other": "Outro"
+    },
+    "budget": "Orçamento estimado (opcional)",
+    "budgetPlaceholder": "Selecione uma faixa",
+    "budgetOptions": {
+      "lt10k": "Até R$ 10k",
+      "10to30k": "R$ 10k – R$ 30k",
+      "30to80k": "R$ 30k – R$ 80k",
+      "gt80k": "R$ 80k +",
+      "undecided": "Ainda definindo"
+    },
     "message": "Mensagem",
     "send": "Enviar mensagem",
-    "success": "Mensagem enviada com sucesso!",
-    "error": "Erro ao enviar. Tente novamente."
+    "sending": "Enviando...",
+    "successTitle": "Recebemos sua mensagem",
+    "successBody": "Retornaremos em até 24h úteis.",
+    "sendAnother": "Enviar outra mensagem",
+    "errors": {
+      "validation": "Verifique os campos e tente novamente.",
+      "rate_limit": "Muitas tentativas. Aguarde alguns minutos.",
+      "send_failed": "Não foi possível enviar agora. Tente novamente em instantes."
+    }
   }
 }
