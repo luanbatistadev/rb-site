@@ -8,6 +8,8 @@ type ContactMethodProps = {
   external?: boolean;
 };
 
+const WRAPPER_CLASS = "group flex items-start";
+
 export function ContactMethod({ icon, label, value, href, external }: ContactMethodProps) {
   const content = (
     <span className="flex items-start gap-4">
@@ -24,19 +26,19 @@ export function ContactMethod({ icon, label, value, href, external }: ContactMet
   );
 
   if (!href) {
-    return <div className="group flex items-start">{content}</div>;
+    return <div className={WRAPPER_CLASS}>{content}</div>;
   }
 
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="group flex items-start">
+      <a href={href} target="_blank" rel="noopener noreferrer" className={WRAPPER_CLASS}>
         {content}
       </a>
     );
   }
 
   return (
-    <Link href={href} className="group flex items-start">
+    <Link href={href} className={WRAPPER_CLASS}>
       {content}
     </Link>
   );

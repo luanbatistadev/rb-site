@@ -5,8 +5,7 @@ const hits = new Map<string, number[]>();
 
 export function checkLimit(ip: string, now: number = Date.now()): boolean {
   const cutoff = now - WINDOW_MS;
-  const previous = hits.get(ip) ?? [];
-  const recent = previous.filter((t) => t > cutoff);
+  const recent = (hits.get(ip) ?? []).filter((t) => t > cutoff);
 
   if (recent.length >= MAX_HITS) {
     hits.set(ip, recent);

@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { Resend } from "resend";
-import { parseFormData, validate } from "./contact-validation";
+import { type ContactFormData, parseFormData, validate } from "./contact-validation";
 import { checkLimit } from "./contact-rate-limit";
 
 export type ContactActionResult =
@@ -35,7 +35,7 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;");
 }
 
-function buildEmailHtml(data: ReturnType<typeof parseFormData>): string {
+function buildEmailHtml(data: ContactFormData): string {
   const rows: Array<[string, string]> = [
     ["Nome", data.name],
     ["E-mail", data.email],
@@ -62,9 +62,50 @@ async function getClientIp(): Promise<string> {
   const h = await headers();
   const fwd = h.get("x-forwarded-for");
   if (fwd) return fwd.split(",")[0].trim();
-  const real = h.get("x-real-ip");
-  if (real) return real.trim();
-  return "unknown";
+  return h.get("x-real-ip")?.trim() ?? "unknown";
+}
+
+function buildSubject(data: ContactFormData): string {
+  return `[Contato Site] ${SUBJECT_LABELS[data.subject] ?? data.subject} — ${data.name}`;
+}
+
+async function sendEmail(data: ContactFormData): Promise<ContactActionResult> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.CONTACT_TO_EMAIL ?? "luanbatistadev@gmail.com";
+  const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
+
+  if (!apiKey) {
+    if (process.env.NODE_ENV === "production") {
+      console.error("[contact] RESEND_API_KEY missing in production");
+      return { ok: false, error: "send_failed" };
+    }
+    console.info("[contact] dev mode (no API key) — would send:", {
+      to,
+      from,
+      ...data,
+      subject: buildSubject(data),
+    });
+    return { ok: true };
+  }
+
+  try {
+    const resend = new Resend(apiKey);
+    const result = await resend.emails.send({
+      to,
+      from,
+      replyTo: data.email,
+      subject: buildSubject(data),
+      html: buildEmailHtml(data),
+    });
+    if (result.error) {
+      console.error("[contact] resend error", result.error);
+      return { ok: false, error: "send_failed" };
+    }
+    return { ok: true };
+  } catch (err) {
+    console.error("[contact] unexpected send error", err);
+    return { ok: false, error: "send_failed" };
+  }
 }
 
 export async function submitContactForm(formData: FormData): Promise<ContactActionResult> {
@@ -79,40 +120,5 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
     if (!checkLimit(ip)) return { ok: false, error: "rate_limit" };
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL ?? "luanbatistadev@gmail.com";
-  const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
-
-  if (!apiKey) {
-    if (process.env.NODE_ENV === "production") {
-      console.error("[contact] RESEND_API_KEY missing in production");
-      return { ok: false, error: "send_failed" };
-    }
-    console.info("[contact] dev mode (no API key) — would send:", {
-      to,
-      from,
-      ...data,
-      subject: `[Contato Site] ${SUBJECT_LABELS[data.subject] ?? data.subject} — ${data.name}`,
-    });
-    return { ok: true };
-  }
-
-  try {
-    const resend = new Resend(apiKey);
-    const result = await resend.emails.send({
-      to,
-      from,
-      replyTo: data.email,
-      subject: `[Contato Site] ${SUBJECT_LABELS[data.subject] ?? data.subject} — ${data.name}`,
-      html: buildEmailHtml(data),
-    });
-    if (result.error) {
-      console.error("[contact] resend error", result.error);
-      return { ok: false, error: "send_failed" };
-    }
-    return { ok: true };
-  } catch (err) {
-    console.error("[contact] unexpected send error", err);
-    return { ok: false, error: "send_failed" };
-  }
+  return sendEmail(data);
 }

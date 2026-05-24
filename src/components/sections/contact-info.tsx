@@ -40,7 +40,30 @@ const WHATSAPP_URL = "https://wa.me/5569992950959";
 const LINKEDIN_URL = "https://linkedin.com/company/rb-computing-development";
 const INSTAGRAM_URL = "https://www.instagram.com/rbcdevelopment";
 
+type MethodItem = {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  href?: string;
+  external?: boolean;
+};
+
+function buildMethods(dict: ContactInfoDict): MethodItem[] {
+  const { methods } = dict;
+  return [
+    { icon: <MailIcon />, label: methods.email, value: EMAIL, href: `mailto:${EMAIL}` },
+    { icon: <PhoneIcon />, label: methods.phone, value: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
+    { icon: <ChatIcon />, label: methods.whatsapp, value: methods.whatsappValue, href: WHATSAPP_URL, external: true },
+    { icon: <LinkedInIcon />, label: methods.linkedin, value: methods.linkedinValue, href: LINKEDIN_URL, external: true },
+    { icon: <InstagramIcon />, label: methods.instagram, value: methods.instagramValue, href: INSTAGRAM_URL, external: true },
+    { icon: <PinIcon />, label: methods.location, value: methods.locationValue },
+    { icon: <ClockIcon />, label: methods.hours, value: methods.hoursValue },
+  ];
+}
+
 export function ContactInfo({ dict }: ContactInfoProps) {
+  const methods = buildMethods(dict);
+
   return (
     <div data-testid="contact-info" className="flex flex-col gap-8">
       <div className="flex items-center gap-3">
@@ -61,63 +84,11 @@ export function ContactInfo({ dict }: ContactInfoProps) {
       </div>
 
       <ul className="flex flex-col gap-5">
-        <li>
-          <ContactMethod
-            icon={<MailIcon />}
-            label={dict.methods.email}
-            value={EMAIL}
-            href={`mailto:${EMAIL}`}
-          />
-        </li>
-        <li>
-          <ContactMethod
-            icon={<PhoneIcon />}
-            label={dict.methods.phone}
-            value={PHONE_DISPLAY}
-            href={`tel:${PHONE_TEL}`}
-          />
-        </li>
-        <li>
-          <ContactMethod
-            icon={<ChatIcon />}
-            label={dict.methods.whatsapp}
-            value={dict.methods.whatsappValue}
-            href={WHATSAPP_URL}
-            external
-          />
-        </li>
-        <li>
-          <ContactMethod
-            icon={<LinkedInIcon />}
-            label={dict.methods.linkedin}
-            value={dict.methods.linkedinValue}
-            href={LINKEDIN_URL}
-            external
-          />
-        </li>
-        <li>
-          <ContactMethod
-            icon={<InstagramIcon />}
-            label={dict.methods.instagram}
-            value={dict.methods.instagramValue}
-            href={INSTAGRAM_URL}
-            external
-          />
-        </li>
-        <li>
-          <ContactMethod
-            icon={<PinIcon />}
-            label={dict.methods.location}
-            value={dict.methods.locationValue}
-          />
-        </li>
-        <li>
-          <ContactMethod
-            icon={<ClockIcon />}
-            label={dict.methods.hours}
-            value={dict.methods.hoursValue}
-          />
-        </li>
+        {methods.map((method) => (
+          <li key={method.label}>
+            <ContactMethod {...method} />
+          </li>
+        ))}
       </ul>
     </div>
   );

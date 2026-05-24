@@ -53,11 +53,34 @@ type Status =
   | { kind: "error"; message: string }
   | { kind: "success" };
 
+type SubmitError = "validation" | "rate_limit" | "send_failed";
+
 const inputClasses =
   "w-full rounded-xl border border-foreground/10 bg-white px-5 py-3.5 text-sm text-foreground outline-none transition-all duration-200 placeholder:text-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/20";
 
 const selectClasses =
   "w-full appearance-none rounded-xl border border-foreground/10 bg-white px-5 py-3.5 text-sm text-foreground outline-none transition-all duration-200 focus:border-accent focus:ring-1 focus:ring-accent/20";
+
+const labelClasses = "text-sm font-medium text-foreground/70";
+
+function FieldLabel({ htmlFor, children }: { htmlFor: string; children: React.ReactNode }) {
+  return (
+    <label htmlFor={htmlFor} className={labelClasses}>
+      {children}
+    </label>
+  );
+}
+
+function errorMessage(error: SubmitError, dict: ContactFormDict["errors"]): string {
+  switch (error) {
+    case "rate_limit":
+      return dict.rate_limit;
+    case "validation":
+      return dict.validation;
+    case "send_failed":
+      return dict.send_failed;
+  }
+}
 
 export function ContactForm({ dict }: ContactFormProps) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
@@ -74,13 +97,7 @@ export function ContactForm({ dict }: ContactFormProps) {
         formRef.current?.reset();
         return;
       }
-      const message =
-        result.error === "rate_limit"
-          ? dict.errors.rate_limit
-          : result.error === "validation"
-          ? dict.errors.validation
-          : dict.errors.send_failed;
-      setStatus({ kind: "error", message });
+      setStatus({ kind: "error", message: errorMessage(result.error, dict.errors) });
     });
   }
 
@@ -152,32 +169,24 @@ export function ContactForm({ dict }: ContactFormProps) {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="flex flex-col gap-2">
-            <label htmlFor="name" className="text-sm font-medium text-foreground/70">
-              {dict.name}
-            </label>
+            <FieldLabel htmlFor="name">{dict.name}</FieldLabel>
             <input id="name" name="name" type="text" required placeholder={dict.name} className={inputClasses} />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-sm font-medium text-foreground/70">
-              {dict.email}
-            </label>
+            <FieldLabel htmlFor="email">{dict.email}</FieldLabel>
             <input id="email" name="email" type="email" required placeholder={dict.email} className={inputClasses} />
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="flex flex-col gap-2">
-            <label htmlFor="phone" className="text-sm font-medium text-foreground/70">
-              {dict.phone}
-            </label>
+            <FieldLabel htmlFor="phone">{dict.phone}</FieldLabel>
             <input id="phone" name="phone" type="tel" placeholder={dict.phone} className={inputClasses} />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="subject" className="text-sm font-medium text-foreground/70">
-              {dict.subject}
-            </label>
+            <FieldLabel htmlFor="subject">{dict.subject}</FieldLabel>
             <select id="subject" name="subject" required defaultValue="" className={selectClasses}>
               <option value="" disabled>{dict.subjectPlaceholder}</option>
               <option value="mobile">{dict.subjectOptions.mobile}</option>
@@ -191,9 +200,7 @@ export function ContactForm({ dict }: ContactFormProps) {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="budget" className="text-sm font-medium text-foreground/70">
-            {dict.budget}
-          </label>
+          <FieldLabel htmlFor="budget">{dict.budget}</FieldLabel>
           <select id="budget" name="budget" defaultValue="" className={selectClasses}>
             <option value="">{dict.budgetPlaceholder}</option>
             <option value="lt10k">{dict.budgetOptions.lt10k}</option>
@@ -205,9 +212,7 @@ export function ContactForm({ dict }: ContactFormProps) {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="message" className="text-sm font-medium text-foreground/70">
-            {dict.message}
-          </label>
+          <FieldLabel htmlFor="message">{dict.message}</FieldLabel>
           <textarea
             id="message"
             name="message"
