@@ -31,10 +31,19 @@ const clientLogos: Array<{ src: string; fit: "cover" | "contain"; bg?: string }>
 export function Hero({ dict }: HeroProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [bgSrc, setBgSrc] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defer random pick to client to avoid hydration mismatch
     setBgSrc(pickRandomBg());
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -63,7 +72,7 @@ export function Hero({ dict }: HeroProps) {
     >
       <ViewTransition name="hero-bg">
       <motion.section
-        className="relative min-h-screen overflow-hidden bg-[#0b0b0b] perspective-distant"
+        className="relative min-h-dvh overflow-hidden bg-[#0b0b0b] md:perspective-distant"
         style={{ borderRadius }}
       >
         <motion.div
@@ -71,9 +80,8 @@ export function Hero({ dict }: HeroProps) {
           style={{
             ...BG_PLACEHOLDER_STYLE,
             y: backgroundY,
-            scale: backgroundScale,
-            rotateX: backgroundRotateX,
             opacity: backgroundOpacity,
+            ...(isMobile ? {} : { scale: backgroundScale, rotateX: backgroundRotateX }),
           }}
         >
           {bgSrc && (
@@ -89,18 +97,20 @@ export function Hero({ dict }: HeroProps) {
           <div className="absolute inset-0 bg-black/50" />
         </motion.div>
 
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 mix-blend-screen transform-gpu will-change-transform"
-          style={{
-            opacity: glowOpacity,
-            scale: glowScale,
-            background:
-              "radial-gradient(60% 50% at 30% 35%, rgba(120,90,255,0.5) 0%, transparent 60%), radial-gradient(50% 45% at 75% 65%, rgba(0,200,230,0.4) 0%, transparent 65%)",
-          }}
-        />
+        {!isMobile && (
+          <motion.div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 mix-blend-screen transform-gpu will-change-transform"
+            style={{
+              opacity: glowOpacity,
+              scale: glowScale,
+              background:
+                "radial-gradient(60% 50% at 30% 35%, rgba(120,90,255,0.5) 0%, transparent 60%), radial-gradient(50% 45% at 75% 65%, rgba(0,200,230,0.4) 0%, transparent 65%)",
+            }}
+          />
+        )}
 
-        <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
+        <div className="relative z-10 flex min-h-dvh items-center justify-center px-6">
           <motion.div
             className="mx-auto flex max-w-4xl flex-col items-center text-center"
             variants={staggerFast}
