@@ -179,7 +179,10 @@
     "successBody": "Retornaremos em até 24h úteis.",
     "sendAnother": "Enviar outra mensagem",
     "errors": {
-      "validation": "Verifique os campos e tente novamente.",
+      "invalid_name": "Informe um nome com pelo menos 2 caracteres.",
+      "invalid_email": "Informe um e-mail válido.",
+      "invalid_subject": "Selecione um tipo de projeto.",
+      "invalid_message": "A mensagem precisa ter pelo menos 10 caracteres.",
       "rate_limit": "Muitas tentativas. Aguarde alguns minutos.",
       "send_failed": "Não foi possível enviar agora. Tente novamente em instantes."
     }

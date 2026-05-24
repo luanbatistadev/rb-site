@@ -5,9 +5,17 @@ import { Resend } from "resend";
 import { type ContactFormData, parseFormData, validate } from "./contact-validation";
 import { checkLimit } from "./contact-rate-limit";
 
+export type ContactActionError =
+  | "invalid_name"
+  | "invalid_email"
+  | "invalid_subject"
+  | "invalid_message"
+  | "rate_limit"
+  | "send_failed";
+
 export type ContactActionResult =
   | { ok: true }
-  | { ok: false; error: "validation" | "rate_limit" | "send_failed" };
+  | { ok: false; error: ContactActionError };
 
 const SUBJECT_LABELS: Record<string, string> = {
   mobile: "Mobile (iOS / Android / Flutter)",
@@ -113,7 +121,12 @@ export async function submitContactForm(formData: FormData): Promise<ContactActi
 
   const validationError = validate(data);
   if (validationError === "spam") return { ok: true };
-  if (validationError) return { ok: false, error: "validation" };
+  if (validationError) return { ok: false, error: validationError };
+
+  if (process.env.NODE_ENV !== "production") {
+    const h = await headers();
+    if (h.get("x-playwright-test") === "1") return { ok: true };
+  }
 
   if (process.env.NODE_ENV === "production") {
     const ip = await getClientIp();

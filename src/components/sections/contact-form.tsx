@@ -4,6 +4,7 @@ import { useRef, useState, useTransition } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { submitContactForm } from "@/lib/contact-action";
+import { parseFormData, validate } from "@/lib/contact-validation";
 import { LogoRB } from "@/components/ui/logo-rb";
 import { ArrowIcon } from "@/components/ui/contact-icons";
 
@@ -38,7 +39,10 @@ type ContactFormDict = {
   successBody: string;
   sendAnother: string;
   errors: {
-    validation: string;
+    invalid_name: string;
+    invalid_email: string;
+    invalid_subject: string;
+    invalid_message: string;
     rate_limit: string;
     send_failed: string;
   };
@@ -53,7 +57,13 @@ type Status =
   | { kind: "error"; message: string }
   | { kind: "success" };
 
-type SubmitError = "validation" | "rate_limit" | "send_failed";
+type SubmitError =
+  | "invalid_name"
+  | "invalid_email"
+  | "invalid_subject"
+  | "invalid_message"
+  | "rate_limit"
+  | "send_failed";
 
 const inputClasses =
   "w-full rounded-xl border border-foreground/10 bg-white px-5 py-3.5 text-sm text-foreground outline-none transition-all duration-200 placeholder:text-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/20";
@@ -72,14 +82,7 @@ function FieldLabel({ htmlFor, children }: { htmlFor: string; children: React.Re
 }
 
 function errorMessage(error: SubmitError, dict: ContactFormDict["errors"]): string {
-  switch (error) {
-    case "rate_limit":
-      return dict.rate_limit;
-    case "validation":
-      return dict.validation;
-    case "send_failed":
-      return dict.send_failed;
-  }
+  return dict[error];
 }
 
 export function ContactForm({ dict }: ContactFormProps) {
@@ -90,6 +93,13 @@ export function ContactForm({ dict }: ContactFormProps) {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+
+    const clientError = validate(parseFormData(formData));
+    if (clientError && clientError !== "spam") {
+      setStatus({ kind: "error", message: errorMessage(clientError, dict.errors) });
+      return;
+    }
+
     startTransition(async () => {
       const result = await submitContactForm(formData);
       if (result.ok) {
@@ -170,7 +180,7 @@ export function ContactForm({ dict }: ContactFormProps) {
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="flex flex-col gap-2">
             <FieldLabel htmlFor="name">{dict.name}</FieldLabel>
-            <input id="name" name="name" type="text" required autoComplete="name" placeholder={dict.name} className={inputClasses} />
+            <input id="name" name="name" type="text" required minLength={2} autoComplete="name" placeholder={dict.name} className={inputClasses} />
           </div>
 
           <div className="flex flex-col gap-2">
@@ -218,6 +228,7 @@ export function ContactForm({ dict }: ContactFormProps) {
             name="message"
             rows={5}
             required
+            minLength={10}
             placeholder={dict.message}
             className={`${inputClasses} resize-none`}
           />

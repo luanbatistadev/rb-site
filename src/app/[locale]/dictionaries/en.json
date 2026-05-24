@@ -179,7 +179,10 @@
     "successBody": "We'll get back to you within 24 business hours.",
     "sendAnother": "Send another message",
     "errors": {
-      "validation": "Please check the fields and try again.",
+      "invalid_name": "Please enter a name with at least 2 characters.",
+      "invalid_email": "Please enter a valid email.",
+      "invalid_subject": "Please select a project type.",
+      "invalid_message": "Your message must be at least 10 characters long.",
       "rate_limit": "Too many attempts. Please wait a few minutes.",
       "send_failed": "We couldn't send your message right now. Please try again shortly."
     }
