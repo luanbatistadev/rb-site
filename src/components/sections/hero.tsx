@@ -60,8 +60,8 @@ export function Hero({ dict }: HeroProps) {
   const glowOpacity = useTransform(scrollYProgress, [0, 0.55, 1], [0, 0.4, 0.55]);
   const glowScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
-  const borderRadius = useTransform(scrollYProgress, [0, 0.3], [0, 12]);
-  const padding = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
+  const bottomRadius = useTransform(scrollYProgress, [0, 0.3], [0, 12]);
+  const sidePadding = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
 
   return (
     <motion.div
@@ -69,19 +69,27 @@ export function Hero({ dict }: HeroProps) {
       data-testid="hero"
       id="inicio"
       className="relative"
-      style={isMobile ? undefined : { padding }}
+      style={{
+        paddingLeft: sidePadding,
+        paddingRight: sidePadding,
+        paddingBottom: sidePadding,
+      }}
     >
       <ViewTransition name="hero-bg">
       <motion.section
         className="relative min-h-dvh overflow-hidden bg-[#0b0b0b] md:perspective-distant"
-        style={isMobile ? { borderRadius: 12 } : { borderRadius }}
+        style={{
+          borderBottomLeftRadius: bottomRadius,
+          borderBottomRightRadius: bottomRadius,
+        }}
       >
         <motion.div
           className="absolute inset-0 origin-[center_70%] transform-gpu will-change-transform"
           style={{
             ...BG_PLACEHOLDER_STYLE,
             y: backgroundY,
-            ...(isMobile ? {} : { opacity: backgroundOpacity, scale: backgroundScale, rotateX: backgroundRotateX }),
+            opacity: backgroundOpacity,
+            ...(isMobile ? {} : { scale: backgroundScale, rotateX: backgroundRotateX }),
           }}
         >
           {bgSrc && (
