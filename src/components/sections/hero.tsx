@@ -31,20 +31,10 @@ const clientLogos: Array<{ src: string; fit: "cover" | "contain"; bg?: string }>
 export function Hero({ dict }: HeroProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [bgSrc, setBgSrc] = useState("");
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defer random pick to client to avoid hydration mismatch
     setBgSrc(pickRandomBg());
-  }, []);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 768px)");
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: sync initial value from media query (matches bgSrc pattern above)
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -53,12 +43,7 @@ export function Hero({ dict }: HeroProps) {
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "55%"]);
-  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
-  const backgroundRotateX = useTransform(scrollYProgress, [0, 1], [0, -3]);
   const backgroundOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.4]);
-
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.55, 1], [0, 0.4, 0.55]);
-  const glowScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
   const inset = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
   const radius = useTransform(scrollYProgress, [0, 0.3], [0, 12]);
@@ -74,16 +59,15 @@ export function Hero({ dict }: HeroProps) {
     >
       <ViewTransition name="hero-bg">
       <motion.section
-        className="relative min-h-dvh overflow-hidden bg-[#0b0b0b] md:perspective-distant"
+        className="relative min-h-dvh overflow-hidden bg-[#0b0b0b]"
         style={{ clipPath, WebkitClipPath: clipPath }}
       >
         <motion.div
-          className="absolute inset-0 origin-[center_70%] transform-gpu will-change-transform"
+          className="absolute inset-0 transform-gpu will-change-transform"
           style={{
             ...BG_PLACEHOLDER_STYLE,
             y: backgroundY,
             opacity: backgroundOpacity,
-            ...(isMobile ? {} : { scale: backgroundScale, rotateX: backgroundRotateX }),
           }}
         >
           {bgSrc && (
@@ -98,19 +82,6 @@ export function Hero({ dict }: HeroProps) {
           )}
           <div className="absolute inset-0 bg-black/50" />
         </motion.div>
-
-        {!isMobile && (
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 mix-blend-screen transform-gpu will-change-transform"
-            style={{
-              opacity: glowOpacity,
-              scale: glowScale,
-              background:
-                "radial-gradient(60% 50% at 30% 35%, rgba(120,90,255,0.5) 0%, transparent 60%), radial-gradient(50% 45% at 75% 65%, rgba(0,200,230,0.4) 0%, transparent 65%)",
-            }}
-          />
-        )}
 
         <div className="relative z-10 flex min-h-dvh items-center justify-center px-6">
           <motion.div
