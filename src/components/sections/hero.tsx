@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ViewTransition } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { staggerFast, fadeInUp } from "@/lib/animations";
 import { pickRandomBg, BG_PLACEHOLDER_STYLE } from "@/lib/background-images";
@@ -60,28 +60,22 @@ export function Hero({ dict }: HeroProps) {
   const glowOpacity = useTransform(scrollYProgress, [0, 0.55, 1], [0, 0.4, 0.55]);
   const glowScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
-  const bottomRadius = useTransform(scrollYProgress, [0, 0.3], [0, 12]);
-  const sidePadding = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
+  const inset = useTransform(scrollYProgress, [0, 0.3], [0, 8]);
+  const radius = useTransform(scrollYProgress, [0, 0.3], [0, 12]);
+
+  const clipPath = useMotionTemplate`inset(0px ${inset}px ${inset}px ${inset}px round 0px 0px ${radius}px ${radius}px)`;
 
   return (
-    <motion.div
+    <div
       ref={wrapperRef}
       data-testid="hero"
       id="inicio"
       className="relative"
-      style={{
-        paddingLeft: sidePadding,
-        paddingRight: sidePadding,
-        paddingBottom: sidePadding,
-      }}
     >
       <ViewTransition name="hero-bg">
       <motion.section
         className="relative min-h-dvh overflow-hidden bg-[#0b0b0b] md:perspective-distant"
-        style={{
-          borderBottomLeftRadius: bottomRadius,
-          borderBottomRightRadius: bottomRadius,
-        }}
+        style={{ clipPath, WebkitClipPath: clipPath }}
       >
         <motion.div
           className="absolute inset-0 origin-[center_70%] transform-gpu will-change-transform"
@@ -191,6 +185,6 @@ export function Hero({ dict }: HeroProps) {
         </div>
       </motion.section>
       </ViewTransition>
-    </motion.div>
+    </div>
   );
 }
